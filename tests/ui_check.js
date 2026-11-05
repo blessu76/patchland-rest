@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
   fs.createReadStream(f).pipe(res);
 });
 function pagesToCheck() {
-  const base = ['/', '/privacy/', '/support/', '/terms/'];
+  const base = ['/', '/releases/', '/privacy/', '/support/', '/terms/'];
   const out = [...base];
   for (const l of ['ko', 'ja', 'de']) for (const b of base) out.push(b === '/' ? '/' + l + '/' : '/' + l + b);
   out.push('/404.html');

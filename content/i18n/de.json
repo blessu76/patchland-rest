@@ -40,5 +40,10 @@
  "cta_h": "Bald für iOS und Android",
  "cta_p": "Patchland ist noch nicht erschienen. Diese Seite wird aktualisiert, sobald es so weit ist.",
  "nf_h": "Seite nicht gefunden",
- "nf_p": "Wir konnten diese Seite nicht finden. Sie wurde möglicherweise verschoben, oder die Adresse enthält einen Tippfehler."
+ "nf_p": "Wir konnten diese Seite nicht finden. Sie wurde möglicherweise verschoben, oder die Adresse enthält einen Tippfehler.",
+ "nav_releases": "Versionshinweise",
+ "releases_title": "Versionshinweise",
+ "releases_desc": "Was sich in jedem Test-Build ändert, den wir vor der öffentlichen Veröffentlichung auf TestFlight bereitstellen, in einfachen Worten.",
+ "rel_status_tf": "Auf TestFlight",
+ "rel_intro": "Dieser Build enthält alles aus den früheren Builds, plus:"
 }

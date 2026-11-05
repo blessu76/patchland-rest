@@ -40,5 +40,10 @@
  "cta_h": "Coming soon to iOS and Android",
  "cta_p": "Patchland is not released yet. This page will be updated when it is.",
  "nf_h": "Page not found",
- "nf_p": "We could not find that page. It may have moved, or the address may be mistyped."
+ "nf_p": "We could not find that page. It may have moved, or the address may be mistyped.",
+ "nav_releases": "Release notes",
+ "releases_title": "Release notes",
+ "releases_desc": "What changed in each test build we put on TestFlight before the public release, in plain words.",
+ "rel_status_tf": "On TestFlight",
+ "rel_intro": "This build includes everything from the earlier builds, plus:"
 }

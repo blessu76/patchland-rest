@@ -40,5 +40,10 @@
  "cta_h": "Sắp có trên iOS và Android",
  "cta_p": "Patchland chưa được phát hành. Trang này sẽ được cập nhật khi trò chơi ra mắt.",
  "nf_h": "Không tìm thấy trang",
- "nf_p": "Chúng tôi không tìm thấy trang đó. Trang có thể đã được chuyển đi, hoặc địa chỉ bị gõ sai."
+ "nf_p": "Chúng tôi không tìm thấy trang đó. Trang có thể đã được chuyển đi, hoặc địa chỉ bị gõ sai.",
+ "nav_releases": "Ghi chú phát hành",
+ "releases_title": "Ghi chú phát hành",
+ "releases_desc": "Những gì đã thay đổi trong mỗi bản dựng thử nghiệm chúng tôi đưa lên TestFlight trước khi phát hành chính thức, bằng lời giản dị.",
+ "rel_status_tf": "Trên TestFlight",
+ "rel_intro": "Bản dựng này gồm mọi thứ của các bản trước, cộng thêm:"
 }

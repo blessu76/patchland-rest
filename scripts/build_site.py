@@ -16,7 +16,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent.parent
 SITE = "https://patchland.ipe.rest"
-ASSET_V = "20261105c"  # bump when assets/patchland.css or langpick.js change
+ASSET_V = "20261105d"  # bump when assets/patchland.css or langpick.js change
 SITE_UPDATED = "2026-11-05"  # "Last updated" of home / 404 and sitemap lastmod: bump by hand when their text changes
 OPERATOR = "Davy Kim (ipe Studio)"
 EMAIL = "ipe.haven@gmail.com"
@@ -33,10 +33,11 @@ LANGS = {
 }
 ORIGINALS = ("en", "ko")  # written by hand; the rest are AI translations
 PAGE_SLUGS = ("privacy", "support", "terms")
+RELEASES = "releases"  # /releases/ is built from content/releases.json (not content/pages)
 GAMES = ("trace", "spread", "place", "hockey", "daily")
 KEYS = (
     "nav_home nav_support nav_privacy nav_terms skip lang_label aria_main aria_footer status_badge ai_note ai_orig updated_label footer_line "
-    "home_title home_desc hero_h1 hero_p hero_note games_h games_p more_games feat_h feat1 feat2 feat3 feat4 feat5 feat6 cta_h cta_p nf_h nf_p"
+    "nav_releases releases_title releases_desc rel_status_tf rel_intro home_title home_desc hero_h1 hero_p hero_note games_h games_p more_games feat_h feat1 feat2 feat3 feat4 feat5 feat6 cta_h cta_p nf_h nf_p"
 ).split() + ["g_%s%s" % (g, s) for g in GAMES for s in ("", "_p")]
 FORBIDDEN = ("/Users/", "ipe-harness", "ipe-room", "claude.ai/", "AuthKey_", "api_key", "sk-ant", ".env", "[미정]")
 EMOJI = re.compile("[\U0001F000-\U0001FAFF☀-➿️‍]")
@@ -61,6 +62,10 @@ def path_home(lang):
 
 def path_page(lang, slug):
     return "%s/%s/" % (lp(lang), slug)
+
+
+def path_releases(lang):
+    return path_page(lang, RELEASES)
 
 
 def url(path):
@@ -132,11 +137,61 @@ def problems(where, text):
     return errs
 
 
+def load_releases(root):
+    """-> (entries newest first, errors). entry = {id, version, build, status, date, title{lang}, notes{lang: [..]}}; all 11 languages required."""
+    f = Path(root) / "content" / "releases.json"
+    if not f.is_file():
+        return [], ["content/releases.json: missing"]
+    try:
+        raw = json.loads(f.read_text(encoding="utf-8"))["releases"]
+    except (ValueError, KeyError, TypeError) as ex:
+        return [], ["content/releases.json: %s" % ex]
+    errs, out, seen = [], [], set()
+    for i, e in enumerate(raw):
+        tag = "releases.json %s" % (e.get("id", i) if isinstance(e, dict) else i)
+        if not isinstance(e, dict):
+            errs.append("%s: not an object" % tag)
+            continue
+        if not re.match(r"^[A-Za-z0-9._-]+$", str(e.get("id", ""))) or e["id"] in seen:
+            errs.append("%s: id missing, malformed or duplicated" % tag)
+        seen.add(e.get("id"))
+        if e.get("status") != "testflight":
+            errs.append("%s: status must be testflight" % tag)
+        if not str(e.get("version", "")).strip() or not str(e.get("build", "")).strip():
+            errs.append("%s: version and build are required" % tag)
+        if not re.match(r"^\d{4}-\d{2}-\d{2}$", str(e.get("date", ""))):
+            errs.append("%s: date must look like 2026-11-05" % tag)
+        counts = set()
+        for field in ("title", "notes"):
+            v = e.get(field)
+            if not isinstance(v, dict):
+                errs.append("%s: %s must be an object keyed by language" % (tag, field))
+                continue
+            for l in v:
+                if l not in LANGS:
+                    errs.append("%s: %s has unknown language %r" % (tag, field, l))
+            for l in LANGS:
+                val = v.get(l)
+                items = val if field == "notes" else [val]
+                if not isinstance(items, list) or not items or not all(isinstance(x, str) and x.strip() for x in items):
+                    errs.append("%s: %s.%s missing or not %s" % (tag, field, l, "a list of strings" if field == "notes" else "a string"))
+                    continue
+                if field == "notes":
+                    counts.add(len(items))
+                errs += problems("%s %s.%s" % (tag, field, l), " ".join(items))
+        if len(counts) > 1:
+            errs.append("%s: every language needs the same number of notes" % tag)
+        out.append(e)
+    return out, errs
+
+
 class Ctx:
     def __init__(self, root):
         self.root = Path(root)
         self.errs = []
         self.i18n, self.pages = {}, {}
+        self.releases, rerrs = load_releases(self.root)
+        self.errs += rerrs
         for f in sorted((self.root / "content" / "i18n").glob("*.json")):
             if f.stem not in LANGS:
                 self.errs.append("i18n/%s.json: unknown language" % f.stem)
@@ -215,14 +270,14 @@ def render(ctx, lang, *, path, title, desc, body, alt, updated, nav="", noindex=
     switch = "".join('<a href="%s" hreflang="%s" lang="%s"%s aria-label="%s">%s</a>' % (
         esc(user_href(l, alt.get(l) or path_home(l), lang)), l, l, ' aria-current="true"' if l == lang else "", esc(LANGS[l][0]), LANGS[l][2])
         for l in ctx.langs)
-    navs = [(path_home(lang), t("nav_home"), "home"), (path_page(lang, "support"), t("nav_support"), "support")]
+    navs = [(path_home(lang), t("nav_home"), "home"), (path_releases(lang), t("nav_releases"), RELEASES), (path_page(lang, "support"), t("nav_support"), "support")]
     nav_html = "".join('<a href="%s"%s>%s</a>' % (esc(h), ' aria-current="page"' if nav == k else "", esc(label)) for h, label, k in navs)
     logo = ('<i aria-hidden="true">%s</i>' % "".join('<b style="background:%s"></b>' % c for c in PAPER[:4]))
     header = ('<header class="site-header"><div class="wrap bar"><a class="brand" href="%s" aria-label="Patchland">%s<span>Patchland</span></a>'
               '<nav class="nav" aria-label="%s">%s</nav></div><div class="wrap"><div class="langsw" role="group" aria-label="%s">%s</div></div></header>') % (
         esc(path_home(lang)), logo, esc(t("aria_main")), nav_html, esc(t("lang_label")), switch)
     foot_links = "".join('<a href="%s">%s</a>' % (esc(h), esc(l)) for h, l in
-                         [(path_page(lang, "support"), t("nav_support")), (path_page(lang, "privacy"), t("nav_privacy")), (path_page(lang, "terms"), t("nav_terms"))])
+                         [(path_releases(lang), t("nav_releases")), (path_page(lang, "support"), t("nav_support")), (path_page(lang, "privacy"), t("nav_privacy")), (path_page(lang, "terms"), t("nav_terms"))])
     foot_langs = " ".join('<a href="%s" hreflang="%s" lang="%s"%s>%s</a>' % (
         esc(user_href(l, alt.get(l) or path_home(l), lang)), l, l, ' aria-current="true"' if l == lang else "", esc(LANGS[l][0])) for l in ctx.langs)
     footer = ('<footer class="site-footer"><div class="wrap"><p>%s <a href="https://ipe.rest/">ipe.rest</a></p><p class="foot-links">%s</p>'
@@ -243,12 +298,12 @@ def build_home(ctx, lang):
     cards = "".join(
         '<article class="card game" style="--c:%s"><h3>%s</h3><p>%s</p></article>' % (GAME_COLORS[g], esc(t("g_" + g)), esc(t("g_%s_p" % g))) for g in GAMES)
     feats = "".join("<li>%s</li>" % esc(t("feat%d" % i)) for i in range(1, 7))
-    body = ('<section class="hero"><div><p class="badge">%s</p><h1>%s</h1><p class="lead">%s</p><p><a class="btn" href="#games">%s</a></p><p class="note">%s</p></div>'
+    body = ('<section class="hero"><div><p class="badge">%s</p><h1>%s</h1><p class="lead">%s</p><p><a class="btn" href="#games">%s</a> <a class="btn ghost" href="%s">%s</a></p><p class="note">%s</p></div>'
             '<div class="hero-art" aria-hidden="true">%s</div></section>'
             '<section class="section" id="games"><h2>%s</h2><p class="lead">%s</p><div class="grid">%s</div><p class="more">%s</p></section>'
             '<section class="section"><h2>%s</h2><ul class="facts">%s</ul></section>'
             '<section class="section cta"><h2>%s</h2><p>%s</p></section>') % (
-        esc(t("status_badge")), h1, esc(t("hero_p")), esc(t("games_h")), esc(t("hero_note")), art, esc(t("games_h")), esc(t("games_p")), cards,
+        esc(t("status_badge")), h1, esc(t("hero_p")), esc(t("games_h")), esc(path_releases(lang)), esc(t("nav_releases")), esc(t("hero_note")), art, esc(t("games_h")), esc(t("games_p")), cards,
         esc(t("more_games")), esc(t("feat_h")), feats, esc(t("cta_h")), esc(t("cta_p")))
     alt = {l: path_home(l) for l in ctx.langs}
     return render(ctx, lang, path=path_home(lang), title=t("home_title"), desc=t("home_desc"), body=body, alt=alt, updated=SITE_UPDATED,
@@ -261,6 +316,24 @@ def build_page(ctx, lang, slug):
     html_body = "<h1>%s</h1>\n%s" % (esc(meta["title"]), markdown(ctx.sub(body)))
     return render(ctx, lang, path=path_page(lang, slug), title="%s — Patchland" % meta["title"], desc=meta["description"], body=html_body, alt=alt,
                   updated=meta["updated"], nav=slug, ai=lang not in ORIGINALS)
+
+
+def build_releases(ctx, lang):
+    t = lambda k: ctx.t(lang, k)  # noqa: E731
+    cards = []
+    for e in ctx.releases:
+        cards.append('<article class="card release" id="%s"><p class="meta"><span class="badge">%s</span> %s (%s) · <time datetime="%s">%s</time></p>'
+                     '<h2>%s</h2><p>%s</p><ul>%s</ul></article>' % (
+                         esc(e["id"]), esc(t("rel_status_tf")), esc(e["version"]), esc(e["build"]), esc(e["date"]), esc(e["date"]),
+                         esc(e["title"][lang]), esc(t("rel_intro")), "".join("<li>%s</li>" % inline(x) for x in e["notes"][lang])))
+    body = '<h1>%s</h1><p class="lead">%s</p><div class="releases">%s</div>' % (esc(t("releases_title")), esc(t("releases_desc")), "".join(cards))
+    alt = {l: path_releases(l) for l in ctx.langs}
+    return render(ctx, lang, path=path_releases(lang), title="%s — Patchland" % t("releases_title"), desc=t("releases_desc"), body=body, alt=alt,
+                  updated=lastmod_releases(ctx), nav=RELEASES, ai=lang not in ORIGINALS)
+
+
+def lastmod_releases(ctx):
+    return max([e["date"] for e in ctx.releases] + [SITE_UPDATED])
 
 
 def build_404(ctx):
@@ -276,6 +349,8 @@ def sitemap(ctx):
     for slug in PAGE_SLUGS:
         for l in ctx.langs:
             ents.append((path_page(l, slug), ctx.pages[(l, slug)][0]["updated"], {x: path_page(x, slug) for x in ctx.langs}))
+    for l in ctx.langs:
+        ents.append((path_releases(l), lastmod_releases(ctx), {x: path_releases(x) for x in ctx.langs}))
     for pth, lm, alts in ents:
         rows.append("<url><loc>%s</loc><lastmod>%s</lastmod>" % (esc(url(pth)), lm))
         for l, ap in alts.items():
@@ -295,7 +370,7 @@ def llms(ctx):
         "# Patchland: Claim It All", "", "> %s" % en["home_desc"], "",
         "Patchland is an offline territory game by ipe() (https://ipe.rest/) for iOS and Android. It has NOT been released: no store page, price or release date exists yet. "
         "The game app and this website collect no personal information, use no analytics or ads and set no cookies.", "",
-        "## Pages", "", "- [Home](%s/)" % SITE, "- [Support](%s/support/)" % SITE, "- [Privacy Policy](%s/privacy/)" % SITE, "- [Terms of Use](%s/terms/)" % SITE, "",
+        "## Pages", "", "- [Home](%s/)" % SITE, "- [Release notes](%s/releases/): what is in each TestFlight build, in plain words" % SITE, "- [Support](%s/support/)" % SITE, "- [Privacy Policy](%s/privacy/)" % SITE, "- [Terms of Use](%s/terms/)" % SITE, "",
         "## Languages", "", "English (original) and Korean (original); ja, zh, es, pt, id, ru, vi, fr, de are AI translations under /<code>/.", ""])
 
 
@@ -305,15 +380,16 @@ def build_all(ctx):
         files[path_home(l).strip("/") + "/index.html" if l != "en" else "index.html"] = build_home(ctx, l)
         for slug in PAGE_SLUGS:
             files[path_page(l, slug).strip("/") + "/index.html"] = build_page(ctx, l, slug)
+        files[path_releases(l).strip("/") + "/index.html"] = build_releases(ctx, l)
     for f, text in files.items():
         if f.endswith(".html") and "<!--LANGPICK-->" in text:
             slug = "" if f == "index.html" else f[: -len("index.html")].strip("/")
-            avail = [l for l in ctx.langs if slug == "" or slug in PAGE_SLUGS]
+            avail = [l for l in ctx.langs if slug == "" or slug in PAGE_SLUGS or slug == RELEASES]
             files[f] = text.replace("<!--LANGPICK-->", langpick_script(ctx, avail))
     return files
 
 
-GEN_DIRS = ["privacy", "support", "terms"] + [l for l in LANGS if l != "en"]
+GEN_DIRS = ["privacy", "support", "terms", "releases"] + [l for l in LANGS if l != "en"]
 
 
 def main(argv=None):
@@ -326,7 +402,7 @@ def main(argv=None):
         print("\n".join(ctx.errs), file=sys.stderr)
         return 1
     if a.check:
-        print("sources ok: %d languages, %d pages" % (len(ctx.langs), len(ctx.pages)))
+        print("sources ok: %d languages, %d pages, %d release entries" % (len(ctx.langs), len(ctx.pages), len(ctx.releases)))
         return 0
     root = Path(a.root)
     for d in GEN_DIRS:

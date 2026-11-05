@@ -1,0 +1,455 @@
+{
+ "releases": [
+  {
+   "id": "1.0.0-8",
+   "version": "1.0.0",
+   "build": "8",
+   "status": "testflight",
+   "date": "2026-11-05",
+   "title": {
+    "en": "Build 8: Idle Estate",
+    "ko": "빌드 8: 방치 영지",
+    "ja": "ビルド8:放置領地",
+    "zh": "构建 8:放置领地",
+    "es": "Compilación 8: Finca ociosa",
+    "pt": "Build 8: Propriedade Ociosa",
+    "id": "Build 8: Lahan Santai",
+    "ru": "Сборка 8: Поместье в простое",
+    "vi": "Bản dựng 8: Lãnh địa treo máy",
+    "fr": "Version 8 : Domaine au repos",
+    "de": "Build 8: Ruhe-Revier"
+   },
+   "notes": {
+    "en": [
+     "New game: Idle Estate. Your land grows by itself on an 11 by 11 board, and tapping a plot claims it faster.",
+     "Gold and forest plots are special land, and four upgrades speed things up.",
+     "When you come back, a message shows how much grew while you were away, up to 2 hours."
+    ],
+    "ko": [
+     "새 게임 방치 영지가 들어왔습니다. 11×11 판에서 땅이 저절로 자라고, 칸을 누르면 더 빨리 차지합니다.",
+     "금과 숲 칸은 특별한 땅이고, 업그레이드 4종으로 더 빨리 키울 수 있습니다.",
+     "다시 돌아오면 자리를 비운 동안(최대 2시간) 얼마나 자랐는지 알려 줍니다."
+    ],
+    "ja": [
+     "新しいゲーム「放置領地」が加わりました。11×11の盤で土地がひとりでに育ち、マスをタップするともっと早く手に入ります。",
+     "金と森のマスは特別な土地で、4種類のアップグレードで成長を早められます。",
+     "戻ってきたときに、留守の間(最大2時間)にどれだけ育ったかを知らせます。"
+    ],
+    "zh": [
+     "新游戏「放置领地」上线。领地会在 11×11 的棋盘上自己生长,点按格子可以更快占领。",
+     "金矿和森林格是特殊的土地,还有 4 种升级可以加快成长。",
+     "你回来时,会告诉你离开期间(最多 2 小时)长了多少。"
+    ],
+    "es": [
+     "Juego nuevo: Finca ociosa. Tu tierra crece sola en un tablero de 11 por 11, y tocar una parcela la reclama más rápido.",
+     "Las parcelas de oro y bosque son tierra especial, y cuatro mejoras aceleran el crecimiento.",
+     "Al volver, un aviso te cuenta cuánto creció mientras no estabas, hasta 2 horas."
+    ],
+    "pt": [
+     "Novo jogo: Propriedade Ociosa. Sua terra cresce sozinha em um tabuleiro de 11 por 11, e tocar em um lote o conquista mais rápido.",
+     "Lotes de ouro e floresta são terras especiais, e quatro melhorias aceleram o crescimento.",
+     "Ao voltar, um aviso mostra quanto cresceu enquanto você esteve fora, até 2 horas."
+    ],
+    "id": [
+     "Gim baru: Lahan Santai. Tanahmu tumbuh sendiri di papan 11 kali 11, dan mengetuk petak membuatnya direbut lebih cepat.",
+     "Petak emas dan hutan adalah tanah istimewa, dan empat peningkatan mempercepat pertumbuhan.",
+     "Saat kamu kembali, sebuah pesan menunjukkan seberapa besar tanahmu tumbuh selama kamu pergi, hingga 2 jam."
+    ],
+    "ru": [
+     "Новая игра: Поместье в простое. Ваша земля растёт сама на поле 11 на 11, а касание клетки захватывает её быстрее.",
+     "Клетки золота и леса особые, а четыре улучшения ускоряют рост.",
+     "Когда вы возвращаетесь, сообщение покажет, сколько выросло за ваше отсутствие, до 2 часов."
+    ],
+    "vi": [
+     "Trò chơi mới: Lãnh địa treo máy. Đất của bạn tự lớn lên trên bàn 11 nhân 11, và chạm vào một ô sẽ chiếm nhanh hơn.",
+     "Ô vàng và ô rừng là đất đặc biệt, cùng 4 nâng cấp giúp lớn nhanh hơn.",
+     "Khi bạn quay lại, một thông báo cho biết đất đã lớn thêm bao nhiêu lúc bạn vắng mặt, tối đa 2 giờ."
+    ],
+    "fr": [
+     "Nouveau jeu : Domaine au repos. Votre terre grandit toute seule sur un plateau de 11 par 11, et toucher une parcelle la conquiert plus vite.",
+     "Les parcelles d'or et de forêt sont des terres spéciales, et quatre améliorations accélèrent la croissance.",
+     "À votre retour, un message indique combien le domaine a grandi pendant votre absence, jusqu'à 2 heures."
+    ],
+    "de": [
+     "Neues Spiel: Ruhe-Revier. Dein Land wächst auf einem 11-mal-11-Brett von selbst, und ein Tipp auf ein Feld erobert es schneller.",
+     "Gold- und Waldfelder sind besonderes Land, und vier Upgrades beschleunigen das Wachstum.",
+     "Wenn du zurückkommst, zeigt eine Meldung, wie viel in deiner Abwesenheit gewachsen ist, bis zu 2 Stunden."
+    ]
+   }
+  },
+  {
+   "id": "1.0.0-7",
+   "version": "1.0.0",
+   "build": "7",
+   "status": "testflight",
+   "date": "2026-11-05",
+   "title": {
+    "en": "Build 7: Fence In",
+    "ko": "빌드 7: 한 붓 가두기",
+    "ja": "ビルド7:ひと筆囲い",
+    "zh": "构建 7:一笔围地",
+    "es": "Compilación 7: Cercar",
+    "pt": "Build 7: Cercar",
+    "id": "Build 7: Pagari Lahan",
+    "ru": "Сборка 7: Загородить",
+    "vi": "Bản dựng 7: Rào đất",
+    "fr": "Version 7 : Enclos",
+    "de": "Build 7: Einzäunen"
+   },
+   "notes": {
+    "en": [
+     "New game: Fence In. Drag across the board to shoot a wall, trap the drifter and fill the land.",
+     "A short tap switches the wall between horizontal and vertical.",
+     "Five stages, three lives and three difficulty levels."
+    ],
+    "ko": [
+     "새 게임 한 붓 가두기가 들어왔습니다. 판 위를 드래그해 벽을 쏘고, 떠돌이를 가두고 땅을 채웁니다.",
+     "짧게 누르면 벽의 방향이 가로와 세로로 바뀝니다.",
+     "5단계, 목숨 3개, 난이도 3단계입니다."
+    ],
+    "ja": [
+     "新しいゲーム「ひと筆囲い」が加わりました。盤をドラッグして壁を撃ち、さまようものを閉じ込めて土地を埋めます。",
+     "短くタップすると、壁の向きが横と縦で切り替わります。",
+     "5ステージ、ライフ3つ、難易度は3段階です。"
+    ],
+    "zh": [
+     "新游戏「一笔围地」上线。在棋盘上拖动发射围墙,困住游荡者,把土地填满。",
+     "短按可以在横向和纵向之间切换围墙方向。",
+     "共 5 个关卡、3 条命、3 种难度。"
+    ],
+    "es": [
+     "Juego nuevo: Cercar. Arrastra por el tablero para lanzar un muro, atrapa al errante y llena la tierra.",
+     "Un toque corto cambia el muro entre horizontal y vertical.",
+     "Cinco fases, tres vidas y tres niveles de dificultad."
+    ],
+    "pt": [
+     "Novo jogo: Cercar. Arraste pelo tabuleiro para lançar um muro, prenda o errante e preencha a terra.",
+     "Um toque curto alterna o muro entre horizontal e vertical.",
+     "Cinco fases, três vidas e três níveis de dificuldade."
+    ],
+    "id": [
+     "Gim baru: Pagari Lahan. Seret di papan untuk menembakkan dinding, kurung si pengembara, lalu penuhi tanah.",
+     "Ketukan singkat mengganti dinding antara mendatar dan menegak.",
+     "Lima tahap, tiga nyawa, dan tiga tingkat kesulitan."
+    ],
+    "ru": [
+     "Новая игра: Загородить. Проведите по полю, чтобы выпустить стену, запереть бродягу и заполнить землю.",
+     "Короткое касание переключает стену между горизонтальной и вертикальной.",
+     "Пять этапов, три жизни и три уровня сложности."
+    ],
+    "vi": [
+     "Trò chơi mới: Rào đất. Kéo trên bàn để bắn một bức tường, nhốt kẻ lang thang và lấp đầy đất.",
+     "Chạm nhanh để đổi hướng tường giữa ngang và dọc.",
+     "Năm màn, ba mạng và ba mức độ khó."
+    ],
+    "fr": [
+     "Nouveau jeu : Enclos. Faites glisser le doigt sur le plateau pour tirer un mur, piéger le vagabond et remplir la terre.",
+     "Un appui bref fait passer le mur de l'horizontale à la verticale.",
+     "Cinq niveaux, trois vies et trois niveaux de difficulté."
+    ],
+    "de": [
+     "Neues Spiel: Einzäunen. Zieh über das Brett, um eine Mauer zu schießen, den Streuner einzusperren und das Land zu füllen.",
+     "Ein kurzer Tipp wechselt die Mauer zwischen waagerecht und senkrecht.",
+     "Fünf Stufen, drei Leben und drei Schwierigkeitsgrade."
+    ]
+   }
+  },
+  {
+   "id": "1.0.0-6",
+   "version": "1.0.0",
+   "build": "6",
+   "status": "testflight",
+   "date": "2026-11-05",
+   "title": {
+    "en": "Build 6: Turf Hockey",
+    "ko": "빌드 6: 땅 하키",
+    "ja": "ビルド6:ターフホッケー",
+    "zh": "构建 6:草地冰球",
+    "es": "Compilación 6: Hockey de césped",
+    "pt": "Build 6: Hóquei de Território",
+    "id": "Build 6: Hoki Wilayah",
+    "ru": "Сборка 6: Хоккей за территорию",
+    "vi": "Bản dựng 6: Khúc côn cầu giành đất",
+    "fr": "Version 6 : Hockey de territoire",
+    "de": "Build 6: Revier-Hockey"
+   },
+   "notes": {
+    "en": [
+     "New game: Turf Hockey. Cells the puck crosses go to whoever hit it last.",
+     "A match lasts 60 seconds on a 12 by 20 board, and every goal leaves a stamp on the board.",
+     "A Classic switch in the settings sheet makes it first to 7 goals. The AI has three levels."
+    ],
+    "ko": [
+     "새 게임 땅 하키가 들어왔습니다. 퍽이 지나간 칸은 마지막에 친 쪽의 땅이 됩니다.",
+     "12×20칸 판에서 60초 동안 겨루고, 골이 들어갈 때마다 판에 도장이 찍힙니다.",
+     "설정 시트의 「클래식」 스위치를 켜면 7골을 먼저 넣는 쪽이 이깁니다. AI는 3단계입니다."
+    ],
+    "ja": [
+     "新しいゲーム「ターフホッケー」が加わりました。パックが通ったマスは、最後に打った側の土地になります。",
+     "12×20マスの盤で60秒間競い、ゴールが入るたびに盤にスタンプが押されます。",
+     "設定シートの「クラシック」をオンにすると、先に7ゴール取った側の勝ちです。AIは3段階です。"
+    ],
+    "zh": [
+     "新游戏「草地冰球」上线。冰球经过的格子归最后击球的一方。",
+     "在 12×20 格的棋盘上比赛 60 秒,每进一球,棋盘上就会盖一个印章。",
+     "在设置面板里打开「经典」开关,先进 7 球者获胜。AI 有三个等级。"
+    ],
+    "es": [
+     "Juego nuevo: Hockey de césped. Las casillas que cruza el disco pasan a quien lo golpeó por última vez.",
+     "Un partido dura 60 segundos en un tablero de 12 por 20, y cada gol deja un sello en el tablero.",
+     "Un interruptor Clásico en la hoja de ajustes lo convierte en una carrera a 7 goles. La IA tiene tres niveles."
+    ],
+    "pt": [
+     "Novo jogo: Hóquei de Território. As células que o disco atravessa ficam com quem o acertou por último.",
+     "Uma partida dura 60 segundos em um tabuleiro de 12 por 20, e cada gol deixa um carimbo no tabuleiro.",
+     "Uma chave Clássico na folha de ajustes faz valer quem chegar primeiro a 7 gols. A IA tem três níveis."
+    ],
+    "id": [
+     "Gim baru: Hoki Wilayah. Petak yang dilewati puk menjadi milik orang yang terakhir memukulnya.",
+     "Satu pertandingan berlangsung 60 detik di papan 12 kali 20, dan setiap gol meninggalkan cap di papan.",
+     "Sakelar Klasik di lembar pengaturan membuat siapa yang lebih dulu mencetak 7 gol menang. AI punya tiga tingkat."
+    ],
+    "ru": [
+     "Новая игра: Хоккей за территорию. Клетки, через которые прошла шайба, достаются тому, кто ударил последним.",
+     "Матч длится 60 секунд на поле 12 на 20, и каждый гол оставляет на поле печать.",
+     "Переключатель «Классика» в окне настроек делает победителем того, кто первым забьёт 7 голов. У ИИ три уровня."
+    ],
+    "vi": [
+     "Trò chơi mới: Khúc côn cầu giành đất. Ô mà quả pốc đi qua thuộc về người đánh cuối cùng.",
+     "Một trận kéo dài 60 giây trên bàn 12 nhân 20, và mỗi bàn thắng để lại một con dấu trên bàn.",
+     "Công tắc Cổ điển trong bảng cài đặt biến trận đấu thành ai ghi 7 bàn trước thì thắng. AI có ba mức."
+    ],
+    "fr": [
+     "Nouveau jeu : Hockey de territoire. Les cases que traverse le palet reviennent à celui qui l'a frappé en dernier.",
+     "Une partie dure 60 secondes sur un plateau de 12 par 20, et chaque but laisse un tampon sur le plateau.",
+     "Un interrupteur Classique dans la feuille de réglages donne la victoire au premier à 7 buts. L'IA a trois niveaux."
+    ],
+    "de": [
+     "Neues Spiel: Revier-Hockey. Felder, die der Puck überquert, gehören dem, der ihn zuletzt getroffen hat.",
+     "Ein Spiel dauert 60 Sekunden auf einem 12-mal-20-Brett, und jedes Tor hinterlässt einen Stempel auf dem Brett.",
+     "Ein Schalter Klassisch im Einstellungsblatt macht daraus ein Rennen auf 7 Tore. Die KI hat drei Stufen."
+    ]
+   }
+  },
+  {
+   "id": "1.0.0-5",
+   "version": "1.0.0",
+   "build": "5",
+   "status": "testflight",
+   "date": "2026-11-05",
+   "title": {
+    "en": "Build 5: Back to the hub, and a settings screen",
+    "ko": "빌드 5: 허브로 돌아가기와 설정 화면",
+    "ja": "ビルド5:ハブに戻る操作と設定画面",
+    "zh": "构建 5:返回主页与设置界面",
+    "es": "Compilación 5: volver al centro y pantalla de ajustes",
+    "pt": "Build 5: voltar ao hub e tela de ajustes",
+    "id": "Build 5: Kembali ke hub dan layar pengaturan",
+    "ru": "Сборка 5: возврат в хаб и экран настроек",
+    "vi": "Bản dựng 5: Quay về màn chính và màn hình cài đặt",
+    "fr": "Version 5 : retour au hub et écran de réglages",
+    "de": "Build 5: Zurück zum Hub und ein Einstellungsbildschirm"
+   },
+   "notes": {
+    "en": [
+     "Every game now has a menu: back to the hub, restart, and settings. Swiping back on iOS still works.",
+     "The new settings screen has switches for sound, vibration and color-blind patterns.",
+     "It also shows the app version and lets you reset your progress."
+    ],
+    "ko": [
+     "모든 게임에 메뉴가 생겼습니다. 허브로, 다시 시작, 설정을 고를 수 있고 iOS 스와이프 뒤로가기도 그대로입니다.",
+     "새 설정 화면에서 소리, 진동, 색약 무늬를 켜고 끌 수 있습니다.",
+     "앱 버전을 보여 주고, 진행 데이터를 처음으로 되돌릴 수도 있습니다."
+    ],
+    "ja": [
+     "すべてのゲームにメニューが付きました。ハブへ戻る、やり直す、設定を開くが選べます。iOSのスワイプで戻る操作もそのまま使えます。",
+     "新しい設定画面では、サウンド、振動、色覚サポート用の模様を切り替えられます。",
+     "アプリのバージョン表示と、進行データのリセットもできます。"
+    ],
+    "zh": [
+     "每个游戏现在都有菜单:返回主页、重新开始和设置。iOS 的滑动返回仍然可用。",
+     "新的设置界面可以开关声音、振动和色弱辅助图案。",
+     "它还会显示应用版本,并可以重置你的进度。"
+    ],
+    "es": [
+     "Ahora cada juego tiene un menú: volver al centro, reiniciar y ajustes. Deslizar hacia atrás en iOS sigue funcionando.",
+     "La nueva pantalla de ajustes tiene interruptores para sonido, vibración y patrones para daltonismo.",
+     "También muestra la versión de la app y permite restablecer tu progreso."
+    ],
+    "pt": [
+     "Agora cada jogo tem um menu: voltar ao hub, reiniciar e ajustes. Deslizar para voltar no iOS continua funcionando.",
+     "A nova tela de ajustes tem chaves para som, vibração e padrões para daltonismo.",
+     "Ela também mostra a versão do app e permite redefinir o seu progresso."
+    ],
+    "id": [
+     "Setiap gim kini punya menu: kembali ke hub, mulai ulang, dan pengaturan. Geser untuk kembali di iOS tetap berfungsi.",
+     "Layar pengaturan baru punya sakelar untuk suara, getar, dan pola buta warna.",
+     "Layar ini juga menampilkan versi aplikasi dan memungkinkan kamu mengatur ulang progres."
+    ],
+    "ru": [
+     "В каждой игре теперь есть меню: в хаб, начать заново и настройки. Свайп назад на iOS по-прежнему работает.",
+     "На новом экране настроек есть переключатели звука, вибрации и узоров для дальтоников.",
+     "Там же показана версия приложения и можно сбросить прогресс."
+    ],
+    "vi": [
+     "Mỗi trò chơi giờ có một menu: về màn chính, chơi lại và cài đặt. Vuốt để quay lại trên iOS vẫn dùng được.",
+     "Màn hình cài đặt mới có công tắc cho âm thanh, rung và họa tiết hỗ trợ mù màu.",
+     "Màn hình này cũng hiện phiên bản ứng dụng và cho phép đặt lại tiến trình của bạn."
+    ],
+    "fr": [
+     "Chaque jeu a désormais un menu : retour au hub, recommencer et réglages. Le balayage arrière sur iOS fonctionne toujours.",
+     "Le nouvel écran de réglages propose des interrupteurs pour le son, les vibrations et les motifs pour daltoniens.",
+     "Il affiche aussi la version de l'appli et permet de réinitialiser votre progression."
+    ],
+    "de": [
+     "Jedes Spiel hat jetzt ein Menü: zurück zum Hub, neu starten und Einstellungen. Zurückwischen unter iOS funktioniert weiterhin.",
+     "Der neue Einstellungsbildschirm hat Schalter für Ton, Vibration und Muster für Farbenblinde.",
+     "Er zeigt außerdem die App-Version und lässt dich deinen Fortschritt zurücksetzen."
+    ]
+   }
+  },
+  {
+   "id": "1.0.0-4",
+   "version": "1.0.0",
+   "build": "4",
+   "status": "testflight",
+   "date": "2026-11-05",
+   "title": {
+    "en": "Build 4: Groundwork for a new game",
+    "ko": "빌드 4: 새 게임을 위한 준비 작업",
+    "ja": "ビルド4:新しいゲームの下準備",
+    "zh": "构建 4:为新游戏做准备",
+    "es": "Compilación 4: preparativos para un juego nuevo",
+    "pt": "Build 4: preparativos para um novo jogo",
+    "id": "Build 4: Persiapan untuk gim baru",
+    "ru": "Сборка 4: подготовка новой игры",
+    "vi": "Bản dựng 4: Chuẩn bị cho một trò chơi mới",
+    "fr": "Version 4 : préparatifs d'un nouveau jeu",
+    "de": "Build 4: Vorarbeit für ein neues Spiel"
+   },
+   "notes": {
+    "en": [
+     "No visible change in this build.",
+     "Behind the scenes, the rules and the AI opponents for Paint, a new game, were added. It is not playable yet, so its card still says Soon."
+    ],
+    "ko": [
+     "이 빌드에서 눈에 보이는 변화는 없습니다.",
+     "보이지 않는 곳에서 새 게임 색칠 점령전의 규칙과 AI 상대를 만들었습니다. 아직 플레이할 수 없어서 카드에는 계속 「곧 나옴」이 표시됩니다."
+    ],
+    "ja": [
+     "このビルドで目に見える変化はありません。",
+     "見えないところで、新しいゲーム「塗り占領戦」のルールとAI対戦相手を作りました。まだ遊べないので、カードには引き続き「近日公開」と表示されます。"
+    ],
+    "zh": [
+     "这个构建没有可见的变化。",
+     "在幕后,新游戏「涂色占领战」的规则和 AI 对手已经加入。它还不能玩,所以卡片上仍显示「即将推出」。"
+    ],
+    "es": [
+     "Esta compilación no trae cambios visibles.",
+     "Entre bastidores se añadieron las reglas y los rivales de IA de Pintar, un juego nuevo. Todavía no se puede jugar, así que su tarjeta sigue diciendo Pronto."
+    ],
+    "pt": [
+     "Esta build não traz mudanças visíveis.",
+     "Nos bastidores, foram adicionadas as regras e os oponentes de IA de Pintar, um novo jogo. Ele ainda não pode ser jogado, então o cartão continua dizendo Em breve."
+    ],
+    "id": [
+     "Build ini tidak membawa perubahan yang terlihat.",
+     "Di balik layar, aturan dan lawan AI untuk Warnai, gim baru, sudah ditambahkan. Gim ini belum bisa dimainkan, jadi kartunya masih bertuliskan Segera."
+    ],
+    "ru": [
+     "В этой сборке нет видимых изменений.",
+     "За кадром добавлены правила и ИИ-соперники для новой игры «Раскраска». Играть в неё пока нельзя, поэтому на её карточке по-прежнему написано «Скоро»."
+    ],
+    "vi": [
+     "Bản dựng này không có thay đổi nào nhìn thấy được.",
+     "Ở phía sau, luật chơi và đối thủ AI cho Tô màu, một trò chơi mới, đã được thêm vào. Trò này chưa chơi được nên thẻ của nó vẫn ghi Sắp có."
+    ],
+    "fr": [
+     "Cette version n'apporte aucun changement visible.",
+     "En coulisses, les règles et les adversaires IA de Peinture, un nouveau jeu, ont été ajoutés. Il n'est pas encore jouable, sa carte indique donc toujours Bientôt."
+    ],
+    "de": [
+     "Dieser Build bringt keine sichtbaren Änderungen.",
+     "Hinter den Kulissen wurden die Regeln und die KI-Gegner für Anmalen, ein neues Spiel, hinzugefügt. Es ist noch nicht spielbar, deshalb steht auf seiner Karte weiterhin Bald."
+    ]
+   }
+  },
+  {
+   "id": "1.0.0-3",
+   "version": "1.0.0",
+   "build": "3",
+   "status": "testflight",
+   "date": "2026-11-05",
+   "title": {
+    "en": "Build 3: A new home screen",
+    "ko": "빌드 3: 새 첫 화면",
+    "ja": "ビルド3:新しいホーム画面",
+    "zh": "构建 3:全新的首页",
+    "es": "Compilación 3: una pantalla de inicio nueva",
+    "pt": "Build 3: uma nova tela inicial",
+    "id": "Build 3: Layar utama baru",
+    "ru": "Сборка 3: новый главный экран",
+    "vi": "Bản dựng 3: Màn hình chính mới",
+    "fr": "Version 3 : un nouvel écran d'accueil",
+    "de": "Build 3: Ein neuer Startbildschirm"
+   },
+   "notes": {
+    "en": [
+     "The first screen is now a game hub with a card for each of the seven games.",
+     "Today's Land and a map banner sit on the same screen.",
+     "Games that are not ready yet show a Soon label and a friendly message when tapped."
+    ],
+    "ko": [
+     "첫 화면이 일곱 게임을 카드로 보여 주는 게임 허브로 바뀌었습니다.",
+     "오늘의 땅과 지도 배너도 같은 화면에 있습니다.",
+     "아직 준비되지 않은 게임은 「곧 나옴」 표시가 붙고, 누르면 안내 문구가 나옵니다."
+    ],
+    "ja": [
+     "最初の画面が、7つのゲームをカードで並べたゲームハブになりました。",
+     "今日の土地と地図のバナーも同じ画面にあります。",
+     "まだ準備中のゲームには「近日公開」の表示が付き、タップすると案内メッセージが出ます。"
+    ],
+    "zh": [
+     "第一个界面现在是游戏主页,每个游戏都有一张卡片,共七个游戏。",
+     "今日领地和地图横幅也在同一个界面上。",
+     "尚未准备好的游戏会显示「即将推出」标签,点按时会出现友好的提示。"
+    ],
+    "es": [
+     "La primera pantalla ahora es un centro de juegos con una tarjeta para cada uno de los siete juegos.",
+     "La Tierra de hoy y un banner del mapa están en la misma pantalla.",
+     "Los juegos que aún no están listos muestran la etiqueta Pronto y un mensaje amable al tocarlos."
+    ],
+    "pt": [
+     "A primeira tela agora é um hub de jogos, com um cartão para cada um dos sete jogos.",
+     "A Terra de Hoje e um banner do mapa ficam na mesma tela.",
+     "Os jogos que ainda não estão prontos mostram a etiqueta Em breve e uma mensagem amigável ao serem tocados."
+    ],
+    "id": [
+     "Layar pertama kini berupa hub gim dengan satu kartu untuk setiap dari tujuh gim.",
+     "Tanah Hari Ini dan spanduk peta ada di layar yang sama.",
+     "Gim yang belum siap menampilkan label Segera dan pesan ramah saat diketuk."
+    ],
+    "ru": [
+     "Первый экран теперь представляет собой хаб игр с карточкой для каждой из семи игр.",
+     "Земля дня и баннер карты находятся на том же экране.",
+     "Игры, которые ещё не готовы, помечены «Скоро» и показывают дружелюбное сообщение при касании."
+    ],
+    "vi": [
+     "Màn hình đầu tiên giờ là trung tâm trò chơi, với một thẻ cho mỗi trò trong bảy trò.",
+     "Đất hôm nay và biểu ngữ bản đồ nằm trên cùng màn hình.",
+     "Những trò chưa sẵn sàng hiện nhãn Sắp có và một lời nhắn thân thiện khi chạm vào."
+    ],
+    "fr": [
+     "Le premier écran est désormais un hub de jeux avec une carte pour chacun des sept jeux.",
+     "La Terre du jour et une bannière de la carte se trouvent sur le même écran.",
+     "Les jeux pas encore prêts affichent une étiquette Bientôt et un message amical au toucher."
+    ],
+    "de": [
+     "Der erste Bildschirm ist jetzt ein Spiele-Hub mit einer Karte für jedes der sieben Spiele.",
+     "Das Land des Tages und ein Karten-Banner liegen auf demselben Bildschirm.",
+     "Spiele, die noch nicht fertig sind, zeigen ein Bald-Label und beim Antippen eine freundliche Meldung."
+    ]
+   }
+  }
+ ]
+}

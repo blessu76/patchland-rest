@@ -40,5 +40,10 @@
  "cta_h": "即将登陆 iOS 和 Android",
  "cta_p": "Patchland 尚未发布。发布后本页面会更新。",
  "nf_h": "页面未找到",
- "nf_p": "我们找不到该页面。它可能已被移动,或者地址输入有误。"
+ "nf_p": "我们找不到该页面。它可能已被移动,或者地址输入有误。",
+ "nav_releases": "发布说明",
+ "releases_title": "发布说明",
+ "releases_desc": "用通俗的话记录正式发布前上传到 TestFlight 的每个测试构建有什么变化。",
+ "rel_status_tf": "已上线 TestFlight",
+ "rel_intro": "这个构建包含之前所有构建的内容,并新增了以下内容:"
 }

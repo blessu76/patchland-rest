@@ -40,5 +40,10 @@
  "cta_h": "Bientôt sur iOS et Android",
  "cta_p": "Patchland n'est pas encore sorti. Cette page sera mise à jour lors de sa sortie.",
  "nf_h": "Page introuvable",
- "nf_p": "Nous n'avons pas trouvé cette page. Elle a peut-être été déplacée, ou l'adresse contient une faute de frappe."
+ "nf_p": "Nous n'avons pas trouvé cette page. Elle a peut-être été déplacée, ou l'adresse contient une faute de frappe.",
+ "nav_releases": "Notes de version",
+ "releases_title": "Notes de version",
+ "releases_desc": "Ce qui a changé dans chaque version de test mise sur TestFlight avant la sortie publique, en mots simples.",
+ "rel_status_tf": "Sur TestFlight",
+ "rel_intro": "Cette version reprend tout le contenu des versions précédentes, avec en plus :"
 }
