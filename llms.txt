@@ -1,0 +1,16 @@
+# Patchland: Claim It All
+
+> Patchland is an offline territory game with paper patches, coming soon to iOS and Android. Trace, place and spread to win land from quirky AI lords.
+
+Patchland is an offline territory game by ipe() (https://ipe.rest/) for iOS and Android. It has NOT been released: no store page, price or release date exists yet. The game app and this website collect no personal information, use no analytics or ads and set no cookies.
+
+## Pages
+
+- [Home](https://patchland.ipe.rest/)
+- [Support](https://patchland.ipe.rest/support/)
+- [Privacy Policy](https://patchland.ipe.rest/privacy/)
+- [Terms of Use](https://patchland.ipe.rest/terms/)
+
+## Languages
+
+English (original) and Korean (original); ja, zh, es, pt, id, ru, vi, fr, de are AI translations under /<code>/.

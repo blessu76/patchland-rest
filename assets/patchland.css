@@ -47,3 +47,12 @@ h3{margin:0 0 6px;font-size:1.1rem}
 .site-footer{border-top:2px solid var(--ink);padding:24px 0 40px;font-size:.9rem;color:var(--soft)}
 .site-footer p{margin:6px 0}
 .site-footer a{color:var(--soft)}
+.langsw{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:.8rem}
+.langsw a{color:var(--soft);text-decoration:none;padding:4px 2px;border-bottom:2px solid transparent}
+.langsw a[aria-current=true],.langsw a:hover{color:var(--ink);border-color:var(--terra)}
+.ai-note{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--ochre);border-radius:6px;padding:10px 14px;font-size:.9rem;margin:20px 0 0}
+.cta{text-align:center}
+.more{color:var(--soft);margin:16px 0 0}
+.updated{font-size:.85rem;color:var(--soft)}
+.foot-links,.foot-langs{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0}
+.doc{overflow-wrap:anywhere}
