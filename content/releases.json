@@ -1,6 +1,160 @@
 {
  "releases": [
   {
+   "id": "1.0.0-10",
+   "version": "1.0.0",
+   "build": "10",
+   "status": "testflight",
+   "date": "2026-11-06",
+   "title": {
+    "en": "Build 10: Fresh Art",
+    "ko": "빌드 10: 새 그림",
+    "ja": "ビルド10:新しいアート",
+    "zh": "构建 10:全新画面",
+    "es": "Compilación 10: Arte nuevo",
+    "pt": "Build 10: Arte Nova",
+    "id": "Build 10: Gambar Baru",
+    "ru": "Сборка 10: Новая графика",
+    "vi": "Bản dựng 10: Hình ảnh mới",
+    "fr": "Version 10 : Nouvelles images",
+    "de": "Build 10: Neue Bilder"
+   },
+   "notes": {
+    "en": [
+     "Every game has a new look, with fresh art on the boards and pieces.",
+     "Wide screens such as iPad get a roomier layout.",
+     "Settings now show what changed in the parts shared across the app."
+    ],
+    "ko": [
+     "모든 게임이 새 그림으로 바뀌었습니다. 판과 말의 모습이 새로워졌습니다.",
+     "아이패드 같은 넓은 화면에서는 더 여유 있는 배치로 보입니다.",
+     "설정에서 앱 곳곳에서 함께 쓰는 부분의 바뀐 점을 볼 수 있습니다."
+    ],
+    "ja": [
+     "すべてのゲームが新しい見た目になりました。盤や駒の絵が一新されています。",
+     "iPadのような広い画面では、ゆったりした配置になります。",
+     "設定で、アプリ全体で共通して使う部分の変更点を見られるようになりました。"
+    ],
+    "zh": [
+     "所有游戏都换上了全新的画面,棋盘和棋子的图案焕然一新。",
+     "在 iPad 这类宽屏上,布局更加宽松。",
+     "设置里现在可以看到应用各处共用部分的更新内容。"
+    ],
+    "es": [
+     "Todos los juegos tienen un aspecto nuevo, con arte renovado en tableros y piezas.",
+     "Las pantallas anchas, como la del iPad, tienen una distribución más amplia.",
+     "Ajustes ahora muestra qué cambió en las partes compartidas de la app."
+    ],
+    "pt": [
+     "Todos os jogos têm um visual novo, com arte renovada nos tabuleiros e nas peças.",
+     "Telas largas, como a do iPad, ganham um layout mais espaçoso.",
+     "Os ajustes agora mostram o que mudou nas partes compartilhadas do app."
+    ],
+    "id": [
+     "Semua gim tampil baru, dengan gambar segar di papan dan bidak.",
+     "Layar lebar seperti iPad mendapat tata letak yang lebih lega.",
+     "Pengaturan kini menampilkan perubahan pada bagian yang dipakai bersama di seluruh aplikasi."
+    ],
+    "ru": [
+     "Все игры получили новый вид: обновлены рисунки на полях и фишках.",
+     "На широких экранах, например на iPad, расположение стало просторнее.",
+     "В настройках теперь видно, что изменилось в общих частях приложения."
+    ],
+    "vi": [
+     "Mọi trò chơi đều có diện mạo mới, với hình ảnh mới trên bàn và quân cờ.",
+     "Màn hình rộng như iPad có bố cục thoáng hơn.",
+     "Phần cài đặt giờ cho xem những thay đổi ở các phần dùng chung trong ứng dụng."
+    ],
+    "fr": [
+     "Tous les jeux ont un nouveau look, avec des images renouvelées sur les plateaux et les pièces.",
+     "Les grands écrans, comme celui de l'iPad, profitent d'une disposition plus aérée.",
+     "Les réglages montrent désormais ce qui a changé dans les parties communes de l'app."
+    ],
+    "de": [
+     "Alle Spiele sehen neu aus, mit frischen Bildern auf Brettern und Figuren.",
+     "Auf breiten Bildschirmen wie dem iPad ist das Layout großzügiger.",
+     "Die Einstellungen zeigen jetzt, was sich in den gemeinsam genutzten Teilen der App geändert hat."
+    ]
+   }
+  },
+  {
+   "id": "1.0.0-9",
+   "version": "1.0.0",
+   "build": "9",
+   "status": "testflight",
+   "date": "2026-11-05",
+   "title": {
+    "en": "Build 9: Paint Conquest",
+    "ko": "빌드 9: 색칠 점령전",
+    "ja": "ビルド9:ぬり絵せんりょう戦",
+    "zh": "构建 9:涂色占领战",
+    "es": "Compilación 9: Conquista de color",
+    "pt": "Build 9: Conquista de Cores",
+    "id": "Build 9: Perebutan Warna",
+    "ru": "Сборка 9: Захват красками",
+    "vi": "Bản dựng 9: Chiếm đất tô màu",
+    "fr": "Version 9 : Conquête de couleurs",
+    "de": "Build 9: Farberoberung"
+   },
+   "notes": {
+    "en": [
+     "New game: Paint Conquest. You and three computer players color a 16 by 22 board for 60 seconds.",
+     "Swipe across the board to turn, and grab stars for a boost.",
+     "Pick one of three difficulty levels in settings."
+    ],
+    "ko": [
+     "새 게임 색칠 점령전이 들어왔습니다. 나와 컴퓨터 3명이 16×22 판을 60초 동안 색칠합니다.",
+     "판 위를 쓸어 넘겨 방향을 바꾸고, 별을 먹으면 힘이 납니다.",
+     "설정에서 난이도를 3단계 중에 고를 수 있습니다."
+    ],
+    "ja": [
+     "新しいゲーム「ぬり絵せんりょう戦」が加わりました。あなたとコンピューター3人が、16×22の盤を60秒間ぬります。",
+     "盤の上をスワイプして向きを変え、星を取るとパワーアップします。",
+     "難易度は設定で3段階から選べます。"
+    ],
+    "zh": [
+     "新游戏「涂色占领战」上线。你和 3 位电脑玩家在 16×22 的棋盘上涂色,限时 60 秒。",
+     "在棋盘上滑动即可转向,吃到星星会获得加速。",
+     "可以在设置里从 3 种难度中选择。"
+    ],
+    "es": [
+     "Juego nuevo: Conquista de color. Tú y tres jugadores del ordenador coloreáis un tablero de 16 por 22 durante 60 segundos.",
+     "Desliza por el tablero para girar y recoge estrellas para un impulso.",
+     "Elige uno de tres niveles de dificultad en ajustes."
+    ],
+    "pt": [
+     "Novo jogo: Conquista de Cores. Você e três jogadores do computador colorem um tabuleiro de 16 por 22 durante 60 segundos.",
+     "Deslize pelo tabuleiro para virar e pegue estrelas para ganhar impulso.",
+     "Escolha um entre três níveis de dificuldade nos ajustes."
+    ],
+    "id": [
+     "Gim baru: Perebutan Warna. Kamu dan tiga pemain komputer mewarnai papan 16 kali 22 selama 60 detik.",
+     "Geser di papan untuk berbelok, dan ambil bintang untuk tambahan tenaga.",
+     "Pilih satu dari tiga tingkat kesulitan di pengaturan."
+    ],
+    "ru": [
+     "Новая игра: Захват красками. Вы и три компьютерных игрока раскрашиваете поле 16 на 22 в течение 60 секунд.",
+     "Проведите по полю, чтобы повернуть, и собирайте звёзды для ускорения.",
+     "В настройках можно выбрать один из трёх уровней сложности."
+    ],
+    "vi": [
+     "Trò chơi mới: Chiếm đất tô màu. Bạn và ba người chơi máy tô màu bàn 16 nhân 22 trong 60 giây.",
+     "Vuốt trên bàn để rẽ hướng, và ăn sao để được tăng lực.",
+     "Chọn một trong ba mức độ khó trong phần cài đặt."
+    ],
+    "fr": [
+     "Nouveau jeu : Conquête de couleurs. Vous et trois joueurs de l'ordinateur colorez un plateau de 16 sur 22 pendant 60 secondes.",
+     "Faites glisser le doigt sur le plateau pour tourner, et prenez des étoiles pour un coup de boost.",
+     "Choisissez l'un des trois niveaux de difficulté dans les réglages."
+    ],
+    "de": [
+     "Neues Spiel: Farberoberung. Du und drei Computerspieler färbt 60 Sekunden lang ein Brett von 16 mal 22.",
+     "Wische über das Brett, um abzubiegen, und sammle Sterne für einen Schub.",
+     "In den Einstellungen wählst du einen von drei Schwierigkeitsgraden."
+    ]
+   }
+  },
+  {
    "id": "1.0.0-8",
    "version": "1.0.0",
    "build": "8",
