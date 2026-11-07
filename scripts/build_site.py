@@ -16,7 +16,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent.parent
 SITE = "https://patchland.ipe.rest"
-ASSET_V = "20261107a"  # bump when assets/patchland.css or langpick.js change
+ASSET_V = "20261107b"  # bump when assets/patchland.css or langpick.js change
 SITE_UPDATED = "2026-11-05"  # "Last updated" of home / 404 and sitemap lastmod: bump by hand when their text changes
 OPERATOR = "Davy Kim (ipe Studio)"
 EMAIL = "ipe.haven@gmail.com"

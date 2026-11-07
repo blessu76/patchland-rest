@@ -1,6 +1,83 @@
 {
  "releases": [
   {
+   "id": "1.0.0-13",
+   "version": "1.0.0",
+   "build": "13",
+   "status": "testflight",
+   "date": "2026-11-07",
+   "title": {
+    "en": "Build 13: Small touches",
+    "ko": "빌드 13: 손맛 다듬기",
+    "ja": "ビルド13:手ざわりの調整",
+    "zh": "构建 13:手感打磨",
+    "es": "Compilación 13: Pequeños detalles",
+    "pt": "Build 13: Pequenos Toques",
+    "id": "Build 13: Sentuhan Kecil",
+    "ru": "Сборка 13: Мелкие улучшения",
+    "vi": "Bản dựng 13: Những chỉnh sửa nhỏ",
+    "fr": "Version 13 : Petites touches",
+    "de": "Build 13: Kleine Feinheiten"
+   },
+   "notes": {
+    "en": [
+     "Tapping a game card, today's board, or the map banner on the hub now gives a light vibration (it stays off if you turn vibration off in Settings).",
+     "In the idle realm, tapping an upgrade you can't afford yet now answers with a dull sound and a vibration instead of doing nothing.",
+     "In landscape, the Land Hockey scoreboard now sits right next to the tall rink instead of far across the screen."
+    ],
+    "ko": [
+     "허브에서 게임 카드·오늘의 판·지도 배너를 누르면 가벼운 진동이 와요(설정에서 진동을 끄면 오지 않아요).",
+     "방치 영지에서 코인이 모자란 업그레이드를 눌러도 아무 반응이 없던 것을, 둔탁한 소리와 진동으로 알려 줘요.",
+     "가로 화면에서 땅 하키의 점수판이 세로로 긴 링크 바로 옆에 붙어요(예전엔 화면 반대편까지 멀리 떨어져 있었어요)."
+    ],
+    "ja": [
+     "ハブでゲームカード・今日の盤・マップのバナーをタップすると、軽い振動が伝わります(設定で振動をオフにすると振動しません)。",
+     "放置領地で、コインが足りないアップグレードをタップしても何も起きなかったのが、鈍い音と振動でお知らせするようになりました。",
+     "横画面では、陣取りホッケーの得点表示が縦長のリンクのすぐ隣に表示されます(以前は画面の反対側まで離れていました)。"
+    ],
+    "zh": [
+     "在主页点按游戏卡片、今日棋盘或地图横幅时,会有轻微的振动(在设置中关闭振动后就不会振动)。",
+     "在放置领地里,点按金币不足的升级时以前毫无反应,现在会用沉闷的声音和振动提示。",
+     "横屏时,占地冰球的计分板紧贴在竖长的冰场旁边(以前离得很远,在屏幕另一侧)。"
+    ],
+    "es": [
+     "Al tocar una tarjeta de juego, el tablero de hoy o el banner del mapa en el inicio, ahora hay una vibración suave (no vibra si la desactivas en Ajustes).",
+     "En el dominio inactivo, tocar una mejora que aún no puedes pagar antes no hacía nada; ahora responde con un sonido sordo y una vibración.",
+     "En horizontal, el marcador del Hockey de territorio queda junto a la pista alargada, en lugar de lejos, al otro lado de la pantalla."
+    ],
+    "pt": [
+     "Ao tocar um cartão de jogo, o tabuleiro de hoje ou o banner do mapa no início, agora há uma vibração leve (ela não ocorre se você desligar a vibração nos Ajustes).",
+     "No domínio ocioso, tocar em um upgrade que ainda não dá para pagar antes não fazia nada; agora responde com um som abafado e uma vibração.",
+     "Na horizontal, o placar do Hóquei de Terra fica ao lado da pista comprida, em vez de longe, do outro lado da tela."
+    ],
+    "id": [
+     "Mengetuk kartu gim, papan hari ini, atau spanduk peta di beranda kini memberi getaran ringan (tidak bergetar jika getaran dimatikan di Pengaturan).",
+     "Di wilayah santai, mengetuk peningkatan yang koinnya belum cukup dulu tidak bereaksi; kini dijawab dengan bunyi tumpul dan getaran.",
+     "Dalam mode lanskap, papan skor Hoki Wilayah kini berada tepat di samping arena yang memanjang, tidak lagi jauh di seberang layar."
+    ],
+    "ru": [
+     "При нажатии на карточку игры, сегодняшнее поле или баннер карты на главном экране теперь слышна лёгкая вибрация (если отключить вибрацию в настройках, её не будет).",
+     "В бездействующих владениях нажатие на улучшение, на которое не хватает монет, раньше ничего не делало; теперь отвечает глухим звуком и вибрацией.",
+     "В альбомном режиме табло «Земельного хоккея» теперь рядом с вытянутой площадкой, а не далеко, на другой стороне экрана."
+    ],
+    "vi": [
+     "Khi chạm vào thẻ trò chơi, bàn cờ hôm nay hoặc biểu ngữ bản đồ ở màn hình chính, giờ sẽ có rung nhẹ (sẽ không rung nếu bạn tắt rung trong Cài đặt).",
+     "Ở lãnh địa nhàn rỗi, chạm vào nâng cấp chưa đủ xu trước đây không có phản hồi; giờ báo bằng âm thanh trầm và rung.",
+     "Ở chế độ ngang, bảng điểm của Khúc côn cầu chiếm đất nằm ngay cạnh sân dài thay vì xa tít ở phía bên kia màn hình."
+    ],
+    "fr": [
+     "Appuyer sur une carte de jeu, le plateau du jour ou la bannière de la carte sur l'accueil donne maintenant une légère vibration (elle ne se produit pas si vous coupez les vibrations dans les réglages).",
+     "Dans le domaine inactif, appuyer sur une amélioration que vous ne pouvez pas encore payer ne faisait rien ; cela répond maintenant par un son sourd et une vibration.",
+     "En mode paysage, le tableau des scores du Hockey de territoire se place juste à côté de la patinoire allongée, au lieu d'être loin, de l'autre côté de l'écran."
+    ],
+    "de": [
+     "Wenn du auf dem Start eine Spielkarte, das heutige Brett oder das Karten-Banner antippst, vibriert es jetzt leicht (nicht, wenn du die Vibration in den Einstellungen ausschaltest).",
+     "Im Idle-Reich passierte beim Antippen eines noch nicht bezahlbaren Upgrades früher nichts; jetzt antwortet ein dumpfer Ton mit Vibration.",
+     "Im Querformat sitzt die Anzeigetafel von Land-Hockey jetzt direkt neben der hohen Eisfläche statt weit entfernt auf der anderen Bildschirmseite."
+    ]
+   }
+  },
+  {
    "id": "1.0.0-12",
    "version": "1.0.0",
    "build": "12",
