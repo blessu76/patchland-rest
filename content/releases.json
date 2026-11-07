@@ -1,6 +1,160 @@
 {
  "releases": [
   {
+   "id": "1.0.0-12",
+   "version": "1.0.0",
+   "build": "12",
+   "status": "testflight",
+   "date": "2026-11-07",
+   "title": {
+    "en": "Build 12: Landscape, New Home, 11 Languages",
+    "ko": "빌드 12: 가로 화면·새 홈·11개 언어",
+    "ja": "ビルド12:横画面・新しいホーム・11言語",
+    "zh": "构建 12:横屏、新主页、11 种语言",
+    "es": "Compilación 12: Horizontal, nuevo inicio y 11 idiomas",
+    "pt": "Build 12: Modo Paisagem, Novo Início e 11 Idiomas",
+    "id": "Build 12: Layar Lanskap, Beranda Baru, 11 Bahasa",
+    "ru": "Сборка 12: Альбомный режим, новый экран и 11 языков",
+    "vi": "Bản dựng 12: Xoay ngang, màn hình chính mới, 11 ngôn ngữ",
+    "fr": "Version 12 : Mode paysage, nouvel accueil, 11 langues",
+    "de": "Build 12: Querformat, neuer Start, 11 Sprachen"
+   },
+   "notes": {
+    "en": [
+     "You can now rotate the screen on iPad and iPhone. In landscape, the board sits on the left and the info on the right.",
+     "The home screen has a new look, with paper cards, icon tiles for choosing a game, and a start button that stays at the bottom.",
+     "The app is available in 11 languages.",
+     "Stamps now mark your wins in each game, and the game menu has a fresh design."
+    ],
+    "ko": [
+     "아이패드와 아이폰에서 화면을 가로로 돌릴 수 있습니다. 가로 화면에서는 판이 왼쪽, 정보가 오른쪽에 놓입니다.",
+     "홈 화면이 새로워졌습니다. 종이 카드, 게임을 고르는 아이콘 타일, 아래에 고정된 시작 버튼이 생겼습니다.",
+     "앱을 11개 언어로 볼 수 있습니다.",
+     "게임마다 이긴 기록이 도장으로 남고, 게임 메뉴의 모양도 새로워졌습니다."
+    ],
+    "ja": [
+     "iPadとiPhoneで画面を横向きにできるようになりました。横向きでは、盤が左、情報が右に並びます。",
+     "ホーム画面が新しくなりました。紙のカード、ゲームを選ぶアイコンのタイル、下に固定されたスタートボタンがあります。",
+     "アプリを11の言語で使えます。",
+     "ゲームごとに勝った記録がスタンプで残り、ゲームメニューのデザインも新しくなりました。"
+    ],
+    "zh": [
+     "现在 iPad 和 iPhone 都可以横屏使用。横屏时棋盘在左边,信息在右边。",
+     "主页焕然一新:纸质卡片、用来选择游戏的图标方块,以及固定在底部的开始按钮。",
+     "应用支持 11 种语言。",
+     "每个游戏的胜利都会盖上印章记录,游戏菜单也换了新设计。"
+    ],
+    "es": [
+     "Ahora puedes girar la pantalla en iPad y iPhone. En horizontal, el tablero queda a la izquierda y la información a la derecha.",
+     "La pantalla de inicio tiene un nuevo aspecto, con tarjetas de papel, iconos para elegir juego y un botón de inicio fijo abajo.",
+     "La app está disponible en 11 idiomas.",
+     "Los sellos marcan tus victorias en cada juego, y el menú del juego tiene un diseño nuevo."
+    ],
+    "pt": [
+     "Agora dá para girar a tela no iPad e no iPhone. Na horizontal, o tabuleiro fica à esquerda e as informações à direita.",
+     "A tela inicial ficou com visual novo, com cartões de papel, ícones para escolher o jogo e um botão de começar fixo embaixo.",
+     "O app está disponível em 11 idiomas.",
+     "Carimbos marcam suas vitórias em cada jogo, e o menu do jogo ganhou um novo design."
+    ],
+    "id": [
+     "Kini layar bisa diputar di iPad dan iPhone. Dalam mode lanskap, papan ada di kiri dan info di kanan.",
+     "Layar beranda tampil baru, dengan kartu kertas, ubin ikon untuk memilih gim, dan tombol mulai yang tetap di bawah.",
+     "Aplikasi tersedia dalam 11 bahasa.",
+     "Stempel menandai kemenanganmu di setiap gim, dan menu gim punya desain baru."
+    ],
+    "ru": [
+     "Теперь экран можно поворачивать на iPad и iPhone. В альбомном режиме поле слева, а информация справа.",
+     "Главный экран обновлён: бумажные карточки, плитки со значками для выбора игры и кнопка старта, закреплённая внизу.",
+     "Приложение доступно на 11 языках.",
+     "Победы в каждой игре отмечаются печатями, а меню игры получило новый дизайн."
+    ],
+    "vi": [
+     "Giờ bạn có thể xoay màn hình trên iPad và iPhone. Ở chế độ ngang, bàn cờ nằm bên trái còn thông tin ở bên phải.",
+     "Màn hình chính có diện mạo mới, với thẻ giấy, ô biểu tượng để chọn trò chơi và nút bắt đầu cố định ở dưới.",
+     "Ứng dụng có sẵn bằng 11 ngôn ngữ.",
+     "Con dấu ghi lại các chiến thắng của bạn trong từng trò chơi, và menu trò chơi cũng có thiết kế mới."
+    ],
+    "fr": [
+     "Vous pouvez maintenant faire pivoter l'écran sur iPad et iPhone. En mode paysage, le plateau est à gauche et les infos à droite.",
+     "L'écran d'accueil change de look, avec des cartes en papier, des vignettes pour choisir un jeu et un bouton de départ fixé en bas.",
+     "L'app est disponible en 11 langues.",
+     "Des tampons marquent vos victoires dans chaque jeu, et le menu du jeu a un nouveau design."
+    ],
+    "de": [
+     "Auf iPad und iPhone lässt sich der Bildschirm jetzt drehen. Im Querformat liegt das Brett links und die Infos rechts.",
+     "Der Startbildschirm sieht neu aus, mit Papierkarten, Symbolkacheln zur Spielauswahl und einem Start-Knopf, der unten bleibt.",
+     "Die App gibt es in 11 Sprachen.",
+     "Stempel markieren deine Siege in jedem Spiel, und das Spielmenü hat ein neues Design."
+    ]
+   }
+  },
+  {
+   "id": "1.0.0-11",
+   "version": "1.0.0",
+   "build": "11",
+   "status": "testflight",
+   "date": "2026-11-06",
+   "title": {
+    "en": "Build 11: Under the Hood",
+    "ko": "빌드 11: 내부 정리",
+    "ja": "ビルド11:内部の整理",
+    "zh": "构建 11:内部整理",
+    "es": "Compilación 11: Ajustes internos",
+    "pt": "Build 11: Ajustes Internos",
+    "id": "Build 11: Perapian Internal",
+    "ru": "Сборка 11: Внутренние улучшения",
+    "vi": "Bản dựng 11: Chỉnh sửa bên trong",
+    "fr": "Version 11 : Réglages internes",
+    "de": "Build 11: Interne Verbesserungen"
+   },
+   "notes": {
+    "en": [
+     "Parts shared across the app are now organized in one place. Nothing looks different.",
+     "Your saved settings carry over as they were."
+    ],
+    "ko": [
+     "앱 곳곳에서 함께 쓰는 부분을 한곳으로 정리했습니다. 화면은 달라지지 않습니다.",
+     "저장해 둔 설정은 그대로 이어집니다."
+    ],
+    "ja": [
+     "アプリ全体で共通して使う部分を一か所にまとめました。見た目は変わりません。",
+     "保存した設定はそのまま引き継がれます。"
+    ],
+    "zh": [
+     "把应用各处共用的部分整理到了一处,画面没有变化。",
+     "已保存的设置会原样保留。"
+    ],
+    "es": [
+     "Las partes compartidas de la app ahora están organizadas en un solo lugar. No cambia nada a la vista.",
+     "Tus ajustes guardados se mantienen igual."
+    ],
+    "pt": [
+     "As partes compartilhadas do app agora ficam organizadas em um só lugar. Nada muda na aparência.",
+     "Seus ajustes salvos continuam como estavam."
+    ],
+    "id": [
+     "Bagian yang dipakai bersama di seluruh aplikasi kini dirapikan di satu tempat. Tampilannya tidak berubah.",
+     "Pengaturan yang tersimpan tetap seperti semula."
+    ],
+    "ru": [
+     "Общие части приложения теперь собраны в одном месте. Внешне ничего не изменилось.",
+     "Сохранённые настройки остаются прежними."
+    ],
+    "vi": [
+     "Các phần dùng chung trong ứng dụng giờ được gom về một chỗ. Giao diện không thay đổi.",
+     "Cài đặt đã lưu vẫn giữ nguyên."
+    ],
+    "fr": [
+     "Les parties communes de l'app sont maintenant rassemblées au même endroit. Rien ne change à l'écran.",
+     "Vos réglages enregistrés sont conservés tels quels."
+    ],
+    "de": [
+     "Die gemeinsam genutzten Teile der App sind jetzt an einer Stelle gebündelt. Optisch ändert sich nichts.",
+     "Deine gespeicherten Einstellungen bleiben unverändert."
+    ]
+   }
+  },
+  {
    "id": "1.0.0-10",
    "version": "1.0.0",
    "build": "10",
