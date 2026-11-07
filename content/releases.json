@@ -1,6 +1,83 @@
 {
  "releases": [
   {
+   "id": "1.0.0-14",
+   "version": "1.0.0",
+   "build": "14",
+   "status": "testflight",
+   "date": "2026-11-07",
+   "title": {
+    "en": "Build 14: Pick up where you left off",
+    "ko": "빌드 14: iCloud 이어하기",
+    "ja": "ビルド14:続きから再開(iCloud)",
+    "zh": "构建 14:用 iCloud 接着玩",
+    "es": "Compilación 14: Continúa donde lo dejaste",
+    "pt": "Build 14: Continue de Onde Parou",
+    "id": "Build 14: Lanjutkan dari Terakhir",
+    "ru": "Сборка 14: Продолжайте с того же места",
+    "vi": "Bản dựng 14: Chơi tiếp từ chỗ đã dừng",
+    "fr": "Version 14 : Reprenez où vous en étiez",
+    "de": "Build 14: Dort weitermachen, wo du aufgehört hast"
+   },
+   "notes": {
+    "en": [
+     "Your progress, unlocks, settings, and idle realm now carry over to your other devices with the same Apple ID (when iCloud is on).",
+     "If iCloud is off, nothing happens and everything is simply saved on this device only.",
+     "If you played separately on two devices, the one that got further is kept, and unlocks are combined."
+    ],
+    "ko": [
+     "같은 Apple ID의 다른 기기에서도 진행·해금·설정·방치 영지가 이어져요(iCloud 켜짐 시).",
+     "iCloud가 꺼져 있으면 아무 일 없이 이 기기에만 저장돼요.",
+     "두 기기에서 따로 했어도 더 진행된 쪽이 남고, 해금은 합쳐져요."
+    ],
+    "ja": [
+     "同じApple IDの他の端末でも、進行状況・解放したもの・設定・放置領地が引き継がれます(iCloudがオンのとき)。",
+     "iCloudがオフの場合は何も起こらず、この端末にだけ保存されます。",
+     "2台で別々に遊んだ場合は、より進んでいるほうが残り、解放したものは合わさります。"
+    ],
+    "zh": [
+     "使用同一个 Apple ID 的其他设备上,进度、已解锁内容、设置和放置领地也会接上(开启 iCloud 时)。",
+     "如果关闭了 iCloud,不会有任何变化,数据只保存在这台设备上。",
+     "如果在两台设备上分别玩过,会保留进度更多的一边,已解锁的内容会合并。"
+    ],
+    "es": [
+     "En tus otros dispositivos con el mismo Apple ID también continúan tu progreso, lo desbloqueado, los ajustes y el dominio inactivo (con iCloud activado).",
+     "Si iCloud está desactivado, no pasa nada y todo se guarda solo en este dispositivo.",
+     "Si jugaste por separado en dos dispositivos, se conserva el que avanzó más y lo desbloqueado se combina."
+    ],
+    "pt": [
+     "Seu progresso, o que foi desbloqueado, os ajustes e o domínio ocioso continuam também nos outros dispositivos com o mesmo Apple ID (com o iCloud ativado).",
+     "Se o iCloud estiver desativado, nada acontece e tudo fica salvo apenas neste dispositivo.",
+     "Se você jogou separadamente em dois dispositivos, fica o que avançou mais, e os desbloqueios são combinados."
+    ],
+    "id": [
+     "Kemajuan, hal yang terbuka, pengaturan, dan wilayah santai kini berlanjut di perangkat lain dengan Apple ID yang sama (saat iCloud menyala).",
+     "Jika iCloud mati, tidak terjadi apa-apa dan semuanya hanya tersimpan di perangkat ini.",
+     "Jika kamu bermain terpisah di dua perangkat, yang lebih maju dipertahankan, dan yang terbuka digabungkan."
+    ],
+    "ru": [
+     "Прогресс, открытое, настройки и бездействующие владения теперь переходят на другие устройства с тем же Apple ID (при включённом iCloud).",
+     "Если iCloud выключен, ничего не происходит, и всё сохраняется только на этом устройстве.",
+     "Если вы играли отдельно на двух устройствах, остаётся тот, где прогресс дальше, а открытое объединяется."
+    ],
+    "vi": [
+     "Tiến trình, nội dung đã mở khóa, cài đặt và lãnh địa nhàn rỗi giờ cũng tiếp tục trên các thiết bị khác dùng cùng Apple ID (khi bật iCloud).",
+     "Nếu tắt iCloud thì không có gì xảy ra, mọi thứ chỉ được lưu trên thiết bị này.",
+     "Nếu bạn chơi riêng trên hai thiết bị, bên nào tiến xa hơn sẽ được giữ lại, còn phần đã mở khóa sẽ được gộp."
+    ],
+    "fr": [
+     "Votre progression, les déblocages, les réglages et le domaine inactif suivent aussi sur vos autres appareils avec le même identifiant Apple (si iCloud est activé).",
+     "Si iCloud est désactivé, il ne se passe rien et tout est simplement enregistré sur cet appareil uniquement.",
+     "Si vous avez joué séparément sur deux appareils, celui qui a le plus avancé est conservé, et les déblocages sont combinés."
+    ],
+    "de": [
+     "Fortschritt, Freigeschaltetes, Einstellungen und das Idle-Reich gelten jetzt auch auf deinen anderen Geräten mit derselben Apple-ID (bei aktiviertem iCloud).",
+     "Ist iCloud aus, passiert nichts, und alles wird nur auf diesem Gerät gespeichert.",
+     "Wenn du auf zwei Geräten getrennt gespielt hast, bleibt der weitere Stand erhalten, und Freischaltungen werden zusammengeführt."
+    ]
+   }
+  },
+  {
    "id": "1.0.0-13",
    "version": "1.0.0",
    "build": "13",
