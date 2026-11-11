@@ -1,6 +1,94 @@
 {
  "releases": [
   {
+   "id": "1.0.0-16",
+   "version": "1.0.0",
+   "build": "16",
+   "status": "testflight",
+   "date": "2026-11-12",
+   "title": {
+    "en": "Build 16: Color Code & smoother Survivor",
+    "ko": "빌드 16: 컬러코드와 더 매끄러운 서바이버",
+    "ja": "ビルド16:カラーコードと快適になったサバイバー",
+    "zh": "构建 16:颜色密码与更流畅的求生",
+    "es": "Compilación 16: Código de color y Supervivencia más fluida",
+    "pt": "Build 16: Código de Cor e Sobrevivência mais fluida",
+    "id": "Build 16: Kode Warna & Kelangsungan yang lebih mulus",
+    "ru": "Сборка 16: Цветовой код и более плавное выживание",
+    "vi": "Bản dựng 16: Mã màu & Sinh tồn mượt hơn",
+    "fr": "Version 16 : Code couleur et Survie plus fluide",
+    "de": "Build 16: Farbcode & flüssigeres Survival"
+   },
+   "notes": {
+    "en": [
+     "Firefly Survivor got scores, a saved best score and pause/resume.",
+     "New free game on the hub: Color Code — a daily color puzzle with a streak, practice mode and color-blind-friendly symbols.",
+     "Release notes now work offline: the latest notes are shown right in the app when the web page can't load.",
+     "Fixed: the firefly now follows your finger. Drag anywhere on the screen to move."
+    ],
+    "ko": [
+     "반딧불 서바이버에 점수·기록 저장·일시정지/재개가 생겼어요.",
+     "허브에 무료 게임 컬러코드가 새로 들어왔어요 — 매일 바뀌는 색 퍼즐로, 연속 일수·연습 모드·색약 기호를 지원해요.",
+     "인터넷이 안 될 때도 릴리즈 노트를 볼 수 있어요. 웹 페이지를 못 불러오면 앱에 담긴 최근 노트가 보여요.",
+     "수정: 반딧불이가 손가락을 따라 움직여요. 화면 아무 곳이나 드래그하면 돼요."
+    ],
+    "ja": [
+     "ホタルサバイバーにスコア、ベストスコアの保存、一時停止/再開が加わりました。",
+     "ハブに無料の新ゲーム「カラーコード」が登場。毎日変わる色のパズルで、連続日数・練習モード・色覚に配慮した記号に対応しています。",
+     "オフラインでもリリースノートを読めます。ウェブページを開けないときは、アプリ内の最新ノートが表示されます。",
+     "修正:ホタルが指に合わせて動くようになりました。画面のどこをドラッグしても移動できます。"
+    ],
+    "zh": [
+     "萤火虫求生新增得分、最高分保存以及暂停/继续。",
+     "大厅新增免费游戏“颜色密码”——每日更新的颜色谜题,支持连续天数、练习模式和色弱友好符号。",
+     "离线也能查看更新说明:网页无法加载时,应用内会显示最新的说明。",
+     "修复:萤火虫现在会跟随你的手指移动,在屏幕任意位置拖动即可。"
+    ],
+    "es": [
+     "Supervivencia de luciérnagas ahora tiene puntuación, mejor puntuación guardada y pausa/reanudar.",
+     "Nuevo juego gratis en el menú: Código de color, un puzle de colores diario con racha, modo de práctica y símbolos para daltónicos.",
+     "Las notas de versión ya funcionan sin conexión: si la web no carga, se muestran las últimas notas dentro de la app.",
+     "Corregido: la luciérnaga ahora sigue tu dedo. Arrastra en cualquier parte de la pantalla para moverte."
+    ],
+    "pt": [
+     "Sobrevivência da Vaga-Lume ganhou pontuação, melhor pontuação salva e pausar/retomar.",
+     "Novo jogo grátis no hub: Código de Cor, um quebra-cabeça diário de cores com sequência, modo de treino e símbolos para daltonismo.",
+     "As novidades agora funcionam offline: se a página da web não carregar, as últimas notas aparecem dentro do app.",
+     "Corrigido: a vaga-lume agora segue o seu dedo. Arraste em qualquer lugar da tela para se mover."
+    ],
+    "id": [
+     "Kelangsungan Kunang-kunang kini punya skor, skor terbaik tersimpan, serta jeda/lanjut.",
+     "Game gratis baru di hub: Kode Warna, teka-teki warna harian dengan rentetan hari, mode latihan, dan simbol ramah buta warna.",
+     "Catatan rilis kini bisa dibaca offline: saat halaman web gagal dimuat, catatan terbaru tampil langsung di aplikasi.",
+     "Diperbaiki: kunang-kunang kini mengikuti jarimu. Seret di mana saja pada layar untuk bergerak."
+    ],
+    "ru": [
+     "В «Выживании светлячков» появились очки, сохранение рекорда и пауза/продолжение.",
+     "Новая бесплатная игра в хабе: «Цветовой код» — ежедневная головоломка с цветами, серией дней, режимом тренировки и символами для людей с нарушением цветовосприятия.",
+     "Заметки о выпусках теперь работают офлайн: если веб-страница не загрузилась, последние заметки показываются прямо в приложении.",
+     "Исправлено: светлячок теперь следует за пальцем. Проведите по любому месту экрана, чтобы двигаться."
+    ],
+    "vi": [
+     "Sinh tồn đom đóm có thêm điểm số, lưu điểm cao nhất và tạm dừng/tiếp tục.",
+     "Trò chơi miễn phí mới ở trung tâm: Mã màu — câu đố màu hằng ngày với chuỗi ngày, chế độ luyện tập và ký hiệu thân thiện với người mù màu.",
+     "Ghi chú phát hành giờ xem được cả khi ngoại tuyến: nếu trang web không tải được, các ghi chú mới nhất sẽ hiện ngay trong ứng dụng.",
+     "Đã sửa: đom đóm giờ di chuyển theo ngón tay. Kéo ở bất kỳ đâu trên màn hình để di chuyển."
+    ],
+    "fr": [
+     "Survie des lucioles gagne un score, un meilleur score enregistré et pause/reprise.",
+     "Nouveau jeu gratuit sur le hub : Code couleur, un casse-tête de couleurs quotidien avec série, mode entraînement et symboles adaptés au daltonisme.",
+     "Les notes de version fonctionnent maintenant hors ligne : si la page web ne se charge pas, les dernières notes s'affichent dans l'app.",
+     "Corrigé : la luciole suit désormais votre doigt. Faites glisser n'importe où sur l'écran pour vous déplacer."
+    ],
+    "de": [
+     "Glühwürmchen-Survival hat jetzt Punkte, gespeicherte Bestleistung sowie Pause/Fortsetzen.",
+     "Neues kostenloses Spiel im Hub: Farbcode — ein tägliches Farbrätsel mit Serie, Übungsmodus und Symbolen für Farbsehschwäche.",
+     "Versionshinweise funktionieren jetzt offline: Lässt sich die Webseite nicht laden, erscheinen die neuesten Hinweise direkt in der App.",
+     "Behoben: Das Glühwürmchen folgt jetzt deinem Finger. Zieh an einer beliebigen Stelle des Bildschirms, um dich zu bewegen."
+    ]
+   }
+  },
+  {
    "id": "1.0.0-15",
    "version": "1.0.0",
    "build": "15",
