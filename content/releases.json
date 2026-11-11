@@ -1,6 +1,72 @@
 {
  "releases": [
   {
+   "id": "1.0.0-15",
+   "version": "1.0.0",
+   "build": "15",
+   "status": "testflight",
+   "date": "2026-11-11",
+   "title": {
+    "en": "Build 15: Firefly Survivor",
+    "ko": "빌드 15: 반딧불 서바이버",
+    "ja": "ビルド15:ホタルサバイバー",
+    "zh": "构建 15:萤火虫求生",
+    "es": "Compilación 15: Supervivencia de luciérnagas",
+    "pt": "Build 15: Sobrevivência da Vaga-Lume",
+    "id": "Build 15: Kelangsungan Kunang-kunang",
+    "ru": "Сборка 15: Выживание светлячков",
+    "vi": "Bản dựng 15: Sinh tồn đom đóm",
+    "fr": "Version 15 : Survie des lucioles",
+    "de": "Build 15: Glühwürmchen-Survival"
+   },
+   "notes": {
+    "en": [
+     "Firefly Survivor has arrived — a new game card on the hub, free and with no ads.",
+     "You can play it in all 11 languages."
+    ],
+    "ko": [
+     "반딧불 서바이버가 왔어요 — 허브에 새로 생긴 게임 카드고, 무료이며 광고가 없어요.",
+     "11개 언어 모두로 즐길 수 있어요."
+    ],
+    "ja": [
+     "ホタルサバイバーが仲間入りしました — ハブに新しいゲームカードが加わり、無料かつ広告なしです。",
+     "11言語すべてで遊べます。"
+    ],
+    "zh": [
+     "萤火虫求生来了 — 主页上的一张新游戏卡片,免费,没有广告。",
+     "可以用全部 11 种语言玩。"
+    ],
+    "es": [
+     "Supervivencia de luciérnagas ha llegado: una nueva tarjeta de juego en el inicio, gratuita y sin anuncios.",
+     "Puedes jugarla en los 11 idiomas."
+    ],
+    "pt": [
+     "Sobrevivência da Vaga-Lume chegou: um novo cartão de jogo na página inicial, grátis e sem anúncios.",
+     "Você pode jogar nos 11 idiomas."
+    ],
+    "id": [
+     "Kelangsungan Kunang-kunang sudah hadir — kartu game baru di beranda, gratis dan tanpa iklan.",
+     "Bisa dimainkan dalam 11 bahasa."
+    ],
+    "ru": [
+     "Выживание светлячков вышло — новая карточка игры в хабе, бесплатно и без рекламы.",
+     "Играть можно на всех 11 языках."
+    ],
+    "vi": [
+     "Sinh tồn đom đóm đã đến — một thẻ trò chơi mới trong hub, miễn phí và không có quảng cáo.",
+     "Bạn có thể chơi bằng cả 11 ngôn ngữ."
+    ],
+    "fr": [
+     "Survie des lucioles est arrivée : une nouvelle carte de jeu sur l'accueil, gratuite et sans publicité.",
+     "Elle est jouable dans les 11 langues."
+    ],
+    "de": [
+     "Glühwürmchen-Survival ist da — eine neue Spielkarte im Hub, kostenlos und ohne Werbung.",
+     "Du kannst es in allen 11 Sprachen spielen."
+    ]
+   }
+  },
+  {
    "id": "1.0.0-14",
    "version": "1.0.0",
    "build": "14",
