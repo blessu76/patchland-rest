@@ -40,10 +40,5 @@
  "cta_h": "Segera hadir di iOS dan Android",
  "cta_p": "Patchland belum dirilis. Halaman ini akan diperbarui saat sudah dirilis.",
  "nf_h": "Halaman tidak ditemukan",
- "nf_p": "Kami tidak dapat menemukan halaman itu. Mungkin sudah dipindahkan, atau alamatnya salah ketik.",
- "nav_releases": "Catatan rilis",
- "releases_title": "Catatan rilis",
- "releases_desc": "Apa yang berubah di setiap build uji yang kami unggah ke TestFlight sebelum rilis publik, dalam bahasa sederhana.",
- "rel_status_tf": "Di TestFlight",
- "rel_intro": "Build ini mencakup semua isi build sebelumnya, ditambah:"
+ "nf_p": "Kami tidak dapat menemukan halaman itu. Mungkin sudah dipindahkan, atau alamatnya salah ketik."
 }

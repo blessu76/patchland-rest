@@ -40,10 +40,5 @@
  "cta_h": "Próximamente en iOS y Android",
  "cta_p": "Patchland todavía no está disponible. Esta página se actualizará cuando lo esté.",
  "nf_h": "Página no encontrada",
- "nf_p": "No pudimos encontrar esa página. Puede que se haya movido o que la dirección esté mal escrita.",
- "nav_releases": "Notas de versión",
- "releases_title": "Notas de versión",
- "releases_desc": "Qué cambió en cada compilación de prueba que subimos a TestFlight antes del lanzamiento público, en palabras sencillas.",
- "rel_status_tf": "En TestFlight",
- "rel_intro": "Esta compilación incluye todo lo de las anteriores, y además:"
+ "nf_p": "No pudimos encontrar esa página. Puede que se haya movido o que la dirección esté mal escrita."
 }

@@ -1,7 +1,7 @@
 /* Patchland: language of every page without a language prefix ("/", never /xx/ and never 404.html).
    Inlined by build_site, which fills in S (all site languages) and A (the languages that really have THIS page).
    Order: ?lang=xx in the URL > the language the visitor picked on the site (localStorage "pl-lang") > first match in
-   navigator.languages (exact tag, then its first part: ko-KR -> ko, zh-TW -> zh) > stay on the English root.
+   navigator.languages (ko-KR -> ko, zh-TW -> zh-Hant, pt-PT -> pt-BR) > stay on the English root.
    Redirect only when the language is not English and A has it; otherwise the page stays (no fallback to the next browser language).
    ?lang=xx (company-wide hand-off): a supported language is saved and the page moves to "/xx/<same path>"
    (en stays on the page, the query is cleaned); an unsupported one is ignored and the later steps decide. Other query params and #hash are kept.
@@ -11,15 +11,16 @@
   /* "ko-KR" -> "ko", "zh_TW" -> "zh" ... first supported match for a language tag, or '' */
   function pick(c){
     c=String(c||'').toLowerCase().replace(/_/g,'-');
-    /* legacy codes: Android/old browsers say "in" for Indonesian. Traditional Chinese (zh-Hant) has no pages yet, so it goes to zh. */
-    if(c.split('-')[0]==='in')c='id'+c.slice(2);
-    if(S.indexOf(c)>=0)return c;
+    /* legacy codes: Android/old browsers say "in" for Indonesian. Chinese: only Traditional (zh-TW/HK/MO/Hant) is a site language; Simplified is not. */
     var b=c.split('-')[0];
+    if(b==='in')b='id';
+    if(b==='zh'){var r=c.split('-').slice(1);var hant=r.indexOf('hant')>=0||(r.indexOf('hans')<0&&(r.indexOf('tw')>=0||r.indexOf('hk')>=0||r.indexOf('mo')>=0));return hant&&S.indexOf('zh-Hant')>=0?'zh-Hant':''}
+    if(b==='pt')return S.indexOf('pt-BR')>=0?'pt-BR':'';
     return S.indexOf(b)>=0?b:'';
   }
   try{
     var seg=location.pathname.split('/')[1];
-    if(seg&&S.indexOf(seg.toLowerCase())>=0)return;
+    if(seg&&(S.indexOf(seg)>=0||seg==='pt'||seg==='zh'||seg==='ru'))return;
     var to='',saved='',q=location.search||'',keep='',hasLang=false;
     var parts=q.replace(/^\?/,'').split('&').filter(Boolean),rest=[],want='';
     for(var j=0;j<parts.length;j++){

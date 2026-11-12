@@ -17,13 +17,13 @@ const server = http.createServer((req, res) => {
   fs.createReadStream(f).pipe(res);
 });
 function pagesToCheck() {
-  const base = ['/', '/releases/', '/privacy/', '/support/', '/terms/'];
+  const base = ['/', '/privacy/', '/support/', '/terms/'];
   const out = [...base];
-  for (const l of ['ko', 'ja', 'de']) for (const b of base) out.push(b === '/' ? '/' + l + '/' : '/' + l + b);
+  for (const l of ['ko', 'ja', 'de', 'zh-Hant', 'pt-BR', 'th', 'tr']) for (const b of base) out.push(b === '/' ? '/' + l + '/' : '/' + l + b);
   out.push('/404.html');
   return out;
 }
-const SHOT = new Set(['/', '/privacy/', '/ko/', '/ja/', '/de/']);
+const SHOT = new Set(['/', '/privacy/', '/ko/', '/ja/', '/de/', '/th/', '/tr/', '/zh-Hant/']);
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
   await new Promise(r => server.listen(0, '127.0.0.1', r));
