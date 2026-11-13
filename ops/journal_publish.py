@@ -4,6 +4,7 @@
 Moves it to content/journal/YYYY-MM-DD-<slug>.md in the publish clone with front matter `date:` set to
 today (KST), builds, runs scripts/check.sh, then commit "journal: <slug>" -> pull --rebase -> push.
 Clone: ~/ipe/patchland-publish (cloned from origin if missing; dirty tree -> SKIP, exit 1).
+Kit: vendor/ipe_web_kit is synced into the clone from $IPE_WEB_KIT (default ~/Developer/ipe_web_kit) when missing/stale.
 Empty queue -> log + ALERT file, exit 1. Queue <= 2 posts after publishing -> ALERT file too.
 """
 import os, re, subprocess, sys
@@ -14,6 +15,7 @@ KST = timezone(timedelta(hours=9))
 QUEUE = Path(os.environ.get("PATCHLAND_QUEUE", Path.home() / ".ipe/queue/patchland"))
 CLONE = Path(os.environ.get("PATCHLAND_CLONE", Path.home() / "ipe/patchland-publish"))
 REMOTE = os.environ.get("PATCHLAND_REMOTE", "https://github.com/blessu76/patchland-rest.git")
+KIT = os.environ.get("IPE_WEB_KIT", str(Path.home() / "Developer/ipe_web_kit"))  # private kit clone (vendor/ipe_web_kit is gitignored)
 LOW_WATER = 2
 
 
@@ -54,6 +56,18 @@ def git(*a, check=True):
     return subprocess.run(["git", "-C", str(CLONE), *a], check=check, capture_output=True, text=True)
 
 
+def ensure_kit():
+    """The publish clone has no vendor/ipe_web_kit (private, gitignored): sync the locked tag from the local kit clone when missing/stale."""
+    if not (CLONE / "scripts/kit_lock.py").is_file():
+        return True  # repo without a kit pin: nothing to sync
+    if subprocess.run(["python3", "scripts/kit_lock.py", "check"], cwd=CLONE, capture_output=True).returncode == 0:
+        return True
+    r = subprocess.run(["python3", "scripts/kit_lock.py", "sync", "--kit", KIT], cwd=CLONE, capture_output=True, text=True)
+    if r.returncode:
+        log("FAIL kit sync (%s):\n%s" % (KIT, (r.stdout + r.stderr)[-800:]))
+    return r.returncode == 0
+
+
 def main():
     posts = queued()
     if not posts:
@@ -66,6 +80,8 @@ def main():
         log("SKIP: publish clone has uncommitted changes")
         return 1
     git("pull", "--rebase", "--quiet")
+    if not ensure_kit():
+        return 1
     src = posts[0]
     today = datetime.now(KST).strftime("%Y-%m-%d")
     slug = slugify(src.name)

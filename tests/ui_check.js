@@ -20,10 +20,11 @@ function pagesToCheck() {
   const base = ['/', '/privacy/', '/support/', '/terms/'];
   const out = [...base];
   for (const l of ['ko', 'ja', 'de', 'zh-Hant', 'pt-BR', 'th', 'tr']) for (const b of base) out.push(b === '/' ? '/' + l + '/' : '/' + l + b);
+  for (const l of ['', '/ko', '/ja']) out.push(l + '/journal/', l + '/journal/paper-patch-three-verbs/');
   out.push('/404.html');
   return out;
 }
-const SHOT = new Set(['/', '/privacy/', '/ko/', '/ja/', '/de/', '/th/', '/tr/', '/zh-Hant/']);
+const SHOT = new Set(['/journal/', '/ko/journal/', '/', '/privacy/', '/ko/', '/ja/', '/de/', '/th/', '/tr/', '/zh-Hant/']);
 (async () => {
   fs.mkdirSync(OUT, { recursive: true });
   await new Promise(r => server.listen(0, '127.0.0.1', r));
