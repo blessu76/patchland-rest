@@ -78,6 +78,12 @@ class BuildTest(unittest.TestCase):
                 self.assertEqual(links[0].count("<a "), 12, f)
                 self.assertIn('hidden><label for="langsel">', foot, f)
 
+    def test_language_select_pill_style_keeps_label_for_screen_readers(self):
+        css = (ROOT / "assets" / "patchland.css").read_text(encoding="utf-8")
+        self.assertIn(".lang-select{appearance:none", css)
+        self.assertIn("border-radius:999px", css)
+        self.assertIn(".lang-pick label{position:absolute;width:1px;height:1px;overflow:hidden", css)
+
     def test_language_select_points_to_same_page_in_each_language(self):
         ko = self.files["ko/index.html"]
         foot = re.search(r'<footer class="site-footer".*?</footer>', ko, re.S).group(0)

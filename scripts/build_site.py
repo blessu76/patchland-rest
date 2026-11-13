@@ -23,7 +23,7 @@ sys.path.insert(0, str(HERE / "vendor"))
 from ipe_web_kit import languages, seo  # noqa: E402
 
 SITE = "https://patchland.ipe.rest"
-ASSET_V = "20261113a"  # bump when assets/patchland.css or langpick.js change
+ASSET_V = "20261114a"  # bump when assets/patchland.css or langpick.js change
 SITE_UPDATED = "2026-11-05"  # "Last updated" of home / 404 and sitemap lastmod: bump by hand when their text changes
 OPERATOR = "Davy Kim (ipe Studio)"
 EMAIL = "ipe.haven@gmail.com"
