@@ -24,7 +24,7 @@ class BuildTest(unittest.TestCase):
     def test_every_page_exists(self):
         for l in bs.languages.SUPPORTED:
             self.assertIn(("index.html" if l == "en" else l + "/index.html"), self.files)
-            for s in bs.PAGE_SLUGS:
+            for s in bs.PAGE_SLUGS + (bs.JOURNAL,):
                 self.assertIn(bs.path_page(l, s).strip("/") + "/index.html", self.files)
 
     def test_translations_have_ai_notice_and_hreflang(self):
@@ -45,7 +45,7 @@ class BuildTest(unittest.TestCase):
         self.assertIn("?v=" + bs.ASSET_V, self.files["index.html"])
 
     def test_sitemap_urls(self):
-        self.assertEqual(self.files["sitemap.xml"].count("<url>"), 12 * 4)
+        self.assertEqual(self.files["sitemap.xml"].count("<url>"), 12 * 6)
 
 
 if __name__ == "__main__":

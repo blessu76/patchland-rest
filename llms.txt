@@ -7,6 +7,7 @@ Patchland is an offline territory game by ipe() (https://ipe.rest/) for iOS and 
 ## Pages
 
 - [Home](https://patchland.ipe.rest/)
+- [Journal](https://patchland.ipe.rest/journal/): how the game is made
 - [Support](https://patchland.ipe.rest/support/)
 - [Privacy Policy](https://patchland.ipe.rest/privacy/)
 - [Terms of Use](https://patchland.ipe.rest/terms/)

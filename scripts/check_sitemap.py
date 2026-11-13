@@ -52,7 +52,7 @@ def check(root):
                 errs.append("hreflang not reciprocal: %s <-> %s" % (loc, href))
     langs = [bs.languages.from_legacy(p.stem) for p in (root / "content" / "i18n").glob("*.json")]
     for l in langs:
-        for pth in [bs.path_home(l)] + [bs.path_page(l, s) for s in bs.PAGE_SLUGS]:
+        for pth in [bs.path_home(l)] + [bs.path_page(l, s) for s in bs.PAGE_SLUGS + (bs.JOURNAL,)]:
             if bs.url(pth) not in urls:
                 errs.append("missing from sitemap: %s" % bs.url(pth))
     return errs, sorted(urls)

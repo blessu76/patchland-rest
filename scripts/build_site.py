@@ -4,6 +4,10 @@
   python3 scripts/build_site.py            # write the site into the repo root
   python3 scripts/build_site.py --check    # validate sources only
   python3 scripts/build_site.py --root DIR # build into DIR (a copy of the repo; used by check.sh)
+
+Journal articles: content/journal/YYYY-MM-DD-<slug>.md. Front matter: title, title_en, summary, summary_en,
+date (must equal the file name date). Body = Korean markdown, then a line "## EN", then the English markdown.
+Each article is built as /journal/<slug>/ (ko: /ko/journal/<slug>/); languages other than ko show the English text.
 """
 import argparse
 import datetime as dt
@@ -34,10 +38,11 @@ MOVED = {"pt": ("/pt-BR/", "This page has moved."), "zh": ("/", "This language i
          "ru": ("/", "This language is no longer supported.")}
 ORIGINALS = ("en", "ko")  # written by hand; the rest are AI translations
 PAGE_SLUGS = ("privacy", "support", "terms")
+JOURNAL = "journal"  # /journal/ is built from content/journal/*.md
 GAMES = ("trace", "spread", "place", "hockey", "daily")
 KEYS = (
     "nav_home nav_support nav_privacy nav_terms skip lang_label aria_main aria_footer status_badge ai_note ai_orig updated_label footer_line "
-    "home_title home_desc hero_h1 hero_p hero_note games_h games_p more_games feat_h feat1 feat2 feat3 feat4 feat5 feat6 cta_h cta_p nf_h nf_p"
+    "nav_journal journal_title journal_desc journal_en_note home_title home_desc hero_h1 hero_p hero_note games_h games_p more_games feat_h feat1 feat2 feat3 feat4 feat5 feat6 cta_h cta_p nf_h nf_p"
 ).split() + ["g_%s%s" % (g, s) for g in GAMES for s in ("", "_p")]
 FORBIDDEN = ("/Users/", "ipe-harness", "ipe-room", "claude.ai/", "AuthKey_", "api_key", "sk-ant", ".env", "[미정]")
 EMOJI = re.compile("[\U0001F000-\U0001FAFF☀-➿️‍]")
@@ -62,6 +67,18 @@ def path_home(lang):
 
 def path_page(lang, slug):
     return "%s/%s/" % (lp(lang), slug)
+
+
+def path_journal(lang):
+    return path_page(lang, JOURNAL)
+
+
+def path_article(lang, slug):
+    return path_page(lang, JOURNAL + "/" + slug)
+
+
+def jl(lang):
+    return "ko" if lang == "ko" else "en"
 
 
 def url(path):
@@ -174,6 +191,41 @@ class Ctx:
                     self.errs.append("pages/%s/%s.md: unknown placeholder" % (l, slug))
                 self.pages[(l, slug)] = (meta, body)
 
+        self.journal = self.load_journal()
+
+    def load_journal(self):
+        out, seen = [], set()
+        for f in sorted((self.root / "content" / JOURNAL).glob("*.md"), reverse=True):
+            where = "%s/%s" % (JOURNAL, f.name)
+            m = re.match(r"^(\d{4}-\d{2}-\d{2})-([a-z0-9-]+)\.md$", f.name)
+            if not m:
+                self.errs.append("%s: name must be YYYY-MM-DD-slug.md" % where)
+                continue
+            text = f.read_text(encoding="utf-8")
+            try:
+                meta, body = parse_front(text)
+            except ValueError as ex:
+                self.errs.append("%s: %s" % (where, ex))
+                continue
+            for k in ("title", "title_en", "summary", "summary_en", "date"):
+                if not meta.get(k):
+                    self.errs.append("%s: front matter %s" % (where, k))
+            if meta.get("date") != m.group(1):
+                self.errs.append("%s: date must equal the file name date" % where)
+            if m.group(2) in seen:
+                self.errs.append("%s: slug already used" % where)
+            seen.add(m.group(2))
+            parts = re.split(r"^## EN[ \t]*$", body, flags=re.M)
+            if len(parts) != 2 or not parts[0].strip() or not parts[1].strip():
+                self.errs.append("%s: body needs Korean text, then a '## EN' line, then English text" % where)
+                continue
+            self.errs += problems(where, text)
+            out.append({"slug": m.group(2), "date": meta.get("date", ""),
+                        "title": {"ko": meta.get("title", ""), "en": meta.get("title_en", "")},
+                        "summary": {"ko": meta.get("summary", ""), "en": meta.get("summary_en", "")},
+                        "body": {"ko": parts[0].strip("\n"), "en": parts[1].strip("\n")}})
+        return out
+
     @staticmethod
     def sub_missing(body):
         return [p for p in re.findall(r"\{\{(\w+)\}\}", body) if p not in ("OPERATOR", "EMAIL", "EFFECTIVE", "SITE")]
@@ -215,14 +267,15 @@ def render(ctx, lang, *, path, title, desc, body, alt, updated, nav="", noindex=
     switch = "".join('<a href="%s" hreflang="%s" lang="%s"%s aria-label="%s">%s</a>' % (
         esc(user_href(l, alt.get(l) or path_home(l), lang)), l, l, ' aria-current="true"' if l == lang else "", esc(languages.NAMES[l]), l.split("-")[0].upper())
         for l in ctx.langs)
-    navs = [(path_home(lang), t("nav_home"), "home"), (path_page(lang, "support"), t("nav_support"), "support")]
+    navs = [(path_home(lang), t("nav_home"), "home"), (path_journal(lang), t("nav_journal"), JOURNAL),
+            (path_page(lang, "support"), t("nav_support"), "support")]
     nav_html = "".join('<a href="%s"%s>%s</a>' % (esc(h), ' aria-current="page"' if nav == k else "", esc(label)) for h, label, k in navs)
     logo = ('<i aria-hidden="true">%s</i>' % "".join('<b style="background:%s"></b>' % c for c in PAPER[:4]))
     header = ('<header class="site-header"><div class="wrap bar"><a class="brand" href="%s" aria-label="Patchland">%s<span>Patchland</span></a>'
               '<nav class="nav" aria-label="%s">%s</nav></div><div class="wrap"><div class="langsw" role="group" aria-label="%s">%s</div></div></header>') % (
         esc(path_home(lang)), logo, esc(t("aria_main")), nav_html, esc(t("lang_label")), switch)
     foot_links = "".join('<a href="%s">%s</a>' % (esc(h), esc(l)) for h, l in
-                         [(path_page(lang, "support"), t("nav_support")), (path_page(lang, "privacy"), t("nav_privacy")), (path_page(lang, "terms"), t("nav_terms"))])
+                         [(path_journal(lang), t("nav_journal")), (path_page(lang, "support"), t("nav_support")), (path_page(lang, "privacy"), t("nav_privacy")), (path_page(lang, "terms"), t("nav_terms"))])
     foot_langs = " ".join('<a href="%s" hreflang="%s" lang="%s"%s>%s</a>' % (
         esc(user_href(l, alt.get(l) or path_home(l), lang)), l, l, ' aria-current="true"' if l == lang else "", esc(languages.NAMES[l])) for l in ctx.langs)
     footer = ('<footer class="site-footer"><div class="wrap"><p>%s <a href="https://ipe.rest/">ipe.rest</a></p><p class="foot-links">%s</p>'
@@ -263,6 +316,33 @@ def build_page(ctx, lang, slug):
                   updated=meta["updated"], nav=slug, ai=lang not in ORIGINALS)
 
 
+def lastmod_journal(ctx):
+    return max([a["date"] for a in ctx.journal] + [SITE_UPDATED])
+
+
+def build_journal_index(ctx, lang):
+    t = lambda k: ctx.t(lang, k)  # noqa: E731
+    cards = "".join(
+        '<article class="card"><p class="meta"><time datetime="%s">%s</time></p><h2><a href="%s">%s</a></h2><p>%s</p></article>' % (
+            esc(a["date"]), esc(a["date"]), esc(path_article(lang, a["slug"])), esc(a["title"][jl(lang)]), esc(a["summary"][jl(lang)]))
+        for a in ctx.journal)
+    body = '<h1>%s</h1><p class="lead">%s</p><div class="releases">%s</div>' % (esc(t("journal_title")), esc(t("journal_desc")), cards)
+    alt = {l: path_journal(l) for l in ctx.langs}
+    return render(ctx, lang, path=path_journal(lang), title="%s — Patchland" % t("journal_title"), desc=t("journal_desc"), body=body, alt=alt,
+                  updated=lastmod_journal(ctx), nav=JOURNAL)
+
+
+def build_article(ctx, lang, a):
+    t = lambda k: ctx.t(lang, k)  # noqa: E731
+    title = a["title"][jl(lang)]
+    note = "" if lang in ORIGINALS else '<p class="ai-note">%s</p>' % esc(t("journal_en_note"))
+    body = '%s<p class="meta"><time datetime="%s">%s</time></p><h1>%s</h1>\n%s' % (
+        note, esc(a["date"]), esc(a["date"]), esc(title), markdown(ctx.sub(a["body"][jl(lang)])))
+    alt = {l: path_article(l, a["slug"]) for l in ctx.langs}
+    return render(ctx, lang, path=path_article(lang, a["slug"]), title="%s — Patchland" % title, desc=a["summary"][jl(lang)], body=body, alt=alt,
+                  updated="", nav=JOURNAL)
+
+
 def build_404(ctx):
     t = lambda k: ctx.t("en", k)  # noqa: E731
     body = '<h1>404</h1><p class="lead">%s</p><p><a class="btn" href="/">%s</a></p>' % (esc(t("nf_p")), esc(t("nav_home")))
@@ -276,6 +356,11 @@ def sitemap(ctx):
     for slug in PAGE_SLUGS:
         for l in ctx.langs:
             ents.append((path_page(l, slug), ctx.pages[(l, slug)][0]["updated"], {x: path_page(x, slug) for x in ctx.langs}))
+    for l in ctx.langs:
+        ents.append((path_journal(l), lastmod_journal(ctx), {x: path_journal(x) for x in ctx.langs}))
+    for a in ctx.journal:
+        for l in ctx.langs:
+            ents.append((path_article(l, a["slug"]), a["date"], {x: path_article(x, a["slug"]) for x in ctx.langs}))
     for pth, lm, alts in ents:
         rows.append("<url><loc>%s</loc><lastmod>%s</lastmod>" % (esc(url(pth)), lm))
         for l, ap in alts.items():
@@ -295,7 +380,7 @@ def llms(ctx):
         "# Patchland: Claim It All", "", "> %s" % en["home_desc"], "",
         "Patchland is an offline territory game by ipe() (https://ipe.rest/) for iOS and Android. It has NOT been released: no store page, price or release date exists yet. "
         "The game app and this website collect no personal information, use no analytics or ads and set no cookies.", "",
-        "## Pages", "", "- [Home](%s/)" % SITE, "- [Support](%s/support/)" % SITE, "- [Privacy Policy](%s/privacy/)" % SITE, "- [Terms of Use](%s/terms/)" % SITE, "",
+        "## Pages", "", "- [Home](%s/)" % SITE, "- [Journal](%s/journal/): how the game is made" % SITE, "- [Support](%s/support/)" % SITE, "- [Privacy Policy](%s/privacy/)" % SITE, "- [Terms of Use](%s/terms/)" % SITE, "",
         "## Languages", "", "English (original) and Korean (original); %s are AI translations under /<code>/." % ", ".join(
             l for l in ctx.langs if l not in ORIGINALS), ""])
 
@@ -306,6 +391,9 @@ def build_all(ctx):
         files[path_home(l).strip("/") + "/index.html" if l != "en" else "index.html"] = build_home(ctx, l)
         for slug in PAGE_SLUGS:
             files[path_page(l, slug).strip("/") + "/index.html"] = build_page(ctx, l, slug)
+        files[path_journal(l).strip("/") + "/index.html"] = build_journal_index(ctx, l)
+        for a in ctx.journal:
+            files[path_article(l, a["slug"]).strip("/") + "/index.html"] = build_article(ctx, l, a)
     for old, (to, note) in MOVED.items():
         for tail in ("", "privacy/", "support/", "terms/"):
             dest = to + tail if old == "pt" else to
@@ -313,12 +401,12 @@ def build_all(ctx):
     for f, text in files.items():
         if f.endswith(".html") and "<!--LANGPICK-->" in text:
             slug = "" if f == "index.html" else f[: -len("index.html")].strip("/")
-            avail = [l for l in ctx.langs if slug == "" or slug in PAGE_SLUGS]
+            avail = [l for l in ctx.langs if slug == "" or slug in PAGE_SLUGS or slug == JOURNAL or slug.startswith(JOURNAL + "/")]
             files[f] = text.replace("<!--LANGPICK-->", langpick_script(ctx, avail))
     return files
 
 
-GEN_DIRS = ["privacy", "support", "terms"] + [l for l in languages.SUPPORTED if l != "en"] + list(MOVED)
+GEN_DIRS = ["privacy", "support", "terms", JOURNAL] + [l for l in languages.SUPPORTED if l != "en"] + list(MOVED)
 
 
 def moved_stub(old, to, note):
