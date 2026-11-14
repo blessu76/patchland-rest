@@ -1,7 +1,7 @@
 ---
 title: Gleiche Regeln, andere Spielfelder
 summary: Bei gleichen Regeln konnte das Startfeld die ganze Runde entscheiden. Deshalb binden wir Schwierigkeit und Zielwerte nicht mehr an eine einzige Zahl.
-date: TBD
+date: 2026-11-14
 copy_review: iris 2026-11-14
 ---
 ## Gleiche Regeln, andere Spielfelder

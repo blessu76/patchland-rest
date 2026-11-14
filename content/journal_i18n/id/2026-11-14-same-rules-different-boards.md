@@ -1,7 +1,7 @@
 ---
 title: Aturan sama, papan berbeda
 summary: Dengan aturan yang sama, papan awal bisa menentukan seluruh ronde. Karena itu kami berhenti mengikat tingkat kesulitan dan target pada satu angka.
-date: TBD
+date: 2026-11-14
 copy_review: iris 2026-11-14
 ---
 ## Aturan sama, papan berbeda

@@ -174,7 +174,7 @@ class BuildTest(unittest.TestCase):
         self.assertEqual(redirects.sitemap_leaks(self.files["sitemap.xml"]), [])
 
     def test_sitemap_urls(self):
-        self.assertEqual(self.files["sitemap.xml"].count("<url>"), 12 * 6)
+        self.assertEqual(self.files["sitemap.xml"].count("<url>"), 12 * 7)
 
     def test_redirect_pages_are_generated_for_retired_langs(self):
         for lang in redirects.LEGACY_REDIRECTS:

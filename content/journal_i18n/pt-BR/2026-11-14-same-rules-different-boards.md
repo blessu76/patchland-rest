@@ -1,7 +1,7 @@
 ---
 title: Mesmas regras, tabuleiros diferentes
 summary: Com as mesmas regras, o tabuleiro inicial podia decidir a partida inteira. Por isso, deixamos de amarrar dificuldade e metas a um único número.
-date: TBD
+date: 2026-11-14
 copy_review: iris 2026-11-14
 ---
 ## Mesmas regras, tabuleiros diferentes

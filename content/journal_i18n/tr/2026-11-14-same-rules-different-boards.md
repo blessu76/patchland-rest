@@ -1,7 +1,7 @@
 ---
 title: Aynı kurallar, farklı tahtalar
 summary: Kurallar aynı olsa bile başlangıç tahtası farklıysa turun sonucu çok değişiyordu. Bu yüzden zorluğu ve hedef değerleri tek bir sayıya bağlamamaya karar verdik.
-date: TBD
+date: 2026-11-14
 copy_review: iris 2026-11-14
 ---
 ## Aynı kurallar, farklı tahtalar
