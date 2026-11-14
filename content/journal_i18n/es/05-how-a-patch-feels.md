@@ -2,10 +2,11 @@
 title: Cómo se siente un retazo cuando cae
 summary: Estamos pensando en el sonido y la textura de un retazo de papel al posarse. La idea es dar a cada una de las tres acciones, trazar, colocar y extender, su propia sensación.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## ¿A qué suena el papel?
 
-Patchland nació de la idea de los retazos de papel. Entonces, ¿qué debería sentirse cuando un retazo cae en su sitio? Lo primero que imaginamos fue el sonido ligero y seco de un papel apoyado sobre una mesa. No fuerte, y que no se queda resonando. Todavía no hay nada decidido; estamos probando en esta dirección.
+Patchland nació de la idea de los retazos de papel. Entonces, ¿qué debería sentirse cuando un retazo cae en su sitio? Lo primero que imaginamos fue el sonido ligero y seco de un papel apoyado sobre una mesa. Ni fuerte ni persistente. Todavía no hay nada decidido; estamos probando en esta dirección.
 
 ## Una sensación distinta para cada acción
 

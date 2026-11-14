@@ -2,6 +2,7 @@
 title: Cảm giác khi một mảnh giấy được đặt xuống
 summary: Chúng tôi đang suy nghĩ về âm thanh và chất liệu khi một mảnh giấy màu được đặt xuống. Hướng đi là cho mỗi hành động trong ba hành động, kẻ, đặt và lan, một cảm giác riêng.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Giấy sẽ có âm thanh thế nào?
 

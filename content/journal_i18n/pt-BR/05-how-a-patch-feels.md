@@ -2,10 +2,11 @@
 title: Como é a sensação quando um retalho pousa
 summary: Estamos pensando no som e na textura de um retalho de papel ao pousar. A ideia é dar a cada uma das três ações, traçar, posicionar e espalhar, uma sensação própria.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Como soa o papel?
 
-Patchland nasceu da ideia de retalhos de papel. Então, como deveria ser a sensação quando um retalho pousa? A primeira coisa que imaginamos foi o som leve e seco de um papel apoiado sobre a mesa. Nada alto, e que não fica ecoando. Ainda não há nada decidido; estamos testando nessa direção.
+Patchland nasceu da ideia de retalhos de papel. Então, como deveria ser a sensação quando um retalho pousa? A primeira coisa que imaginamos foi o som leve e seco de um papel apoiado sobre a mesa. Nada alto, e sem ficar ecoando. Ainda não há nada decidido; estamos testando nessa direção.
 
 ## Uma sensação diferente para cada ação
 

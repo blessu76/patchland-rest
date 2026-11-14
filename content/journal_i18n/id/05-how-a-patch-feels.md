@@ -2,6 +2,7 @@
 title: Seperti Apa Rasanya Saat Sepotong Kertas Mendarat
 summary: Kami sedang memikirkan suara dan tekstur saat potongan kertas mendarat. Arahnya: setiap dari tiga aksi, menarik garis, menempatkan, dan menyebar, diberi rasa yang berbeda.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Seperti apa suara kertas?
 
