@@ -17,6 +17,19 @@ class BuildTest(unittest.TestCase):
     def test_sources_valid(self):
         self.assertEqual(self.ctx.errs, [])
 
+    def test_journal_requires_copy_review(self):
+        import tempfile
+        root = Path(tempfile.mkdtemp())
+        (root / "content" / "journal").mkdir(parents=True)
+        base = "---\ntitle: a\ntitle_en: a\nsummary: s\nsummary_en: s\ndate: 2026-11-14\n%s---\nk\n\n## EN\n\ne\n"
+        (root / "content" / "journal" / "2026-11-14-x.md").write_text(base % "")
+        self.assertTrue(any("copy_review" in e for e in bs.Ctx(str(root)).errs))
+        for bad in ("copy_review: iris 2026-1-14\n", "copy_review: Iris 2026-11-14\n", "copy_review: iris\n"):
+            (root / "content" / "journal" / "2026-11-14-x.md").write_text(base % bad)
+            self.assertTrue(any("copy_review" in e for e in bs.Ctx(str(root)).errs), bad)
+        (root / "content" / "journal" / "2026-11-14-x.md").write_text(base % "copy_review: iris 2026-11-14\n")
+        self.assertEqual(bs.Ctx(str(root)).errs, [])
+
     def test_all_languages(self):
         self.assertEqual(sorted(self.ctx.langs), sorted(bs.languages.SUPPORTED))
         self.assertEqual(len(bs.languages.SUPPORTED), 12)

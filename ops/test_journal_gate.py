@@ -70,6 +70,37 @@ class Publish(unittest.TestCase):
         self.assertEqual(j.set_date("---\ntitle: a\n---\nb", "D"), "---\ntitle: a\ndate: D\n---\nb")
         self.assertTrue(j.set_date("plain", "D").startswith("---\ndate: D\n---\n"))
         self.assertEqual(j.slugify("03-Why_Mint & Sky.md"), "why-mint-sky")
+        self.assertEqual(j.set_date("---\ncopy_review: iris 2026-11-14\ndate: x\n---\nb", "D"), "---\ncopy_review: iris 2026-11-14\ndate: D\n---\nb")
+
+    def test_copy_review_format(self):
+        import journal_publish as j
+        ok = "---\ntitle: a\ncopy_review: iris 2026-11-14\n---\nb"
+        self.assertTrue(j.copy_reviewed(ok))
+        self.assertTrue(j.copy_reviewed('---\ncopy_review: "iris 2026-11-14"\n---\nb'))
+        for bad in ("copy_review: iris 2026-1-14", "copy_review: Iris 2026-11-14", "copy_review: iris", "copy_review: iris 2026-11-14 x",
+                    "copy_review: 2026-11-14", "title: a"):
+            self.assertFalse(j.copy_reviewed("---\n%s\n---\nb" % bad), bad)
+        self.assertFalse(j.copy_reviewed("no front matter, copy_review: iris 2026-11-14"))
+
+    def test_queued_skips_unreviewed_and_keeps_order(self):
+        import journal_publish as j
+        from unittest import mock
+        q = Path(tempfile.mkdtemp())
+        (q / "00-draft.md").write_text("---\ntitle: a\n---\nb")
+        (q / "01-ok.md").write_text("---\ncopy_review: iris 2026-11-14\n---\nb")
+        (q / "02-ok.md").write_text("---\ncopy_review: iris 2026-11-15\n---\nb")
+        j.QUEUE = q
+        with mock.patch.object(j, "log") as log:
+            self.assertEqual([p.name for p in j.queued()], ["01-ok.md", "02-ok.md"])
+        log.assert_called_once_with("SKIP unreviewed: 00-draft.md")
+
+    def test_all_unreviewed_alerts(self):
+        import journal_publish as j
+        q = Path(tempfile.mkdtemp())
+        (q / "00-draft.md").write_text("---\ntitle: a\n---\nb")
+        j.QUEUE = q
+        self.assertEqual(j.main(), 1)
+        self.assertIn("no copy-reviewed post in queue", (q / "ALERT").read_text())
 
 
 class PublishFlow(unittest.TestCase):
@@ -99,17 +130,20 @@ class PublishFlow(unittest.TestCase):
             self.sh(seed, "git", *c)
         q = t / "queue"
         q.mkdir()
-        (q / "01-hello-world.md").write_text("---\ntitle: Hi\n---\nbody\n")
+        (q / "00-draft.md").write_text("---\ntitle: Draft\n---\nbody\n")
+        (q / "01-hello-world.md").write_text("---\ntitle: Hi\ncopy_review: iris 2026-11-14\n---\nbody\n")
         j.QUEUE, j.CLONE, j.REMOTE = q, t / "clone", str(origin)
         self.assertEqual(j.main(), 0)
         changed = self.sh(origin, "git", "show", "--name-only", "--format=%s", "main").split("\n")
         self.assertEqual(changed[0].strip(), "journal: hello-world")
         slug = [f for f in changed if f.startswith("content/journal/")][0]
         self.assertTrue(slug.endswith("-hello-world.md"))
+        self.assertIn("copy_review: iris 2026-11-14", self.sh(origin, "git", "show", "main:" + slug))
         self.assertIn("sitemap.xml", changed)
         self.assertIn("journal/feed.xml", changed)
         self.assertFalse((q / "01-hello-world.md").exists())
-        self.assertTrue((q / "ALERT").exists())  # 0 left <= 2
+        self.assertTrue((q / "00-draft.md").exists())
+        self.assertTrue((q / "ALERT").exists())  # 0 reviewed left <= 2
 
 
 if __name__ == "__main__":

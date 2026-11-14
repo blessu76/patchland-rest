@@ -4,6 +4,7 @@ title_en: Territory on Paper Scraps
 summary: 패치랜드는 색종이 조각이라는 생각에서 출발했습니다. 많은 프로토타입 끝에 남은 것은 긋기, 놓기, 번지기 세 가지 동사였습니다.
 summary_en: Patchland began with the idea of paper scraps. After many prototypes, three verbs remained: draw, place and spread.
 date: 2026-11-13
+copy_review: iris 2026-11-14
 ---
 ## 왜 종이인가
 

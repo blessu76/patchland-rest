@@ -6,7 +6,7 @@
   python3 scripts/build_site.py --root DIR # build into DIR (a copy of the repo; used by check.sh)
 
 Journal articles: content/journal/YYYY-MM-DD-<slug>.md. Front matter: title, title_en, summary, summary_en,
-date (must equal the file name date). Body = Korean markdown, then a line "## EN", then the English markdown.
+date (must equal the file name date), copy_review (`iris YYYY-MM-DD`, set after Iris's copy review). Body = Korean markdown, then a line "## EN", then the English markdown.
 Each article is built as /journal/<slug>/ (ko: /ko/journal/<slug>/); languages other than ko show the English text.
 """
 import argparse
@@ -52,6 +52,7 @@ PAPER = ["#C8553D", "#3E63A8", "#D19A1E", "#3D8A62", "#7A5BB5", "#2A7F86", "#A86
          "#3D8A62", "#F0D9D2", "#D5DEEB", "#CFE3E1"]
 LANG_SELECT_JS = ("(function(){var w=document.querySelector('.lang-pick'),s=document.getElementById('langsel');if(!w||!s)return;"
                   "w.hidden=false;s.addEventListener('change',function(){if(s.value)location.href=s.value})})();")
+COPY_REVIEW = re.compile(r"^iris \d{4}-\d{2}-\d{2}$")
 GAME_COLORS = {"trace": "#C8553D", "spread": "#D19A1E", "place": "#3D8A62", "hockey": "#4A4642", "daily": "#A8664A"}
 
 
@@ -212,6 +213,8 @@ class Ctx:
             for k in ("title", "title_en", "summary", "summary_en", "date"):
                 if not meta.get(k):
                     self.errs.append("%s: front matter %s" % (where, k))
+            if not COPY_REVIEW.match(meta.get("copy_review", "")):
+                self.errs.append("%s: front matter copy_review: iris YYYY-MM-DD (Iris copy review required)" % where)
             if meta.get("date") != m.group(1):
                 self.errs.append("%s: date must equal the file name date" % where)
             if m.group(2) in seen:

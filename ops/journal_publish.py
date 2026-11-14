@@ -1,11 +1,12 @@
 #!/usr/bin/env python3
-"""Publish the first queued journal post: ~/.ipe/queue/patchland/*.md (filename order).
+"""Publish the first copy-reviewed journal post: ~/.ipe/queue/patchland/*.md (filename order).
 
+Only posts whose front matter has `copy_review: iris YYYY-MM-DD` are published; others are logged as SKIP.
 Moves it to content/journal/YYYY-MM-DD-<slug>.md in the publish clone with front matter `date:` set to
 today (KST), builds, runs scripts/check.sh, then commit "journal: <slug>" -> pull --rebase -> push.
 Clone: ~/ipe/patchland-publish (cloned from origin if missing; dirty tree -> SKIP, exit 1).
 Kit: vendor/ipe_web_kit is synced into the clone from $IPE_WEB_KIT (default ~/Developer/ipe_web_kit) when missing/stale.
-Empty queue -> log + ALERT file, exit 1. Queue <= 2 posts after publishing -> ALERT file too.
+No copy-reviewed post -> log + ALERT file, exit 1. <= 2 reviewed posts after publishing -> ALERT file too.
 """
 import os, re, subprocess, sys
 from datetime import datetime, timedelta, timezone
@@ -17,14 +18,27 @@ CLONE = Path(os.environ.get("PATCHLAND_CLONE", Path.home() / "ipe/patchland-publ
 REMOTE = os.environ.get("PATCHLAND_REMOTE", "https://github.com/blessu76/patchland-rest.git")
 KIT = os.environ.get("IPE_WEB_KIT", str(Path.home() / "Developer/ipe_web_kit"))  # private kit clone (vendor/ipe_web_kit is gitignored)
 LOW_WATER = 2
+COPY_REVIEW = re.compile(r"^iris \d{4}-\d{2}-\d{2}$")
 
 
 def log(msg):
     print(datetime.now(KST).strftime("%F %T KST"), msg, flush=True)
 
 
+def copy_reviewed(text):
+    m = re.match(r"---\n(.*?)\n---\n", text, re.S)
+    v = re.search(r"^copy_review:(.*)$", m.group(1), re.M) if m else None
+    return bool(v) and COPY_REVIEW.match(v.group(1).strip().strip("\"'")) is not None
+
+
 def queued():
-    return sorted(p for p in QUEUE.glob("*.md") if p.is_file())
+    out = []
+    for p in sorted(p for p in QUEUE.glob("*.md") if p.is_file()):
+        if copy_reviewed(p.read_text()):
+            out.append(p)
+        else:
+            log("SKIP unreviewed: %s" % p.name)
+    return out
 
 
 def alert(msg):
@@ -71,7 +85,7 @@ def ensure_kit():
 def main():
     posts = queued()
     if not posts:
-        alert("queue is empty — nothing to publish")
+        alert("no copy-reviewed post in queue")
         return 1
     if not (CLONE / ".git").is_dir():
         CLONE.parent.mkdir(parents=True, exist_ok=True)
