@@ -5,9 +5,11 @@
   python3 scripts/build_site.py --check    # validate sources only
   python3 scripts/build_site.py --root DIR # build into DIR (a copy of the repo; used by check.sh)
 
-Journal articles: content/journal/YYYY-MM-DD-<slug>.md. Front matter: title, title_en, summary, summary_en,
+Journal articles: content/journal/YYYY-MM-DD-<slug>.md (ko + en). Front matter: title, title_en, summary, summary_en,
 date (must equal the file name date), copy_review (`iris YYYY-MM-DD`, set after Iris's copy review). Body = Korean markdown, then a line "## EN", then the English markdown.
-Each article is built as /journal/<slug>/ (ko: /ko/journal/<slug>/); languages other than ko show the English text.
+Translations: content/journal_i18n/<lang>/YYYY-MM-DD-<slug>.md (same file name as its ko/en source). Front matter: title, summary,
+date, copy_review. A translation without copy_review, or without a source post, is left out of the build with a warning.
+Each article is built as /journal/<slug>/ (ko: /ko/journal/<slug>/). Retired languages (pt, zh, ru, ar, hi) redirect via ipe_web_kit.redirects.
 """
 import argparse
 import datetime as dt
@@ -20,10 +22,10 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(HERE / "vendor"))
-from ipe_web_kit import languages, seo  # noqa: E402
+from ipe_web_kit import journal, languages, langswitch, redirects, seo  # noqa: E402
 
 SITE = "https://patchland.ipe.rest"
-ASSET_V = "20261114b"  # bump when assets/patchland.css or langpick.js change
+ASSET_V = "20261114c"  # bump when assets/patchland.css changes
 SITE_UPDATED = "2026-11-05"  # "Last updated" of home / 404 and sitemap lastmod: bump by hand when their text changes
 OPERATOR = "Davy Kim (ipe Studio)"
 EMAIL = "ipe.haven@gmail.com"
@@ -33,12 +35,12 @@ ORG = {"@type": "Organization", "@id": "https://ipe.rest/#organization", "name":
 
 OG_LOCALE = {"en": "en_US", "ko": "ko_KR", "ja": "ja_JP", "zh-Hant": "zh_TW", "es": "es_ES", "pt-BR": "pt_BR", "fr": "fr_FR", "de": "de_DE",
              "id": "id_ID", "th": "th_TH", "vi": "vi_VN", "tr": "tr_TR"}
-# 옛 경로 → (이동할 곳, 안내 문구). pt 는 pt-BR 로, 지원 종료(zh·ru)는 영어 첫 화면으로. 정적 호스팅이라 자동 이동은 meta refresh.
-MOVED = {"pt": ("/pt-BR/", "This page has moved."), "zh": ("/", "This language is no longer supported."),
-         "ru": ("/", "This language is no longer supported.")}
 ORIGINALS = ("en", "ko")  # written by hand; the rest are AI translations
+TRANSLATIONS = [l for l in languages.SUPPORTED if l not in ORIGINALS]
 PAGE_SLUGS = ("privacy", "support", "terms")
-JOURNAL = "journal"  # /journal/ is built from content/journal/*.md
+JOURNAL = "journal"  # /journal/ is built from content/journal/*.md (ko, en) and content/journal_i18n/<lang>/*.md
+JOURNAL_I18N = "journal_i18n"
+JS_URL = "/assets/" + langswitch.JS.name + "?v=" + langswitch.asset_version()
 GAMES = ("trace", "spread", "place", "hockey", "daily")
 KEYS = (
     "nav_home nav_support nav_privacy nav_terms skip lang_label aria_main aria_footer status_badge ai_note ai_orig updated_label footer_line "
@@ -50,8 +52,6 @@ EMOJI = re.compile("[\U0001F000-\U0001FAFF☀-➿️‍]")
 PRICE = re.compile(r"\$\s?\d|\d\s?(?:USD|달러|원\b)|★", re.I)
 PAPER = ["#C8553D", "#3E63A8", "#D19A1E", "#3D8A62", "#7A5BB5", "#2A7F86", "#A8664A", "#8FA66A", "#E9DCC0", "#C8553D", "#3E63A8", "#D19A1E",
          "#3D8A62", "#F0D9D2", "#D5DEEB", "#CFE3E1"]
-LANG_SELECT_JS = ("(function(){var w=document.querySelector('.lang-pick'),s=document.getElementById('langsel');if(!w||!s)return;"
-                  "w.hidden=false;s.addEventListener('change',function(){var o=s.options[s.selectedIndex];try{localStorage.setItem('ipe_lang',o.getAttribute('data-lang'))}catch(e){}if(s.value)location.href=s.value})})();")
 COPY_REVIEW = re.compile(r"^iris \d{4}-\d{2}-\d{2}$")
 GAME_COLORS = {"trace": "#C8553D", "spread": "#D19A1E", "place": "#3D8A62", "hockey": "#4A4642", "daily": "#A8664A"}
 
@@ -80,16 +80,8 @@ def path_article(lang, slug):
     return path_page(lang, JOURNAL + "/" + slug)
 
 
-def jl(lang):
-    return "ko" if lang == "ko" else "en"
-
-
 def url(path):
     return SITE + path
-
-
-def user_href(target, path, cur):
-    return path + "?lang=en" if target == "en" and cur != "en" else path
 
 
 def parse_front(text):
@@ -156,7 +148,7 @@ def problems(where, text):
 class Ctx:
     def __init__(self, root):
         self.root = Path(root)
-        self.errs = []
+        self.errs, self.warnings = [], []
         self.i18n, self.pages = {}, {}
         for f in sorted((self.root / "content" / "i18n").glob("*.json")):
             tag = languages.from_legacy(f.stem)
@@ -197,7 +189,7 @@ class Ctx:
         self.journal = self.load_journal()
 
     def load_journal(self):
-        out, seen = [], set()
+        out, by_name, seen = [], {}, set()
         for f in sorted((self.root / "content" / JOURNAL).glob("*.md"), reverse=True):
             where = "%s/%s" % (JOURNAL, f.name)
             m = re.match(r"^(\d{4}-\d{2}-\d{2})-([a-z0-9-]+)\.md$", f.name)
@@ -225,10 +217,39 @@ class Ctx:
                 self.errs.append("%s: body needs Korean text, then a '## EN' line, then English text" % where)
                 continue
             self.errs += problems(where, text)
-            out.append({"slug": m.group(2), "date": meta.get("date", ""),
-                        "title": {"ko": meta.get("title", ""), "en": meta.get("title_en", "")},
-                        "summary": {"ko": meta.get("summary", ""), "en": meta.get("summary_en", "")},
-                        "body": {"ko": parts[0].strip("\n"), "en": parts[1].strip("\n")}})
+            post = {"slug": m.group(2), "date": meta.get("date", ""), "name": f.name,
+                    "title": {"ko": meta.get("title", ""), "en": meta.get("title_en", "")},
+                    "summary": {"ko": meta.get("summary", ""), "en": meta.get("summary_en", "")},
+                    "body": {"ko": parts[0].strip("\n"), "en": parts[1].strip("\n")}}
+            out.append(post)
+            by_name[f.name] = post
+        for lang in TRANSLATIONS:
+            for f in sorted((self.root / "content" / JOURNAL_I18N / lang).glob("*.md"), reverse=True):
+                where = "%s/%s/%s" % (JOURNAL_I18N, lang, f.name)
+                post = by_name.get(f.name)
+                if post is None:
+                    self.warnings.append("%s: no ko/en source post content/%s/%s — left out of the build" % (where, JOURNAL, f.name))
+                    continue
+                text = f.read_text(encoding="utf-8")
+                try:
+                    meta, body = parse_front(text)
+                except ValueError as ex:
+                    self.errs.append("%s: %s" % (where, ex))
+                    continue
+                if not COPY_REVIEW.match(meta.get("copy_review", "")):
+                    self.warnings.append("%s: copy_review missing or malformed — left out of the build (Iris copy review required)" % where)
+                    continue
+                for k in ("title", "summary"):
+                    if not meta.get(k):
+                        self.errs.append("%s: front matter %s" % (where, k))
+                if meta.get("date") != post["date"]:
+                    self.errs.append("%s: date must equal the source post date %s" % (where, post["date"]))
+                if not body.strip():
+                    self.errs.append("%s: empty body" % where)
+                self.errs += problems(where, text)
+                post["title"][lang] = meta.get("title", "")
+                post["summary"][lang] = meta.get("summary", "")
+                post["body"][lang] = body.strip("\n")
         return out
 
     @staticmethod
@@ -242,14 +263,7 @@ class Ctx:
         return text.replace("{{OPERATOR}}", OPERATOR).replace("{{EMAIL}}", EMAIL).replace("{{EFFECTIVE}}", EFFECTIVE).replace("{{SITE}}", SITE)
 
 
-def langpick_script(ctx, available):
-    src = (ctx.root / "assets" / "langpick.js").read_text(encoding="utf-8")
-    src = re.sub(r"/\*.*?\*/", "", src, count=1, flags=re.S)
-    src = src.replace("/*SUPPORTED*/[]", json.dumps(ctx.langs)).replace("/*AVAILABLE*/[]", json.dumps([l for l in available if l != "en"]))
-    return "<script>%s</script>" % re.sub(r"\s*\n\s*", "", src).strip()
-
-
-def render(ctx, lang, *, path, title, desc, body, alt, updated, nav="", noindex=False, ai=False):
+def render(ctx, lang, *, path, title, desc, body, alt, updated, nav="", noindex=False, ai=False, extra_ld=None, end_script=""):
     t = lambda k: ctx.t(lang, k)  # noqa: E731
     og_loc = OG_LOCALE[lang]
     head = ['<meta charset="utf-8">', '<meta name="viewport" content="width=device-width,initial-scale=1">',
@@ -264,22 +278,18 @@ def render(ctx, lang, *, path, title, desc, body, alt, updated, nav="", noindex=
     head += ['<meta name="color-scheme" content="light dark">', '<meta name="theme-color" content="#F6F1E7">',
              '<link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">',
              '<link rel="stylesheet" href="/assets/patchland.css?v=%s">' % ASSET_V]
-    if lang == "en" and not noindex:
-        head.append("<!--LANGPICK-->")
-    ld = {"@context": "https://schema.org", "@graph": [ORG, {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "Patchland",
-                                                              "inLanguage": lang, "publisher": {"@id": ORG["@id"]}}]}
+    graph = [ORG, {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "Patchland",
+                   "inLanguage": languages.hreflang(lang), "publisher": {"@id": ORG["@id"]}}]
+    ld = {"@context": "https://schema.org", "@graph": graph + ([extra_ld] if extra_ld else [])}
     head.append('<script type="application/ld+json">%s</script>' % json.dumps(ld, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"))
-    lang_options = "".join('<option value="%s" data-lang="%s"%s>%s</option>' % (
-        esc(user_href(l, alt.get(l) or path_home(l), lang)), l, " selected" if l == lang else "", esc(languages.NAMES[l])) for l in ctx.langs)
     navs = [(path_home(lang), t("nav_home"), "home"), (path_journal(lang), t("nav_journal"), JOURNAL),
             (path_page(lang, "support"), t("nav_support"), "support")]
     nav_html = "".join('<a href="%s"%s>%s</a>' % (esc(h), ' aria-current="page"' if nav == k else "", esc(label)) for h, label, k in navs)
     logo = ('<i aria-hidden="true">%s</i>' % "".join('<b style="background:%s"></b>' % c for c in PAPER[:4]))
-    lang_pick = ('<div class="lang-pick" hidden>'
-                 '<select id="langsel" class="lang-select" aria-label="%s">%s</select></div><script>%s</script>') % (esc(t("lang_label")), lang_options, LANG_SELECT_JS)
+    lang_sel = langswitch.select_html(lang, lambda l: alt.get(l) or path_home(l), langs=ctx.langs)
     header = ('<header class="site-header"><div class="wrap bar"><a class="brand" href="%s" aria-label="Patchland">%s<span>Patchland</span></a>'
               '<div class="bar-end"><nav class="nav" aria-label="%s">%s</nav>%s</div></div></header>') % (
-        esc(path_home(lang)), logo, esc(t("aria_main")), nav_html, lang_pick)
+        esc(path_home(lang)), logo, esc(t("aria_main")), nav_html, lang_sel)
     foot_links = "".join('<a href="%s">%s</a>' % (esc(h), esc(l)) for h, l in
                          [(path_journal(lang), t("nav_journal")), (path_page(lang, "support"), t("nav_support")), (path_page(lang, "privacy"), t("nav_privacy")), (path_page(lang, "terms"), t("nav_terms"))])
     footer = ('<footer class="site-footer"><div class="wrap"><p>%s <a href="https://ipe.rest/">ipe.rest</a></p><p class="foot-links">%s</p>'
@@ -289,8 +299,8 @@ def render(ctx, lang, *, path, title, desc, body, alt, updated, nav="", noindex=
     if ai:
         notice = '<p class="ai-note">%s <a href="%s">%s</a></p>' % (esc(t("ai_note")), esc(alt["en"]), esc(t("ai_orig")))
     last = '<p class="updated">%s: <time datetime="%s">%s</time></p>' % (esc(t("updated_label")), esc(updated), esc(updated)) if updated else ""
-    return ('<!doctype html>\n<!-- %s -->\n<html lang="%s"><head>%s</head><body><a class="skip" href="#main">%s</a>%s<main id="main" class="wrap%s">%s%s%s</main>%s</body></html>\n') % (
-        GEN_MARK, lang, "\n".join(head), esc(t("skip")), header, " doc" if nav != "home" else "", notice, body, last, footer)
+    return ('<!doctype html>\n<!-- %s -->\n<html lang="%s"><head>%s</head><body><a class="skip" href="#main">%s</a>%s<main id="main" class="wrap%s">%s%s%s</main>%s%s</body></html>\n') % (
+        GEN_MARK, lang, "\n".join(head), esc(t("skip")), header, " doc" if nav != "home" else "", notice, body, last, footer, end_script)
 
 
 def build_home(ctx, lang):
@@ -308,8 +318,9 @@ def build_home(ctx, lang):
         esc(t("status_badge")), h1, esc(t("hero_p")), esc(t("games_h")), esc(t("hero_note")), art, esc(t("games_h")), esc(t("games_p")), cards,
         esc(t("more_games")), esc(t("feat_h")), feats, esc(t("cta_h")), esc(t("cta_p")))
     alt = {l: path_home(l) for l in ctx.langs}
+    end_script = langswitch.script({"js": JS_URL}, redirect=True) if lang == "en" else ""
     return render(ctx, lang, path=path_home(lang), title=t("home_title"), desc=t("home_desc"), body=body, alt=alt, updated=SITE_UPDATED,
-                  nav="home", ai=lang not in ORIGINALS).replace('<main id="main" class="wrap">', '<main id="main" class="wrap">')
+                  nav="home", ai=lang not in ORIGINALS, end_script=end_script)
 
 
 def build_page(ctx, lang, slug):
@@ -324,12 +335,16 @@ def lastmod_journal(ctx):
     return max([a["date"] for a in ctx.journal] + [SITE_UPDATED])
 
 
+def article_langs(a):
+    return [l for l in languages.SUPPORTED if l in a["body"]]
+
+
 def build_journal_index(ctx, lang):
     t = lambda k: ctx.t(lang, k)  # noqa: E731
     cards = "".join(
         '<article class="card"><p class="meta"><time datetime="%s">%s</time></p><h2><a href="%s">%s</a></h2><p>%s</p></article>' % (
-            esc(a["date"]), esc(a["date"]), esc(path_article(lang, a["slug"])), esc(a["title"][jl(lang)]), esc(a["summary"][jl(lang)]))
-        for a in ctx.journal)
+            esc(a["date"]), esc(a["date"]), esc(path_article(lang, a["slug"])), esc(a["title"][lang]), esc(a["summary"][lang]))
+        for a in ctx.journal if lang in a["body"])
     body = '<h1>%s</h1><p class="lead">%s</p><div class="releases">%s</div>' % (esc(t("journal_title")), esc(t("journal_desc")), cards)
     alt = {l: path_journal(l) for l in ctx.langs}
     return render(ctx, lang, path=path_journal(lang), title="%s — Patchland" % t("journal_title"), desc=t("journal_desc"), body=body, alt=alt,
@@ -338,13 +353,17 @@ def build_journal_index(ctx, lang):
 
 def build_article(ctx, lang, a):
     t = lambda k: ctx.t(lang, k)  # noqa: E731
-    title = a["title"][jl(lang)]
+    title = a["title"][lang]
     note = "" if lang in ORIGINALS else '<p class="ai-note">%s</p>' % esc(t("journal_en_note"))
     body = '%s<p class="meta"><time datetime="%s">%s</time></p><h1>%s</h1>\n%s' % (
-        note, esc(a["date"]), esc(a["date"]), esc(title), markdown(ctx.sub(a["body"][jl(lang)])))
-    alt = {l: path_article(l, a["slug"]) for l in ctx.langs}
-    return render(ctx, lang, path=path_article(lang, a["slug"]), title="%s — Patchland" % title, desc=a["summary"][jl(lang)], body=body, alt=alt,
-                  updated="", nav=JOURNAL)
+        note, esc(a["date"]), esc(a["date"]), esc(title), markdown(ctx.sub(a["body"][lang])))
+    langs = article_langs(a)
+    alt = {l: path_article(l, a["slug"]) for l in langs}
+    editions = {l: {"url": url(alt[l]), "title": a["title"][l]} for l in langs}
+    posting = journal.blogposting(editions, lang, date_published=a["date"], description=a["summary"][lang], publisher=ORG)
+    posting.pop("@context", None)
+    return render(ctx, lang, path=path_article(lang, a["slug"]), title="%s — Patchland" % title, desc=a["summary"][lang], body=body, alt=alt,
+                  updated="", nav=JOURNAL, extra_ld=posting)
 
 
 def build_404(ctx):
@@ -362,14 +381,14 @@ def sitemap(ctx):
             ents.append((path_page(l, slug), ctx.pages[(l, slug)][0]["updated"], {x: path_page(x, slug) for x in ctx.langs}))
     for l in ctx.langs:
         ents.append((path_journal(l), lastmod_journal(ctx), {x: path_journal(x) for x in ctx.langs}))
-    for a in ctx.journal:
-        for l in ctx.langs:
-            ents.append((path_article(l, a["slug"]), a["date"], {x: path_article(x, a["slug"]) for x in ctx.langs}))
     for pth, lm, alts in ents:
         rows.append("<url><loc>%s</loc><lastmod>%s</lastmod>" % (esc(url(pth)), lm))
         for l, ap in alts.items():
             rows.append('<xhtml:link rel="alternate" hreflang="%s" href="%s"/>' % (l, esc(url(ap))))
         rows.append('<xhtml:link rel="alternate" hreflang="x-default" href="%s"/></url>' % esc(url(alts["en"])))
+    for a in ctx.journal:
+        editions = {l: {"url": url(path_article(l, a["slug"]))} for l in article_langs(a)}
+        rows.append(journal.sitemap_entry(editions, lastmod=a["date"]))
     rows.append("</urlset>")
     return "\n".join(rows) + "\n"
 
@@ -389,35 +408,30 @@ def llms(ctx):
             l for l in ctx.langs if l not in ORIGINALS), ""])
 
 
+def has_page(ctx, lang, rest):
+    if rest.startswith(JOURNAL + "/") and rest != JOURNAL + "/":
+        slug = rest[len(JOURNAL) + 1:].rstrip("/")
+        return any(a["slug"] == slug and lang in article_langs(a) for a in ctx.journal)
+    return lang in ctx.langs
+
+
 def build_all(ctx):
-    files = {"404.html": build_404(ctx), "sitemap.xml": sitemap(ctx), "robots.txt": robots(), "llms.txt": llms(ctx)}
+    files = {"404.html": build_404(ctx), "sitemap.xml": sitemap(ctx), "robots.txt": robots(), "llms.txt": llms(ctx),
+             "assets/" + langswitch.JS.name: langswitch.js_text()}
     for l in ctx.langs:
         files[path_home(l).strip("/") + "/index.html" if l != "en" else "index.html"] = build_home(ctx, l)
         for slug in PAGE_SLUGS:
             files[path_page(l, slug).strip("/") + "/index.html"] = build_page(ctx, l, slug)
         files[path_journal(l).strip("/") + "/index.html"] = build_journal_index(ctx, l)
-        for a in ctx.journal:
+    for a in ctx.journal:
+        for l in article_langs(a):
             files[path_article(l, a["slug"]).strip("/") + "/index.html"] = build_article(ctx, l, a)
-    for old, (to, note) in MOVED.items():
-        for tail in ("", "privacy/", "support/", "terms/"):
-            dest = to + tail if old == "pt" else to
-            files["%s/%sindex.html" % (old, tail)] = moved_stub(old, dest, note)
-    for f, text in files.items():
-        if f.endswith(".html") and "<!--LANGPICK-->" in text:
-            slug = "" if f == "index.html" else f[: -len("index.html")].strip("/")
-            avail = [l for l in ctx.langs if slug == "" or slug in PAGE_SLUGS or slug == JOURNAL or slug.startswith(JOURNAL + "/")]
-            files[f] = text.replace("<!--LANGPICK-->", langpick_script(ctx, avail))
+    paths = ["", "privacy/", "support/", "terms/", JOURNAL + "/"] + ["%s/%s/" % (JOURNAL, a["slug"]) for a in ctx.journal]
+    files.update(redirects.generate(paths, SITE, en_root=True, available=lambda lang, rest: has_page(ctx, lang, rest)))
     return files
 
 
-GEN_DIRS = ["privacy", "support", "terms", JOURNAL] + [l for l in languages.SUPPORTED if l != "en"] + list(MOVED)
-
-
-def moved_stub(old, to, note):
-    """Static hosting: an old path (/pt/..., /zh/..., /ru/...) becomes a tiny noindex page that forwards with meta refresh."""
-    return ('<!doctype html>\n<!-- %s -->\n<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">'
-            '<title>Patchland</title><meta name="robots" content="noindex,follow"><meta http-equiv="refresh" content="0;url=%s">'
-            '<link rel="canonical" href="%s"></head><body><p>%s <a href="%s">%s</a></p></body></html>\n') % (GEN_MARK, esc(to), esc(url(to)), esc(note), esc(to), esc(to))
+GEN_DIRS = ["privacy", "support", "terms", JOURNAL] + [l for l in languages.SUPPORTED if l != "en"] + list(redirects.LEGACY_REDIRECTS)
 
 
 def main(argv=None):
@@ -426,6 +440,8 @@ def main(argv=None):
     ap.add_argument("--root", default=str(HERE))
     a = ap.parse_args(argv)
     ctx = Ctx(a.root)
+    if ctx.warnings:
+        print("\n".join("warning: " + w for w in ctx.warnings), file=sys.stderr)
     if ctx.errs:
         print("\n".join(ctx.errs), file=sys.stderr)
         return 1
