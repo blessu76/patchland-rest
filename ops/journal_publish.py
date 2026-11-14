@@ -3,7 +3,8 @@
 
 Only posts whose front matter has `copy_review: iris YYYY-MM-DD` are published; others are logged as SKIP.
 Moves it to content/journal/YYYY-MM-DD-<slug>.md in the publish clone with front matter `date:` set to
-today (KST), builds, runs scripts/check.sh, then commit "journal: <slug>" -> pull --rebase -> push.
+today (KST). Its copy-reviewed translations (content/journal_i18n/<lang>/<queue name>) move the same way;
+unreviewed ones are logged as SKIP and stay put. Then builds, runs scripts/check.sh, then commit "journal: <slug>" -> pull --rebase -> push.
 Clone: ~/ipe/patchland-publish (cloned from origin if missing; dirty tree -> SKIP, exit 1).
 Kit: vendor/ipe_web_kit is synced into the clone from $IPE_WEB_KIT (default ~/Developer/ipe_web_kit) when missing/stale.
 No copy-reviewed post -> log + ALERT file, exit 1. <= 2 reviewed posts after publishing -> ALERT file too.
@@ -38,6 +39,17 @@ def queued():
             out.append(p)
         else:
             log("SKIP unreviewed: %s" % p.name)
+    return out
+
+
+def translations(name):
+    """Copy-reviewed content/journal_i18n/<lang>/<name> files in the publish clone; unreviewed ones stay put."""
+    out = []
+    for p in sorted((CLONE / "content/journal_i18n").glob("*/" + name)):
+        if copy_reviewed(p.read_text()):
+            out.append(p)
+        else:
+            log("SKIP unreviewed translation: %s/%s" % (p.parent.name, name))
     return out
 
 
@@ -107,6 +119,16 @@ def main():
         git("clean", "-fdq", "content", "en", "ko", "ja", "zh", "es", "pt", "id", "ru", "vi", "fr", "de", "journal", "sitemap.xml", "llms.txt", check=False)
 
     dest.write_text(set_date(src.read_text(), today))
+    try:
+        for t in translations(src.name):
+            target = t.parent / dest.name
+            git("mv", str(t.relative_to(CLONE)), str(target.relative_to(CLONE)))
+            target.write_text(set_date(target.read_text(), today))
+            log("translation %s -> %s" % (t.parent.name, target.name))
+    except subprocess.CalledProcessError as e:
+        log("FAIL translation move: %s" % (e.stderr or e))
+        rollback()
+        return 1
     for cmd in (["python3", "scripts/build_site.py"], ["bash", "scripts/check.sh"]):
         r = subprocess.run(cmd, cwd=CLONE, capture_output=True, text=True)
         if r.returncode:

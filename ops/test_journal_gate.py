@@ -110,9 +110,7 @@ class PublishFlow(unittest.TestCase):
         import subprocess
         return subprocess.run(a, cwd=cwd, check=True, capture_output=True, text=True).stdout
 
-    def test_sitemap_and_feed_are_committed(self):
-        import journal_publish as j
-        t = Path(tempfile.mkdtemp())
+    def origin(self, t, extra=None):
         origin, seed = t / "origin.git", t / "seed"
         self.sh(t, "git", "init", "-q", "--bare", "-b", "main", str(origin))
         seed.mkdir()
@@ -125,9 +123,18 @@ class PublishFlow(unittest.TestCase):
             "pathlib.Path('journal/feed.xml').write_text(''.join('<entry>%s</entry>' % x for x in posts))\n")
         (seed / "scripts/check.sh").write_text("exit 0\n")
         (seed / "sitemap.xml").write_text("")
+        for name, text in (extra or {}).items():
+            (seed / name).parent.mkdir(parents=True, exist_ok=True)
+            (seed / name).write_text(text)
         for c in (("init", "-q", "-b", "main"), ("add", "-A"), ("-c", "user.name=t", "-c", "user.email=t@t", "commit", "-qm", "init"),
                   ("remote", "add", "origin", str(origin)), ("push", "-q", "origin", "main")):
             self.sh(seed, "git", *c)
+        return origin
+
+    def test_sitemap_and_feed_are_committed(self):
+        import journal_publish as j
+        t = Path(tempfile.mkdtemp())
+        origin = self.origin(t)
         q = t / "queue"
         q.mkdir()
         (q / "00-draft.md").write_text("---\ntitle: Draft\n---\nbody\n")
@@ -144,6 +151,30 @@ class PublishFlow(unittest.TestCase):
         self.assertFalse((q / "01-hello-world.md").exists())
         self.assertTrue((q / "00-draft.md").exists())
         self.assertTrue((q / "ALERT").exists())  # 0 reviewed left <= 2
+
+    def test_reviewed_translations_move_with_the_post(self):
+        import journal_publish as j
+        from datetime import datetime
+        t = Path(tempfile.mkdtemp())
+        reviewed = "---\ntitle: Hallo\ndate: TBD\ncopy_review: iris 2026-11-14\n---\nbody\n"
+        origin = self.origin(t, {
+            "content/journal_i18n/de/01-hello-world.md": reviewed,
+            "content/journal_i18n/fr/01-hello-world.md": "---\ntitle: Bonjour\ndate: TBD\n---\nbody\n",
+        })
+        q = t / "queue"
+        q.mkdir()
+        (q / "01-hello-world.md").write_text("---\ntitle: Hi\ncopy_review: iris 2026-11-14\n---\nbody\n")
+        j.QUEUE, j.CLONE, j.REMOTE = q, t / "clone", str(origin)
+        self.assertEqual(j.main(), 0)
+        today = datetime.now(j.KST).strftime("%Y-%m-%d")
+        files = self.sh(origin, "git", "ls-tree", "-r", "--name-only", "main").split("\n")
+        self.assertIn("content/journal_i18n/de/%s-hello-world.md" % today, files)
+        self.assertNotIn("content/journal_i18n/de/01-hello-world.md", files)
+        self.assertIn("content/journal_i18n/fr/01-hello-world.md", files)
+        self.assertNotIn("content/journal_i18n/fr/%s-hello-world.md" % today, files)
+        moved = self.sh(origin, "git", "show", "main:content/journal_i18n/de/%s-hello-world.md" % today)
+        self.assertIn("date: %s" % today, moved)
+        self.assertIn("copy_review: iris 2026-11-14", moved)
 
 
 if __name__ == "__main__":
