@@ -80,32 +80,38 @@ class BuildTest(unittest.TestCase):
                 h = self.files[f]
                 self.assertNotIn("langsw", h, f)
                 self.assertEqual(h.count("<select "), 1, f)
-                foot = re.search(r'<footer class="site-footer".*?</footer>', h, re.S).group(0)
-                opts = re.findall(r'<option value="([^"]+)"( selected)?>', foot)
+                head = re.search(r'<header class="site-header".*?</header>', h, re.S).group(0)
+                opts = re.findall(r'<option value="([^"]+)" data-lang="[^"]+"( selected)?>', head)
                 self.assertEqual(len(opts), 12, f)
                 selected = [v for v, s in opts if s]
                 self.assertEqual(len(selected), 1, f)
                 self.assertEqual(len(set(v for v, _ in opts)), 12, f)
-                links = re.findall(r'<noscript><span class="lang-links">(.*?)</span></noscript>', foot, re.S)
-                self.assertEqual(len(links), 1, f)
-                self.assertEqual(links[0].count("<a "), 12, f)
-                self.assertIn('hidden><label for="langsel">', foot, f)
+                self.assertIn('<div class="lang-pick" hidden><select id="langsel" class="lang-select" aria-label="', head, f)
+                foot = re.search(r'<footer class="site-footer".*?</footer>', h, re.S).group(0)
+                self.assertNotIn("<select", foot, f)
+                self.assertNotIn("lang-links", h, f)
 
-    def test_language_select_pill_style_keeps_label_for_screen_readers(self):
+    def test_language_select_pill_style(self):
         css = (ROOT / "assets" / "patchland.css").read_text(encoding="utf-8")
         self.assertIn(".lang-select{appearance:none", css)
         self.assertIn("border-radius:999px", css)
-        self.assertIn(".lang-pick label{position:absolute;width:1px;height:1px;overflow:hidden", css)
 
     def test_language_select_points_to_same_page_in_each_language(self):
-        ko = self.files["ko/index.html"]
-        foot = re.search(r'<footer class="site-footer".*?</footer>', ko, re.S).group(0)
-        self.assertIn('<option value="/ko/" selected>', foot)
-        self.assertIn('<option value="/?lang=en">', foot)
-        self.assertIn('<option value="/ja/">', foot)
-        privacy = re.search(r'<footer class="site-footer".*?</footer>', self.files["ko/privacy/index.html"], re.S).group(0)
-        self.assertIn('<option value="/ko/privacy/" selected>', privacy)
-        self.assertIn('<option value="/privacy/?lang=en">', privacy)
+        ko = re.search(r'<header class="site-header".*?</header>', self.files["ko/index.html"], re.S).group(0)
+        self.assertIn('<option value="/ko/" data-lang="ko" selected>', ko)
+        self.assertIn('<option value="/?lang=en" data-lang="en">', ko)
+        self.assertIn('<option value="/ja/" data-lang="ja">', ko)
+        privacy = re.search(r'<header class="site-header".*?</header>', self.files["ko/privacy/index.html"], re.S).group(0)
+        self.assertIn('<option value="/ko/privacy/" data-lang="ko" selected>', privacy)
+        self.assertIn('<option value="/privacy/?lang=en" data-lang="en">', privacy)
+
+    def test_language_detection_script_on_root_only(self):
+        root = self.files["index.html"]
+        self.assertIn("'ipe_lang'", root)
+        self.assertIn("/bot|crawl|spider|slurp|lighthouse/i", root)
+        self.assertNotIn("pl-lang", root)
+        self.assertNotIn("navigator.languages", self.files["ko/index.html"])
+        self.assertNotIn("/bot|crawl", self.files["ko/index.html"])
 
     def test_hreflang_alternates_kept(self):
         for l in bs.languages.SUPPORTED:

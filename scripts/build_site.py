@@ -23,7 +23,7 @@ sys.path.insert(0, str(HERE / "vendor"))
 from ipe_web_kit import languages, seo  # noqa: E402
 
 SITE = "https://patchland.ipe.rest"
-ASSET_V = "20261114a"  # bump when assets/patchland.css or langpick.js change
+ASSET_V = "20261114b"  # bump when assets/patchland.css or langpick.js change
 SITE_UPDATED = "2026-11-05"  # "Last updated" of home / 404 and sitemap lastmod: bump by hand when their text changes
 OPERATOR = "Davy Kim (ipe Studio)"
 EMAIL = "ipe.haven@gmail.com"
@@ -51,7 +51,7 @@ PRICE = re.compile(r"\$\s?\d|\d\s?(?:USD|달러|원\b)|★", re.I)
 PAPER = ["#C8553D", "#3E63A8", "#D19A1E", "#3D8A62", "#7A5BB5", "#2A7F86", "#A8664A", "#8FA66A", "#E9DCC0", "#C8553D", "#3E63A8", "#D19A1E",
          "#3D8A62", "#F0D9D2", "#D5DEEB", "#CFE3E1"]
 LANG_SELECT_JS = ("(function(){var w=document.querySelector('.lang-pick'),s=document.getElementById('langsel');if(!w||!s)return;"
-                  "w.hidden=false;s.addEventListener('change',function(){if(s.value)location.href=s.value})})();")
+                  "w.hidden=false;s.addEventListener('change',function(){var o=s.options[s.selectedIndex];try{localStorage.setItem('ipe_lang',o.getAttribute('data-lang'))}catch(e){}if(s.value)location.href=s.value})})();")
 COPY_REVIEW = re.compile(r"^iris \d{4}-\d{2}-\d{2}$")
 GAME_COLORS = {"trace": "#C8553D", "spread": "#D19A1E", "place": "#3D8A62", "hockey": "#4A4642", "daily": "#A8664A"}
 
@@ -269,25 +269,22 @@ def render(ctx, lang, *, path, title, desc, body, alt, updated, nav="", noindex=
     ld = {"@context": "https://schema.org", "@graph": [ORG, {"@type": "WebSite", "@id": SITE + "/#website", "url": SITE + "/", "name": "Patchland",
                                                               "inLanguage": lang, "publisher": {"@id": ORG["@id"]}}]}
     head.append('<script type="application/ld+json">%s</script>' % json.dumps(ld, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"))
-    lang_options = "".join('<option value="%s"%s>%s</option>' % (
-        esc(user_href(l, alt.get(l) or path_home(l), lang)), " selected" if l == lang else "", esc(languages.NAMES[l])) for l in ctx.langs)
-    lang_links = "".join('<a href="%s" hreflang="%s" lang="%s"%s>%s</a>' % (
-        esc(user_href(l, alt.get(l) or path_home(l), lang)), l, l, ' aria-current="true"' if l == lang else "", esc(languages.NAMES[l])) for l in ctx.langs)
+    lang_options = "".join('<option value="%s" data-lang="%s"%s>%s</option>' % (
+        esc(user_href(l, alt.get(l) or path_home(l), lang)), l, " selected" if l == lang else "", esc(languages.NAMES[l])) for l in ctx.langs)
     navs = [(path_home(lang), t("nav_home"), "home"), (path_journal(lang), t("nav_journal"), JOURNAL),
             (path_page(lang, "support"), t("nav_support"), "support")]
     nav_html = "".join('<a href="%s"%s>%s</a>' % (esc(h), ' aria-current="page"' if nav == k else "", esc(label)) for h, label, k in navs)
     logo = ('<i aria-hidden="true">%s</i>' % "".join('<b style="background:%s"></b>' % c for c in PAPER[:4]))
+    lang_pick = ('<div class="lang-pick" hidden>'
+                 '<select id="langsel" class="lang-select" aria-label="%s">%s</select></div><script>%s</script>') % (esc(t("lang_label")), lang_options, LANG_SELECT_JS)
     header = ('<header class="site-header"><div class="wrap bar"><a class="brand" href="%s" aria-label="Patchland">%s<span>Patchland</span></a>'
-              '<nav class="nav" aria-label="%s">%s</nav></div></header>') % (
-        esc(path_home(lang)), logo, esc(t("aria_main")), nav_html)
+              '<div class="bar-end"><nav class="nav" aria-label="%s">%s</nav>%s</div></div></header>') % (
+        esc(path_home(lang)), logo, esc(t("aria_main")), nav_html, lang_pick)
     foot_links = "".join('<a href="%s">%s</a>' % (esc(h), esc(l)) for h, l in
                          [(path_journal(lang), t("nav_journal")), (path_page(lang, "support"), t("nav_support")), (path_page(lang, "privacy"), t("nav_privacy")), (path_page(lang, "terms"), t("nav_terms"))])
-    foot_langs = ('<div class="foot-langs"><div class="lang-pick" hidden><label for="langsel">%s</label>'
-                  '<select id="langsel" class="lang-select">%s</select></div><noscript><span class="lang-links">%s</span></noscript>'
-                  '<script>%s</script></div>') % (esc(t("lang_label")), lang_options, lang_links, LANG_SELECT_JS)
     footer = ('<footer class="site-footer"><div class="wrap"><p>%s <a href="https://ipe.rest/">ipe.rest</a></p><p class="foot-links">%s</p>'
-              '%s<p>© 2026 ipe() · %s</p></div></footer>') % (
-        esc(t("footer_line")), foot_links, foot_langs, esc(t("status_badge")))
+              '<p>© 2026 ipe() · %s</p></div></footer>') % (
+        esc(t("footer_line")), foot_links, esc(t("status_badge")))
     notice = ""
     if ai:
         notice = '<p class="ai-note">%s <a href="%s">%s</a></p>' % (esc(t("ai_note")), esc(alt["en"]), esc(t("ai_orig")))
