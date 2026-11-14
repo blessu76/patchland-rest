@@ -2,6 +2,7 @@
 title: Wie gehen wir mit verlorenen Runden um
 summary: Wie hilft man jemandem, der immer wieder verliert? Die Hilfe soll ein Schalter sein, den man ein- und ausschalten kann, keine Standardregel.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Die Erinnerung an Niederlagen
 

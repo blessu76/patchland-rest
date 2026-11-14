@@ -2,6 +2,7 @@
 title: Território em retalhos de papel
 summary: Patchland nasceu da ideia de retalhos de papel. Depois de muitos protótipos, sobraram três verbos: traçar, posicionar e espalhar.
 date: 2026-11-13
+copy_review: iris 2026-11-14
 ---
 ## Por que papel
 

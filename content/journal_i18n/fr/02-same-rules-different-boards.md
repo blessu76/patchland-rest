@@ -2,6 +2,7 @@
 title: Mêmes règles, plateaux différents
 summary: Avec les mêmes règles, le plateau de départ pouvait faire basculer toute la partie. Nous avons donc décidé de ne plus résumer difficulté et objectifs par un seul chiffre.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Mêmes règles, plateaux différents
 

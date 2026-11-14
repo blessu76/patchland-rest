@@ -2,6 +2,7 @@
 title: Mismas reglas, tableros distintos
 summary: Con las mismas reglas, el tablero inicial podía cambiar mucho el resultado de la partida. Por eso decidimos no resumir la dificultad y los objetivos en un solo número.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Mismas reglas, tableros distintos
 

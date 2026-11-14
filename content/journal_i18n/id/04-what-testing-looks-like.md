@@ -2,6 +2,7 @@
 title: Yang kami perhatikan di build uji
 summary: Setiap build diperiksa dulu di layar perangkat simulasi, lalu kami melihat di mana pemain baru berhenti. Keseimbangan yang sebenarnya masih menjadi pertanyaan terbuka.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Simulator dulu
 

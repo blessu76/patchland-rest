@@ -2,6 +2,7 @@
 title: Ce que nous regardons dans les builds de test
 summary: Chaque build est d'abord vérifié sur des écrans d'appareils simulés, puis nous observons où un nouveau joueur s'arrête. L'équilibre réel reste une question ouverte.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## D'abord le simulateur
 

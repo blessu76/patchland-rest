@@ -1,7 +1,8 @@
 ---
 title: Perebutan wilayah di atas potongan kertas
-summary: Patchland berawal dari gagasan potongan kertas. Setelah banyak prototipe, yang tersisa adalah tiga kata kerja: menggambar garis, menempatkan, dan menyebar.
+summary: Patchland berawal dari gagasan potongan kertas. Setelah banyak prototipe, yang tersisa adalah tiga kata kerja: menarik garis, menempatkan, dan menyebar.
 date: 2026-11-13
+copy_review: iris 2026-11-14
 ---
 ## Mengapa kertas
 

@@ -2,6 +2,7 @@
 title: Aturan sama, papan berbeda
 summary: Dengan aturan yang sama, papan awal bisa menentukan seluruh ronde. Karena itu kami berhenti mengikat tingkat kesulitan dan target pada satu angka.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Aturan sama, papan berbeda
 
@@ -13,7 +14,7 @@ AI penguasa tersulit nyaris mustahil dikalahkan dengan permainan biasa. Rasanya 
 
 ## Bukan satu angka untuk semuanya
 
-Bahkan untuk menggaris saja, peluang dasarnya berbeda menurut jenis ronde. Jadi kami berhenti memperlakukan target sebagai satu patokan dan kini melihat setiap jenis ronde secara terpisah.
+Bahkan untuk menarik garis saja, peluang dasarnya berbeda menurut jenis ronde. Jadi kami berhenti memperlakukan target sebagai satu patokan dan kini melihat setiap jenis ronde secara terpisah.
 
 ## Tidak memutuskan dari satu atau dua ronde
 

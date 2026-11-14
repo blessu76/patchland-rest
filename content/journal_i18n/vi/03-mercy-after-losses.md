@@ -2,6 +2,7 @@
 title: Nên xử lý những ván thua như thế nào
 summary: Câu hỏi là làm sao giúp người chơi thua liên tiếp. Chúng tôi quyết định để sự trợ giúp là một tùy chọn có thể bật tắt, chứ không phải luật mặc định.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Ký ức về chuỗi thua
 

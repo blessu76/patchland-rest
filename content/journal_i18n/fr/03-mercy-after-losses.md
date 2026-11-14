@@ -2,6 +2,7 @@
 title: Comment gérer les parties perdues
 summary: Comment aider un joueur qui enchaîne les défaites ? Cette aide sera une option que l'on active ou non, et non une règle par défaut.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Le souvenir des défaites
 

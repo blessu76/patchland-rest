@@ -2,6 +2,7 @@
 title: O que observamos nas builds de teste
 summary: Cada build é conferida primeiro em telas de dispositivos simulados, depois observamos onde um jogador de primeira viagem para. O equilíbrio real ainda é uma pergunta em aberto.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Primeiro, o simulador
 

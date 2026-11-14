@@ -2,6 +2,7 @@
 title: Worauf wir bei Test-Builds achten
 summary: Jeder Build wird zuerst auf simulierten Gerätebildschirmen geprüft, danach schauen wir, wo ein Neuling stehen bleibt. Die echte Balance ist noch eine offene Frage.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Zuerst der Simulator
 

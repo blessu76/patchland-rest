@@ -2,6 +2,7 @@
 title: Un jeu de territoire sur des bouts de papier
 summary: Patchland est parti d'une idée : des chutes de papier coloré. Après de nombreux prototypes, il est resté trois verbes : tracer, poser et étendre.
 date: 2026-11-13
+copy_review: iris 2026-11-14
 ---
 ## Pourquoi le papier
 

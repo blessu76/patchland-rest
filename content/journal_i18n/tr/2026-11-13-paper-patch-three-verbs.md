@@ -2,6 +2,7 @@
 title: Kâğıt parçaları üzerinde toprak kapma
 summary: Patchland, renkli kâğıt parçaları fikriyle başladı. Birçok prototipten sonra geriye üç fiil kaldı: çiz, yerleştir ve yay.
 date: 2026-11-13
+copy_review: iris 2026-11-14
 ---
 ## Neden kâğıt
 

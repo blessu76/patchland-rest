@@ -2,6 +2,7 @@
 title: Cómo tratar las partidas que se pierden
 summary: Es la pregunta de cómo ayudar a un jugador que pierde varias veces seguidas. La ayuda será una opción que se puede activar o desactivar, no una regla por defecto.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## El recuerdo de perder
 
@@ -9,7 +10,7 @@ Cuando se acumulan las partidas sin victoria, el jugador deja el juego. Patchlan
 
 ## La regla de clemencia, como opción
 
-Probamos una regla que devuelve un poco de tierra después de perder varias veces seguidas. Pero decidimos que no sea una regla por defecto, sino un interruptor que se puede activar o desactivar. Si hay demasiada ayuda, la alegría de ganar una partida se vuelve más ligera.
+Probamos una regla que devuelve un poco de tierra después de perder varias veces seguidas. Pero decidimos que no sea una regla por defecto, sino un interruptor que se puede activar o desactivar. Si hay demasiada ayuda, ganar una partida pierde valor.
 
 ## Quién necesita ayuda
 

@@ -1,7 +1,8 @@
 ---
 title: Gebietsspiel auf Papierschnipseln
-summary: Patchland begann mit der Idee von Papierschnipseln. Nach vielen Prototypen blieben drei Verben übrig: zeichnen, setzen und ausbreiten.
+summary: Patchland begann mit der Idee von Papierschnipseln. Nach vielen Prototypen blieben drei Verben übrig: ziehen, setzen und ausbreiten.
 date: 2026-11-13
+copy_review: iris 2026-11-14
 ---
 ## Warum Papier
 

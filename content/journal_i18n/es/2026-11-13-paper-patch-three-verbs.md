@@ -2,6 +2,7 @@
 title: Un juego de territorio sobre retazos de papel
 summary: Patchland nació de la idea de los retazos de papel de colores. Después de muchos prototipos, quedaron tres verbos: trazar, colocar y extender.
 date: 2026-11-13
+copy_review: iris 2026-11-14
 ---
 ## Por qué papel
 

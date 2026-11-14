@@ -2,6 +2,7 @@
 title: Como lidar com partidas perdidas
 summary: Como ajudar um jogador que perde várias vezes seguidas? A ajuda será uma opção que se liga e desliga, não uma regra padrão.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## A memória das derrotas
 

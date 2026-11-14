@@ -2,6 +2,7 @@
 title: Cùng luật chơi, khác bàn cờ
 summary: Dù luật giống nhau, nếu bàn cờ lúc bắt đầu khác nhau thì kết quả ván chơi cũng chênh lệch rất lớn. Vì vậy chúng tôi quyết định không gộp độ khó và mục tiêu vào một con số duy nhất.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Cùng luật chơi, khác bàn cờ
 

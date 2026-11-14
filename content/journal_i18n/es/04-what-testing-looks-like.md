@@ -2,6 +2,7 @@
 title: Qué miramos en las versiones de prueba
 summary: En cada versión revisamos primero las pantallas de los dispositivos en el simulador y después observamos en qué punto se detiene alguien que juega por primera vez. El equilibrio real sigue siendo una pregunta abierta.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Primero, el simulador
 

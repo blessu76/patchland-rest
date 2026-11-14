@@ -2,6 +2,7 @@
 title: Kaybedilen turları nasıl ele almalıyız
 summary: Üst üste kaybeden oyuncuya nasıl yardım edileceği sorusu. Yardımı varsayılan bir kural olarak değil, açılıp kapatılabilen bir seçenek olarak tutmaya karar verdik.
 date: TBD
+copy_review: iris 2026-11-14
 ---
 ## Üst üste kayıpların hafızası
 
