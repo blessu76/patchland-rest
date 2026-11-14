@@ -2,7 +2,7 @@
 title: 종이 조각 위의 땅따먹기
 title_en: Territory on Paper Scraps
 summary: 패치랜드는 색종이 조각이라는 생각에서 출발했습니다. 많은 프로토타입 끝에 남은 것은 긋기, 놓기, 번지기 세 가지 동사였습니다.
-summary_en: Patchland began with the idea of paper scraps. After many prototypes, three verbs remained: draw, place and spread.
+summary_en: Patchland began with the idea of paper scraps. After many prototypes, three verbs remained: trace, place and spread.
 date: 2026-11-13
 copy_review: iris 2026-11-14
 ---
@@ -26,7 +26,7 @@ copy_review: iris 2026-11-14
 
 ## Why paper
 
-The first question was simple: what would a territory game feel like on paper? Instead of filling squares on a screen, we imagined placing paper scraps one at a time to grow a realm. The scraps are a little uneven, as if cut by hand, and they lift slightly where they overlap. That texture became the mood of the game.
+The first question was simple: what would a territory game feel like on paper? Instead of filling squares, we imagined placing paper scraps one at a time to grow a realm. The scraps are a little uneven, as if cut by hand, and they lift slightly where they overlap. That texture became the mood of the game.
 
 ## Many rules, one question
 
@@ -34,7 +34,7 @@ We built plenty of rule prototypes. Most needed a long explanation for very litt
 
 ## Three verbs
 
-Three actions survived. Draw a line, place a patch, and let the color spread. Three verbs can be understood from the first screen. The other rules came from where these three collide. Remove any one of them and the rules stayed on paper only.
+Three actions survived. Trace a line, place a patch, and let the color spread. Three verbs can be understood from the first screen. The other rules came from where these three collide. Remove any one of them and the rules stayed on paper only.
 
 ## Paper, not notebook
 
