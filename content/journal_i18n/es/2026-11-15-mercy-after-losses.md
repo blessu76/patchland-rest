@@ -1,7 +1,7 @@
 ---
 title: Cómo tratar las partidas que se pierden
 summary: Es la pregunta de cómo ayudar a un jugador que pierde varias veces seguidas. La ayuda será una opción que se puede activar o desactivar, no una regla por defecto.
-date: TBD
+date: 2026-11-15
 copy_review: iris 2026-11-14
 ---
 ## El recuerdo de perder

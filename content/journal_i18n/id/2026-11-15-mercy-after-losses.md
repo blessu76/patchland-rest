@@ -1,7 +1,7 @@
 ---
 title: Bagaimana menangani ronde yang kalah
 summary: Bagaimana membantu pemain yang kalah terus-menerus? Bantuan itu berupa sakelar pilihan yang bisa dinyalakan dan dimatikan, bukan aturan bawaan.
-date: TBD
+date: 2026-11-15
 copy_review: iris 2026-11-14
 ---
 ## Ingatan akan kekalahan
