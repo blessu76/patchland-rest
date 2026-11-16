@@ -1,7 +1,7 @@
 ---
 title: Privacy Policy
 description: Privacy policy for Patchland: Claim It All. The app and this website collect no personal information.
-updated: 2026-11-05
+updated: 2026-11-17
 ---
 **In short:** the Patchland app collects no personal information and contains no analytics or ads. This website is a static site with no analytics and no cookies, and it asks for no name, email or account.
 
@@ -12,6 +12,8 @@ Effective date: {{EFFECTIVE}} · Operator: {{OPERATOR}}
 Patchland: Claim It All ("the App") is a mobile game operated by an individual developer, {{OPERATOR}}. The App has no accounts or sign-in, and it does not collect or send to any server any personal information such as your name, email, contact details, location or device identifiers.
 
 Your game progress (map, stars, Lord Album cards, daily records) and settings (sound, vibration, color-blind patterns) are stored on your device only and are deleted from it when you delete the App. The game works without an internet connection.
+
+To let you continue your game on other iPhone or iPad devices signed in to the same Apple ID, the App stores your game progress (such as territories and settings) in your own iCloud account, using iCloud key-value storage. This data stays in your iCloud account and is not sent to or collected by our servers. If you turn off iCloud for the App, the data is kept only on that device.
 
 The App contains no advertising, analytics or tracking SDKs.
 

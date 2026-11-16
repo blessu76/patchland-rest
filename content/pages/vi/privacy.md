@@ -1,7 +1,7 @@
 ---
 title: Chính sách quyền riêng tư
 description: Chính sách quyền riêng tư của Patchland: Claim It All. Ứng dụng và trang web này không thu thập thông tin cá nhân.
-updated: 2026-11-05
+updated: 2026-11-17
 ---
 **Tóm lại:** ứng dụng Patchland không thu thập thông tin cá nhân và không chứa công cụ phân tích hay quảng cáo. Trang web này là trang tĩnh, không có công cụ phân tích và không dùng cookie, đồng thời không yêu cầu tên, email hay tài khoản.
 
@@ -12,6 +12,8 @@ Ngày có hiệu lực: {{EFFECTIVE}} · Đơn vị vận hành: {{OPERATOR}}
 Patchland: Claim It All ("Ứng dụng") là trò chơi di động do một nhà phát triển cá nhân, {{OPERATOR}}, vận hành. Ứng dụng không có tài khoản hay đăng nhập, và không thu thập hay gửi đến bất kỳ máy chủ nào các thông tin cá nhân như tên, email, thông tin liên lạc, vị trí hoặc mã định danh thiết bị của bạn.
 
 Tiến trình chơi của bạn (bản đồ, sao, thẻ Album Lãnh chúa, thành tích hằng ngày) và cài đặt (âm thanh, rung, họa tiết cho người mù màu) chỉ được lưu trên thiết bị của bạn và sẽ bị xóa khỏi thiết bị khi bạn xóa Ứng dụng. Trò chơi hoạt động không cần kết nối internet.
+
+Để bạn có thể tiếp tục chơi trên các thiết bị iPhone hoặc iPad khác đăng nhập bằng cùng Apple ID, Ứng dụng lưu tiến trình chơi (như lãnh thổ và cài đặt) vào tài khoản iCloud của chính bạn, sử dụng bộ nhớ khóa-giá trị (key-value) của iCloud. Dữ liệu này nằm trong tài khoản iCloud của bạn và không được gửi đến hay thu thập bởi máy chủ của chúng tôi. Nếu bạn tắt iCloud cho Ứng dụng, dữ liệu chỉ được giữ trên thiết bị đó.
 
 Ứng dụng không chứa SDK quảng cáo, phân tích hay theo dõi.
 

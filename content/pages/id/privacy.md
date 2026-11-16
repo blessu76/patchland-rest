@@ -1,7 +1,7 @@
 ---
 title: Kebijakan Privasi
 description: Kebijakan privasi Patchland: Claim It All. Aplikasi dan situs web ini tidak mengumpulkan informasi pribadi.
-updated: 2026-11-05
+updated: 2026-11-17
 ---
 **Singkatnya:** aplikasi Patchland tidak mengumpulkan informasi pribadi dan tidak berisi analitik maupun iklan. Situs web ini adalah situs statis tanpa analitik dan tanpa cookie, serta tidak meminta nama, email, atau akun.
 
@@ -12,6 +12,8 @@ Tanggal berlaku: {{EFFECTIVE}} · Operator: {{OPERATOR}}
 Patchland: Claim It All ("Aplikasi") adalah game seluler yang dioperasikan oleh pengembang perorangan, {{OPERATOR}}. Aplikasi tidak memiliki akun atau proses masuk, dan tidak mengumpulkan maupun mengirim ke server mana pun informasi pribadi seperti nama, email, detail kontak, lokasi, atau pengenal perangkat.
 
 Kemajuan permainan (peta, bintang, kartu Album Penguasa, catatan harian) dan pengaturan (suara, getar, pola buta warna) disimpan hanya di perangkatmu dan dihapus darinya saat kamu menghapus Aplikasi. Game ini berjalan tanpa koneksi internet.
+
+Agar Anda dapat melanjutkan permainan di perangkat iPhone atau iPad lain yang masuk dengan Apple ID yang sama, Aplikasi menyimpan kemajuan permainan (seperti wilayah dan pengaturan) di akun iCloud Anda sendiri menggunakan penyimpanan kunci-nilai iCloud. Data ini tetap berada di akun iCloud Anda dan tidak dikirim maupun dikumpulkan oleh server kami. Jika Anda mematikan iCloud untuk Aplikasi, data hanya tersimpan di perangkat tersebut.
 
 Aplikasi tidak berisi iklan, analitik, maupun SDK pelacakan.
 

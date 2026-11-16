@@ -1,7 +1,7 @@
 ---
 title: Gizlilik Politikası
 description: Patchland: Claim It All gizlilik politikası. Uygulama ve bu web sitesi hiçbir kişisel bilgi toplamaz.
-updated: 2026-11-05
+updated: 2026-11-17
 ---
 **Kısaca:** Patchland uygulaması hiçbir kişisel bilgi toplamaz; analiz veya reklam içermez. Bu web sitesi analiz ve çerez kullanmayan statik bir sitedir; ad, e-posta veya hesap istemez.
 
@@ -12,6 +12,8 @@ Yürürlük tarihi: {{EFFECTIVE}} · İşletmeci: {{OPERATOR}}
 Patchland: Claim It All ("Uygulama"), bireysel geliştirici {{OPERATOR}} tarafından işletilen bir mobil oyundur. Uygulamada hesap veya oturum açma yoktur; adınız, e-postanız, iletişim bilgileriniz, konumunuz veya cihaz kimlikleriniz gibi hiçbir kişisel bilgiyi toplamaz ya da herhangi bir sunucuya göndermez.
 
 Oyun ilerlemeniz (harita, yıldızlar, Lord Albümü kartları, günlük kayıtlar) ve ayarlarınız (ses, titreşim, renk körlüğü desenleri) yalnızca cihazınızda saklanır ve Uygulamayı sildiğinizde cihazdan silinir. Oyun internet bağlantısı olmadan çalışır.
+
+Aynı Apple Kimliğiyle oturum açılmış diğer iPhone veya iPad cihazlarında oyununuza devam edebilmeniz için Uygulama, oyun ilerlemenizi (bölgeler ve ayarlar gibi) iCloud anahtar-değer depolama alanını kullanarak kendi iCloud hesabınızda saklar. Bu veriler iCloud hesabınızda kalır; sunucularımıza gönderilmez ve sunucularımız tarafından toplanmaz. Uygulama için iCloud'u kapatırsanız veriler yalnızca o cihazda tutulur.
 
 Uygulama reklam, analiz veya izleme SDK'sı içermez.
 
