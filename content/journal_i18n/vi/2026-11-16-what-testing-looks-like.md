@@ -1,7 +1,7 @@
 ---
 title: Những gì chúng tôi quan sát trong bản dựng thử nghiệm
 summary: Với mỗi bản dựng, trước hết chúng tôi kiểm tra màn hình thiết bị bằng trình giả lập, sau đó xem người chơi lần đầu bị khựng lại ở đâu. Sự cân bằng thực tế vẫn là câu hỏi còn bỏ ngỏ.
-date: TBD
+date: 2026-11-16
 copy_review: iris 2026-11-14
 ---
 ## Bắt đầu từ trình giả lập

@@ -1,7 +1,7 @@
 ---
 title: Test sürümlerinde nelere bakıyoruz
 summary: Her sürümde önce simülatörde cihaz ekranlarını kontrol ediyor, ardından ilk kez oynayan birinin nerede takıldığına bakıyoruz. Gerçek denge hâlâ açık bir soru.
-date: TBD
+date: 2026-11-16
 copy_review: iris 2026-11-14
 ---
 ## Önce simülatörde
