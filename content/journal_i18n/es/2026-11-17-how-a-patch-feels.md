@@ -1,7 +1,7 @@
 ---
 title: Cómo se siente un retazo cuando cae
 summary: Estamos pensando en el sonido y la textura de un retazo de papel al posarse. La idea es dar a cada una de las tres acciones, trazar, colocar y extender, su propia sensación.
-date: TBD
+date: 2026-11-17
 copy_review: iris 2026-11-14
 ---
 ## ¿A qué suena el papel?

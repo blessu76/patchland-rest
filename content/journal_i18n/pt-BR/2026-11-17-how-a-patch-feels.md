@@ -1,7 +1,7 @@
 ---
 title: Como é a sensação quando um retalho pousa
 summary: Estamos pensando no som e na textura de um retalho de papel ao pousar. A ideia é dar a cada uma das três ações, traçar, posicionar e espalhar, uma sensação própria.
-date: TBD
+date: 2026-11-17
 copy_review: iris 2026-11-14
 ---
 ## Como soa o papel?

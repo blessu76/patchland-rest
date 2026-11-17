@@ -1,7 +1,7 @@
 ---
 title: Wie sich ein Schnipsel anfühlt, wenn er landet
 summary: Wir überlegen, wie Klang und Oberfläche eines landenden Papierschnipsels wirken sollen. Die Richtung: Ziehen, Setzen und Ausbreiten bekommen je ein eigenes Gefühl.
-date: TBD
+date: 2026-11-17
 copy_review: iris 2026-11-14
 ---
 ## Wie klingt Papier?

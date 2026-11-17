@@ -1,7 +1,7 @@
 ---
 title: Bir Parça Yerine Oturduğunda Nasıl Hissettirir
 summary: Renkli bir kâğıt parçasının yerleşirkenki sesini ve dokusunu nasıl ele alacağımızı düşünüyoruz. Yön şu: üç eylemin, yani çizmenin, yerleştirmenin ve yaymanın, her birine ayrı bir his vermek.
-date: TBD
+date: 2026-11-17
 copy_review: iris 2026-11-14
 ---
 ## Kâğıdın sesi nasıl olur?

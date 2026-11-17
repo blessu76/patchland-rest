@@ -1,7 +1,7 @@
 ---
 title: Ce que l'on ressent quand une pièce se pose
 summary: Nous réfléchissons au son et à la texture d'une pièce de papier qui se pose. L'idée : donner à chacune des trois actions, tracer, poser et étendre, sa propre sensation.
-date: TBD
+date: 2026-11-17
 copy_review: iris 2026-11-14
 ---
 ## Quel son pour du papier ?
