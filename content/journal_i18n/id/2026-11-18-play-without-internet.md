@@ -1,7 +1,7 @@
 ---
 title: Game wilayah yang bisa dimainkan tanpa internet
 summary: Patchland adalah game offline melawan penguasa AI. Catatan ini membahas bagaimana aturan bahwa satu ronde harus bisa dimulai tanpa koneksi memengaruhi panjang dan susunan sebuah ronde.
-date: TBD
+date: 2026-11-18
 copy_review: iris 2026-11-15
 ---
 ## Di kereta bawah tanah, dalam mode pesawat

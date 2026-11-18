@@ -1,7 +1,7 @@
 ---
 title: Một trò chiếm lãnh thổ chơi được khi không có internet
 summary: Patchland là trò chơi ngoại tuyến đấu với các lãnh chúa AI. Ghi chú này kể về việc quy tắc một ván phải bắt đầu được khi không có kết nối đã ảnh hưởng thế nào đến độ dài và cấu trúc của một ván.
-date: TBD
+date: 2026-11-18
 copy_review: iris 2026-11-15
 ---
 ## Trên tàu điện ngầm, trong chế độ máy bay

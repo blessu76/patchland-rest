@@ -1,7 +1,7 @@
 ---
 title: Ein Gebietsspiel, das ohne Internet funktioniert
 summary: Patchland ist ein Offline-Spiel gegen KI-Lords. Hier steht, wie die Regel, dass eine Runde ohne Verbindung beginnen muss, Länge und Aufbau einer Runde geprägt hat.
-date: TBD
+date: 2026-11-18
 copy_review: iris 2026-11-15
 ---
 ## In der U-Bahn, im Flugmodus

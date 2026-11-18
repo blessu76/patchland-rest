@@ -1,7 +1,7 @@
 ---
 title: Um jogo de território que funciona sem internet
 summary: Patchland é um jogo offline contra lordes de IA. Esta nota conta como a regra de que uma partida deve começar sem conexão influenciou a duração e a estrutura de uma partida.
-date: TBD
+date: 2026-11-18
 copy_review: iris 2026-11-15
 ---
 ## No metrô, no modo avião

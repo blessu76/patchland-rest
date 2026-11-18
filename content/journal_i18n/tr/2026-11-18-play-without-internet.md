@@ -1,7 +1,7 @@
 ---
 title: İnternet olmadan oynanan bir toprak oyunu
 summary: Patchland, yapay zekâ lordlarına karşı oynanan çevrimdışı bir oyun. Bu not, bir turun bağlantı olmadan başlayabilmesi kuralının turun uzunluğunu ve yapısını nasıl biçimlendirdiğini anlatıyor.
-date: TBD
+date: 2026-11-18
 copy_review: iris 2026-11-15
 ---
 ## Metroda, uçak modunda
