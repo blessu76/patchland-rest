@@ -82,9 +82,9 @@ def set_date(text, date):
     return set_key(text, "date", date)
 
 
-def published_stamp():
+def published_stamp(now=None):
     """Publish time as ISO 8601 with KST offset, e.g. 2026-11-19T19:24:57+09:00 (the source of JSON-LD datePublished)."""
-    return datetime.now(KST).isoformat(timespec="seconds")
+    return (now or datetime.now(KST)).isoformat(timespec="seconds")
 
 
 def git(*a, check=True):
@@ -118,7 +118,8 @@ def main():
     if not ensure_kit():
         return 1
     src = posts[0]
-    today = datetime.now(KST).strftime("%Y-%m-%d")
+    now = datetime.now(KST)
+    today = now.strftime("%Y-%m-%d")
     slug = slugify(src.name)
     dest = CLONE / "content/journal" / ("%s-%s.md" % (today, slug))
     dest.parent.mkdir(parents=True, exist_ok=True)
@@ -129,7 +130,7 @@ def main():
         # The old hardcoded path list missed build output (ar, hi, th, tr, pt-BR, zh-Hant) and left the clone dirty forever.
         git("clean", "-fdq", check=False)
 
-    stamp = published_stamp()
+    stamp = published_stamp(now)
     dest.write_text(set_key(set_date(src.read_text(), today), "published_at", stamp))
     try:
         for t in translations(src.name):

@@ -10,12 +10,12 @@ Permainan yang dimainkan bergantian oleh dua orang di satu perangkat ternyata le
 
 ## Giliran ditunjukkan dengan bentuk, bukan hanya warna
 
-Kami memutuskan untuk tidak menunjukkan giliran siapa hanya dengan satu warna. Bagi orang yang sulit membedakan warna, informasi itu mungkin tidak sampai. Penanda giliran memakai posisi dan bentuk sekaligus. Penanda di kedua sisi layar masing-masing menunjuk ke pemainnya sendiri, dan layar penutup muncul saat giliran berpindah.
+Kami memutuskan untuk tidak menunjukkan giliran siapa hanya dengan satu warna. Bagi orang yang sulit membedakan warna, informasi itu mungkin tidak sampai. Penanda giliran memakai chip warna dan label “Pemain 1” atau “Pemain 2”, dan layar penutup muncul saat giliran berpindah.
 
 ## Kesalahan yang muncul karena duduk berdekatan
 
-Dua orang yang duduk berdekatan mudah tanpa sengaja menyentuh perangkat saat giliran lawan. Karena itu, masukan dari sisi yang bukan gilirannya diabaikan, dan ada selang singkat saat tidak ada masukan yang diterima. Jika selang ini panjang, terasa menjengkelkan; jika pendek, kesalahan bertambah. Kami masih menentukan panjang yang pas.
+Dua orang yang duduk berdekatan mudah tanpa sengaja menyentuh perangkat saat giliran lawan. Karena itu, selama layar penutup tampil, papan tidak menerima masukan, dan papan baru terlihat lagi setelah orang berikutnya mengetuk layar penutup.
 
 ## Hal yang belum diputuskan
 
-Apakah bermain berdua di satu perangkat terasa nyaman baru bisa diketahui kalau dua orang benar-benar duduk dan mencobanya. Hasilnya akan berbeda tergantung ukuran perangkat dan ukuran tangan. Tulisan ini adalah catatan di tengah proses perancangan. Berdasarkan masukan dari uji coba bermain, kami berencana menyesuaikan lagi posisi dan waktunya.
+Apakah bermain berdua di satu perangkat terasa nyaman baru bisa diketahui kalau dua orang benar-benar duduk dan mencobanya. Hasilnya akan berbeda tergantung ukuran perangkat dan ukuran tangan. Tulisan ini adalah catatan di tengah proses perancangan. Berdasarkan masukan dari uji coba bermain, kami berencana menyesuaikan lagi posisinya.

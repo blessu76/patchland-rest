@@ -10,12 +10,12 @@ Une partie où deux personnes jouent à tour de rôle sur un même appareil est 
 
 ## Le tour se montre par la forme, pas seulement par la couleur
 
-Nous avons décidé de ne pas indiquer à qui c'est le tour uniquement par une couleur. Pour une personne qui distingue difficilement les couleurs, cette information risque de ne pas passer. L'indicateur de tour associe la position et la forme. Les indicateurs placés de chaque côté de l'écran désignent chacun leur propre joueur, et un écran de masquage s’affiche quand le tour passe.
+Nous avons décidé de ne pas indiquer à qui c'est le tour uniquement par une couleur. Pour une personne qui distingue difficilement les couleurs, cette information risque de ne pas passer. L'indicateur de tour associe une pastille de couleur et l'étiquette « Joueur 1 » ou « Joueur 2 », et un écran de masquage s’affiche quand le tour passe.
 
 ## Les erreurs dues à la proximité
 
-Deux personnes assises tout près l'une de l'autre risquent de toucher l'appareil par mégarde pendant le tour de l'autre. Nous ignorons donc les saisies du côté dont ce n'est pas le tour, et nous prévoyons un court intervalle pendant lequel aucune saisie n'est acceptée. Si cet intervalle est long, le jeu paraît pesant ; s'il est court, les erreurs se multiplient. Nous cherchons encore la bonne durée.
+Deux personnes assises tout près l'une de l'autre risquent de toucher l'appareil par mégarde pendant le tour de l'autre. Tant que l'écran de masquage est affiché, le plateau n'accepte donc aucune saisie ; il ne réapparaît que lorsque la personne suivante touche l'écran.
 
 ## Ce qui n'est pas encore décidé
 
-On ne peut savoir si une partie sur un seul appareil est agréable qu'en s'asseyant vraiment à deux pour jouer. Le résultat dépendra de la taille de l'appareil et de celle des mains. Cet article est une note d'étape sur la conception. À partir des retours des tests de jeu, nous comptons réajuster les places et les durées.
+On ne peut savoir si une partie sur un seul appareil est agréable qu'en s'asseyant vraiment à deux pour jouer. Le résultat dépendra de la taille de l'appareil et de celle des mains. Cet article est une note d'étape sur la conception. À partir des retours des tests de jeu, nous comptons réajuster les places.

@@ -10,12 +10,12 @@ Una partida en la que dos personas juegan por turnos en un mismo dispositivo es 
 
 ## El turno se indica con la forma, no solo con el color
 
-Decidimos no indicar de quién es el turno únicamente con un color. Para quien tiene dificultad para distinguir colores, esa información podría no llegar. El indicador de turno combina posición y forma. Los indicadores de ambos lados de la pantalla señalan cada uno hacia su propio jugador, y cuando el turno cambia aparece una pantalla que tapa el tablero.
+Decidimos no indicar de quién es el turno únicamente con un color. Para quien tiene dificultad para distinguir colores, esa información podría no llegar. El indicador de turno combina un chip de color con la etiqueta «Jugador 1» o «Jugador 2», y cuando el turno cambia aparece una pantalla que tapa el tablero.
 
 ## Errores que surgen por estar tan cerca
 
-Dos personas sentadas muy cerca pueden tocar el dispositivo sin querer durante el turno del otro. Por eso se ignoran las entradas del lado que no tiene el turno, y se deja un breve intervalo en el que no se acepta ninguna entrada. Si ese intervalo es largo, resulta frustrante; si es corto, aumentan los errores. Todavía estamos definiendo la duración adecuada.
+Dos personas sentadas muy cerca pueden tocar el dispositivo sin querer durante el turno del otro. Por eso el tablero no acepta entradas mientras la pantalla que lo tapa está visible; el tablero vuelve a verse solo cuando la siguiente persona toca esa pantalla.
 
 ## Lo que aún no hemos decidido
 
-Solo se puede saber si una partida en un único dispositivo resulta cómoda cuando dos personas se sientan a jugar de verdad. El resultado dependerá del tamaño del dispositivo y del tamaño de las manos. Esta entrada es un registro intermedio del diseño. Con las opiniones de las pruebas de juego, planeamos ajustar de nuevo la disposición y los tiempos.
+Solo se puede saber si una partida en un único dispositivo resulta cómoda cuando dos personas se sientan a jugar de verdad. El resultado dependerá del tamaño del dispositivo y del tamaño de las manos. Esta entrada es un registro intermedio del diseño. Con las opiniones de las pruebas de juego, planeamos ajustar de nuevo la disposición.
