@@ -1,0 +1,20 @@
+---
+title: Dos jugadores, un solo dispositivo
+summary: En el modo de dos jugadores de Patchland, dos personas comparten un mismo dispositivo. Aquí contamos cómo pensamos la división de la pantalla y la forma de indicar de quién es el turno.
+date: TBD
+---
+## Dos personas sentadas frente a frente
+
+Una partida en la que dos personas juegan por turnos en un mismo dispositivo es más complicada de lo que parece. Si se sientan una frente a otra con el dispositivo en el medio, el texto se ve al revés para uno de los dos y las manos a veces se cruzan. Por eso, al crear el modo de dos jugadores, pensamos primero en dónde se sientan y después en las reglas.
+
+## El turno se indica con la forma, no solo con el color
+
+Decidimos no indicar de quién es el turno únicamente con un color. Para quien tiene dificultad para distinguir colores, esa información podría no llegar. El indicador de turno combina posición y forma. Los indicadores de ambos lados de la pantalla señalan cada uno hacia su propio jugador, y cuando el turno cambia hay una breve pausa.
+
+## Errores que surgen por estar tan cerca
+
+Dos personas sentadas muy cerca pueden tocar el dispositivo sin querer durante el turno del otro. Por eso se ignoran las entradas del lado que no tiene el turno, y se deja un breve intervalo en el que no se acepta ninguna entrada. Si ese intervalo es largo, resulta frustrante; si es corto, aumentan los errores. Todavía estamos definiendo la duración adecuada.
+
+## Lo que aún no hemos decidido
+
+Solo se puede saber si una partida en un único dispositivo resulta cómoda cuando dos personas se sientan a jugar de verdad. El resultado dependerá del tamaño del dispositivo y del tamaño de las manos. Esta entrada es un registro intermedio del diseño. Con las opiniones de las pruebas de juego, planeamos ajustar de nuevo la disposición y los tiempos.
