@@ -2,6 +2,7 @@
 title: Pourquoi chaque seigneur IA a une personnalité différente d'une manche à l'autre
 summary: Les seigneurs IA de Patchland jouent selon les mêmes règles, mais nous cherchons à ce que chacun donne l'impression d'être un adversaire différent. Cette note décrit les choix de conception qui créent cette impression.
 date: TBD
+copy_review: iris 2026-11-19
 ---
 ## Mêmes règles, habitudes différentes
 

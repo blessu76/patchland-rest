@@ -2,6 +2,7 @@
 title: 為什麼一局應該要短
 summary: 我們把 Patchland 的每一局設計得不太長。這篇文章整理了我們對局的長度如何影響玩家的注意力與記憶的看法。
 date: TBD
+copy_review: iris 2026-11-19
 ---
 ## 一局結束的地方
 

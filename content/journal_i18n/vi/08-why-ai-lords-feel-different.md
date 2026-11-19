@@ -2,10 +2,11 @@
 title: Vì sao mỗi lãnh chúa AI mang lại cảm giác khác nhau qua từng ván
 summary: Các lãnh chúa AI của Patchland hành động trong cùng một bộ luật, nhưng chúng tôi đang làm để mỗi lãnh chúa mang lại cảm giác như một đối thủ khác nhau. Bài viết này tóm tắt những lựa chọn thiết kế tạo nên cảm giác đó.
 date: TBD
+copy_review: iris 2026-11-19
 ---
 ## Luật giống nhau, thói quen khác nhau
 
-Luật của Patchland áp dụng như nhau cho mọi lãnh chúa. Ba hành động là kẻ, đặt và lan rộng cũng giống nhau với tất cả. Dù vậy, chúng tôi muốn mỗi lãnh chúa mang lại cảm giác như đang đấu với một người khác. Chúng tôi cho rằng sự khác biệt đến từ thói quen chứ không phải từ luật. Có lãnh chúa mở rộng các mảnh đất từ phía rìa, có lãnh chúa chiếm phần giữa trước. Cùng một hành động, nhưng diễn biến ván cờ thay đổi tùy theo bắt đầu từ đâu.
+Luật của Patchland áp dụng như nhau cho mọi lãnh chúa. Ba hành động là kẻ, đặt và lan cũng giống nhau với tất cả. Dù vậy, chúng tôi muốn mỗi lãnh chúa mang lại cảm giác như đang đấu với một người khác. Chúng tôi cho rằng sự khác biệt đến từ thói quen chứ không phải từ luật. Có lãnh chúa mở rộng các mảnh đất từ phía rìa, có lãnh chúa chiếm phần giữa trước. Cùng một hành động, nhưng diễn biến ván chơi thay đổi tùy theo bắt đầu từ đâu.
 
 ## Cho thấy sự do dự
 

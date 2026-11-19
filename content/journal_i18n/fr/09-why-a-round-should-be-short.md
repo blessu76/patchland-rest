@@ -2,6 +2,7 @@
 title: Pourquoi une manche doit être courte
 summary: Nous gardons les manches de Patchland courtes. Cette note expose comment nous pensons que la durée d'une manche influence l'attention et la mémoire du joueur.
 date: TBD
+copy_review: iris 2026-11-19
 ---
 ## Là où s'arrête une manche
 
@@ -9,7 +10,7 @@ Nous pensons que le moment où une manche se termine compte autant que les règl
 
 ## La durée qui laisse un souvenir
 
-Quand on répète plusieurs fois, au sein d'une manche, les gestes de tracer, de poser et de répandre, nous pensons que le joueur se rappellera plus nettement les premiers coups que les derniers. Dans une longue manche, cette scène initiale recule et il ne reste parfois que le résultat. Nous pensons qu'une manche courte permet de revoir d'un coup d'œil comment on a joué. C'est, selon nous, ce qui donne envie de lancer la suivante.
+Quand on répète plusieurs fois, au sein d'une manche, les gestes de tracer, de poser et d’étendre, nous pensons que le joueur se rappellera plus nettement les premiers coups que les derniers. Dans une longue manche, cette scène initiale recule et il ne reste parfois que le résultat. Nous pensons qu'une manche courte permet de revoir d'un coup d'œil comment on a joué. C'est, selon nous, ce qui donne envie de lancer la suivante.
 
 ## Un endroit facile pour recommencer
 

@@ -2,14 +2,15 @@
 title: Dos jugadores, un solo dispositivo
 summary: En el modo de dos jugadores de Patchland, dos personas comparten un mismo dispositivo. Aquí contamos cómo pensamos la división de la pantalla y la forma de indicar de quién es el turno.
 date: TBD
+copy_review: iris 2026-11-19
 ---
 ## Dos personas sentadas frente a frente
 
-Una partida en la que dos personas juegan por turnos en un mismo dispositivo es más complicada de lo que parece. Si se sientan una frente a otra con el dispositivo en el medio, el texto se ve al revés para uno de los dos y las manos a veces se cruzan. Por eso, al crear el modo de dos jugadores, pensamos primero en dónde se sientan y después en las reglas.
+Una partida en la que dos personas juegan por turnos en un mismo dispositivo es más complicada de lo que parece. Si se sientan una frente a otra con el dispositivo en el medio, el texto se ve al revés para uno de los dos y las manos a veces se cruzan. Por eso, al crear el modo de dos jugadores, pensamos primero en dónde se sientan y después en las reglas. En Patchland, las partidas de dos en un mismo dispositivo existen en Colocar (tablero hexagonal) y en Expandir. Hockey de césped no tiene partida para dos. Las partidas de dos no se guardan en los registros personales ni en los sellos.
 
 ## El turno se indica con la forma, no solo con el color
 
-Decidimos no indicar de quién es el turno únicamente con un color. Para quien tiene dificultad para distinguir colores, esa información podría no llegar. El indicador de turno combina posición y forma. Los indicadores de ambos lados de la pantalla señalan cada uno hacia su propio jugador, y cuando el turno cambia hay una breve pausa.
+Decidimos no indicar de quién es el turno únicamente con un color. Para quien tiene dificultad para distinguir colores, esa información podría no llegar. El indicador de turno combina posición y forma. Los indicadores de ambos lados de la pantalla señalan cada uno hacia su propio jugador, y cuando el turno cambia aparece una pantalla que tapa el tablero.
 
 ## Errores que surgen por estar tan cerca
 

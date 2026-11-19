@@ -2,6 +2,7 @@
 title: Yapay zekâ lordlarının karakteri neden her turda farklı hissettiriyor
 summary: Patchland'in yapay zekâ lordları aynı kurallar içinde hareket eder, ama biz her birinin farklı bir rakip gibi hissettirmesi için çalışıyoruz. Bu yazı, o hissi yaratan tasarım tercihlerini özetliyor.
 date: TBD
+copy_review: iris 2026-11-19
 ---
 ## Kurallar aynı, alışkanlıklar farklı
 

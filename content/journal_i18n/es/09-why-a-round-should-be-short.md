@@ -2,6 +2,7 @@
 title: Por qué una partida debe ser corta
 summary: Estamos manteniendo cortas las partidas de Patchland. Este texto recoge cómo creemos que la duración de una partida influye en la atención y la memoria del jugador.
 date: TBD
+copy_review: iris 2026-11-19
 ---
 ## Dónde termina una partida
 
@@ -9,7 +10,7 @@ Creemos que el momento en que termina una partida importa tanto como las reglas.
 
 ## La duración que deja recuerdo
 
-Si dentro de una partida se repite muchas veces el gesto de trazar, colocar y expandir, pensamos que el jugador recordará con más nitidez las primeras jugadas que las últimas. Cuando la partida es larga, esa escena inicial se aleja y solo queda el resultado. Creemos que una partida corta permite volver a ver de un vistazo cómo se ha movido uno. Y consideramos que esa es la razón por la que dan ganas de empezar la siguiente.
+Si dentro de una partida se repite muchas veces el gesto de trazar, colocar y extender, pensamos que el jugador recordará con más nitidez las primeras jugadas que las últimas. Cuando la partida es larga, esa escena inicial se aleja y solo queda el resultado. Creemos que una partida corta permite volver a ver de un vistazo cómo se ha movido uno. Y consideramos que esa es la razón por la que dan ganas de empezar la siguiente.
 
 ## Un lugar fácil para volver a empezar
 

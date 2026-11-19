@@ -2,6 +2,7 @@
 title: Vì sao một ván nên ngắn
 summary: Chúng tôi đang giữ mỗi ván Patchland không quá dài. Ghi chép này tóm tắt cách chúng tôi nghĩ độ dài của ván ảnh hưởng đến sự chú ý và trí nhớ của người chơi.
 date: TBD
+copy_review: iris 2026-11-19
 ---
 ## Nơi một ván kết thúc
 
@@ -9,7 +10,7 @@ Chúng tôi cho rằng việc ván kết thúc khi nào cũng quan trọng khôn
 
 ## Độ dài còn đọng lại trong trí nhớ
 
-Khi các động tác vạch, đặt và lan ra được lặp lại nhiều lần trong một ván, chúng tôi cho rằng người chơi sẽ nhớ rõ vài nước đầu hơn vài nước cuối. Ván dài thì cảnh đầu tiên bị đẩy lùi về phía sau và có thể chỉ còn lại kết quả. Chúng tôi cho rằng ván ngắn giúp người chơi nhìn lại chỉ trong một lần mình đã di chuyển ra sao. Chúng tôi cho rằng đó là lý do khiến người ta muốn bắt đầu ván kế tiếp.
+Khi các động tác kẻ, đặt và lan ra được lặp lại nhiều lần trong một ván, chúng tôi cho rằng người chơi sẽ nhớ rõ vài nước đầu hơn vài nước cuối. Ván dài thì cảnh đầu tiên bị đẩy lùi về phía sau và có thể chỉ còn lại kết quả. Chúng tôi cho rằng ván ngắn giúp người chơi nhìn lại chỉ trong một lần mình đã di chuyển ra sao. Chúng tôi cho rằng đó là lý do khiến người ta muốn bắt đầu ván kế tiếp.
 
 ## Nơi dễ bắt đầu lại
 

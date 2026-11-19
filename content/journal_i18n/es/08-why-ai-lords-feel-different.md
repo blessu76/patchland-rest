@@ -2,10 +2,11 @@
 title: Por qué cada señor de IA se siente distinto de una partida a otra
 summary: Los señores de IA de Patchland se mueven bajo las mismas reglas, pero estamos trabajando para que cada uno dé la sensación de ser un rival distinto. Este texto recoge las decisiones de diseño que crean esa sensación.
 date: TBD
+copy_review: iris 2026-11-19
 ---
 ## Las mismas reglas, distintas manías
 
-Las reglas de Patchland se aplican igual a todos los señores. Las tres acciones, trazar, colocar y expandir, también son las mismas para todos. Aun así, quisimos que cada señor diera la impresión de ser una persona distinta contra la que jugar. Creemos que la diferencia no viene de las reglas, sino de las manías. Un señor ensancha sus parches desde los bordes, otro se queda primero con el centro. Incluso con la misma acción, el curso de la partida cambia según dónde se empiece.
+Las reglas de Patchland se aplican igual a todos los señores. Las tres acciones, trazar, colocar y extender, también son las mismas para todos. Aun así, quisimos que cada señor diera la impresión de ser una persona distinta contra la que jugar. Creemos que la diferencia no viene de las reglas, sino de las manías. Un señor ensancha sus parches desde los bordes, otro se queda primero con el centro. Incluso con la misma acción, el curso de la partida cambia según dónde se empiece.
 
 ## Mostrar la duda
 

@@ -2,6 +2,7 @@
 title: Mengapa satu ronde sebaiknya singkat
 summary: Kami menjaga setiap ronde Patchland tetap singkat. Catatan ini merangkum bagaimana kami memandang pengaruh panjang ronde terhadap perhatian dan ingatan pemain.
 date: TBD
+copy_review: iris 2026-11-19
 ---
 ## Tempat sebuah ronde berakhir
 
@@ -9,7 +10,7 @@ Kami menilai kapan sebuah ronde berakhir sama pentingnya dengan aturannya. Denga
 
 ## Panjang yang masih membekas di ingatan
 
-Jika gerakan menarik garis, meletakkan, dan menyebar diulang berkali-kali dalam satu ronde, kami memperkirakan pemain akan mengingat beberapa langkah pertama lebih jelas daripada beberapa langkah terakhir. Pada ronde yang panjang, adegan awal itu terdorong ke belakang dan yang tersisa hanya hasilnya. Kami menilai ronde yang singkat memungkinkan pemain melihat kembali sekilas bagaimana ia bergerak. Kami menilai inilah alasan yang membuat pemain ingin memulai ronde berikutnya.
+Jika gerakan menarik garis, menempatkan, dan menyebar diulang berkali-kali dalam satu ronde, kami memperkirakan pemain akan mengingat beberapa langkah pertama lebih jelas daripada beberapa langkah terakhir. Pada ronde yang panjang, adegan awal itu terdorong ke belakang dan yang tersisa hanya hasilnya. Kami menilai ronde yang singkat memungkinkan pemain melihat kembali sekilas bagaimana ia bergerak. Kami menilai inilah alasan yang membuat pemain ingin memulai ronde berikutnya.
 
 ## Tempat yang mudah untuk memulai lagi
 

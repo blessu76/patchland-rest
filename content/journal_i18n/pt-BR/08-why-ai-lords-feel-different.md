@@ -2,10 +2,11 @@
 title: Por que cada senhor de IA parece diferente de uma partida para outra
 summary: Os senhores de IA do Patchland jogam sob as mesmas regras, mas estamos trabalhando para que cada um pareça um adversário diferente. Este texto reúne as escolhas de design por trás dessa sensação.
 date: TBD
+copy_review: iris 2026-11-19
 ---
 ## Mesmas regras, manias diferentes
 
-As regras do Patchland valem igualmente para todos os senhores. As três ações, traçar, colocar e espalhar, também são as mesmas para todos. Mesmo assim, queríamos que cada senhor parecesse uma pessoa diferente do outro lado do tabuleiro. Entendemos que a diferença vem não das regras, mas das manias. Um senhor amplia seus trechos a partir das bordas, outro garante primeiro o centro. Mesmo com a mesma ação, o rumo da partida muda conforme o ponto de partida.
+As regras do Patchland valem igualmente para todos os senhores. As três ações, traçar, posicionar e espalhar, também são as mesmas para todos. Mesmo assim, queríamos que cada senhor parecesse uma pessoa diferente do outro lado do tabuleiro. Entendemos que a diferença vem não das regras, mas das manias. Um senhor amplia seus trechos a partir das bordas, outro garante primeiro o centro. Mesmo com a mesma ação, o rumo da partida muda conforme o ponto de partida.
 
 ## Mostrar a hesitação
 

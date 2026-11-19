@@ -2,6 +2,7 @@
 title: Bir tur neden kısa olmalı
 summary: Patchland'de her turu kısa tutuyoruz. Bu yazıda, tur uzunluğunun oyuncunun dikkatini ve hafızasını nasıl etkilediğini düşündüğümüzü topladık.
 date: TBD
+copy_review: iris 2026-11-19
 ---
 ## Turun bittiği yer
 
@@ -9,7 +10,7 @@ Turun ne zaman bittiğinin kurallar kadar önemli olduğunu düşündük. Kurall
 
 ## Hafızada kalan uzunluk
 
-Çizme, koyma ve yayılma hareketleri bir tur içinde defalarca tekrarlandığında, oyuncunun ilk birkaç hamleyi son birkaç hamleden daha net hatırlayacağını düşünüyoruz. Tur uzunsa o ilk sahne geriye itilir ve geriye yalnızca sonuç kalabilir. Kısa bir turun, kişinin nasıl hareket ettiğini tek bakışta yeniden görmesini sağladığını düşünüyoruz. Bir sonraki turu başlatmaya iten şeyin bu olduğunu düşündük.
+Çizme, yerleştirme ve yayma hareketleri bir tur içinde defalarca tekrarlandığında, oyuncunun ilk birkaç hamleyi son birkaç hamleden daha net hatırlayacağını düşünüyoruz. Tur uzunsa o ilk sahne geriye itilir ve geriye yalnızca sonuç kalabilir. Kısa bir turun, kişinin nasıl hareket ettiğini tek bakışta yeniden görmesini sağladığını düşünüyoruz. Bir sonraki turu başlatmaya iten şeyin bu olduğunu düşündük.
 
 ## Yeniden başlaması kolay bir yer
 
