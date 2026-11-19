@@ -6,7 +6,7 @@ copy_review: iris 2026-11-19
 ---
 ## Zwei Menschen, die sich gegenübersitzen
 
-Eine Partie, bei der zwei Personen an einem Gerät abwechselnd ziehen, ist schwieriger, als man denkt. Sitzt man sich mit dem Gerät in der Mitte gegenüber, steht die Schrift für eine Seite auf dem Kopf, und die Hände kommen sich manchmal in die Quere. Deshalb haben wir beim Bau des Zwei-Spieler-Modus zuerst über die Sitzplätze nachgedacht und erst danach über die Regeln. Im Zwei-Spieler-Modus an einem Gerät lässt sich in Patchland bei Setzen (Hexfeld) und Ausbreiten spielen. Revier-Hockey hat keine Zwei-Spieler-Partie. Zwei-Spieler-Partien landen nicht in den persönlichen Aufzeichnungen und Stempeln.
+Eine Partie, bei der zwei Personen an einem Gerät abwechselnd ziehen, ist schwieriger, als man denkt. Sobald ein Zug gemacht ist, deckt ein Sichtschutz das Spielfeld ab, und erst wenn die nächste Person ihn antippt, ist das Feld wieder zu sehen. Deshalb haben wir beim Bau des Zwei-Spieler-Modus zuerst über den Zugwechsel nachgedacht und erst danach über die Regeln. Im Zwei-Spieler-Modus an einem Gerät lässt sich in Patchland bei Setzen (Hexfeld) und Ausbreiten spielen. Revier-Hockey hat keine Zwei-Spieler-Partie. Zwei-Spieler-Partien landen nicht in den persönlichen Aufzeichnungen und Stempeln.
 
 ## Der Zug zeigt sich durch Form, nicht nur durch Farbe
 

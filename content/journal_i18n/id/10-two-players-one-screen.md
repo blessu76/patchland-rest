@@ -6,7 +6,7 @@ copy_review: iris 2026-11-19
 ---
 ## Dua orang yang duduk berhadapan
 
-Permainan yang dimainkan bergantian oleh dua orang di satu perangkat ternyata lebih rumit daripada kelihatannya. Kalau duduk berhadapan dengan perangkat di tengah, tulisan akan terbalik bagi salah satu pemain, dan tangan kadang saling bersilangan. Karena itu, saat membuat mode dua pemain, kami memikirkan posisi duduk lebih dulu daripada aturan. Di Patchland, permainan dua orang di satu perangkat tersedia untuk Tempatkan (papan heksagon) dan Sebar. Hoki Wilayah tidak punya permainan dua orang. Permainan dua orang tidak tercatat di rekor pribadi maupun stempel.
+Permainan yang dimainkan bergantian oleh dua orang di satu perangkat ternyata lebih rumit daripada kelihatannya. Setelah satu pemain melangkah, layar tirai menutupi papan, dan papan baru terlihat lagi setelah pemain berikutnya mengetuk tirai itu. Karena itu, saat membuat mode dua pemain, kami memikirkan cara memberi giliran lebih dulu daripada aturan. Di Patchland, permainan dua orang di satu perangkat tersedia untuk Tempatkan (papan heksagon) dan Sebar. Hoki Wilayah tidak punya permainan dua orang. Permainan dua orang tidak tercatat di rekor pribadi maupun stempel.
 
 ## Giliran ditunjukkan dengan bentuk, bukan hanya warna
 

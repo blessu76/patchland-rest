@@ -6,7 +6,7 @@ copy_review: iris 2026-11-19
 ---
 ## Màn hình của hai người ngồi đối diện
 
-Ván chơi mà hai người thay phiên nhau trên cùng một thiết bị khó hơn ta tưởng. Khi đặt thiết bị ở giữa và ngồi đối diện nhau, chữ sẽ bị ngược đối với một bên, và tay đôi khi chạm vào nhau. Vì vậy, khi làm chế độ hai người chơi, chúng tôi nghĩ đến chỗ ngồi trước cả luật chơi. Trong Patchland, chế độ hai người trên một thiết bị có ở Đặt quân (bàn lục giác) và Lan rộng. Khúc côn cầu giành đất không có ván hai người. Ván hai người không được ghi vào kỷ lục cá nhân hay con dấu.
+Ván chơi mà hai người thay phiên nhau trên cùng một thiết bị khó hơn ta tưởng. Khi một người đi nước, một màn chắn sẽ che bàn cờ, và bàn cờ chỉ hiện lại sau khi người kế tiếp chạm vào màn chắn. Vì vậy, khi làm chế độ hai người chơi, chúng tôi nghĩ đến cách chuyển lượt trước cả luật chơi. Trong Patchland, chế độ hai người trên một thiết bị có ở Đặt quân (bàn lục giác) và Lan rộng. Khúc côn cầu giành đất không có ván hai người. Ván hai người không được ghi vào kỷ lục cá nhân hay con dấu.
 
 ## Báo lượt bằng hình dạng, không chỉ bằng màu
 

@@ -6,7 +6,7 @@ copy_review: iris 2026-11-19
 ---
 ## Duas pessoas sentadas frente a frente
 
-Uma partida em que duas pessoas jogam por turnos no mesmo aparelho é mais complicada do que parece. Quando se sentam frente a frente, com o aparelho no meio, o texto fica de cabeça para baixo para um dos lados, e às vezes as mãos se cruzam. Por isso, ao criar o modo para dois jogadores, pensamos primeiro em onde cada um se senta e só depois nas regras. No Patchland, as partidas de dois no mesmo aparelho existem em Posicionar (tabuleiro hexagonal) e em Espalhar. Hóquei de Território não tem partida para dois. As partidas de dois não ficam nos recordes pessoais nem nos selos.
+Uma partida em que duas pessoas jogam por turnos no mesmo aparelho é mais complicada do que parece. Depois que um jogador faz sua jogada, uma cortina de cobertura esconde o tabuleiro, e ele só volta a aparecer quando o próximo jogador toca na cortina. Por isso, ao criar o modo para dois jogadores, pensamos primeiro em como passar a vez e só depois nas regras. No Patchland, as partidas de dois no mesmo aparelho existem em Posicionar (tabuleiro hexagonal) e em Espalhar. Hóquei de Território não tem partida para dois. As partidas de dois não ficam nos recordes pessoais nem nos selos.
 
 ## A vez se mostra pela forma, não só pela cor
 

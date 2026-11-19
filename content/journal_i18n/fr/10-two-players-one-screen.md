@@ -6,7 +6,7 @@ copy_review: iris 2026-11-19
 ---
 ## Deux personnes face à face
 
-Une partie où deux personnes jouent à tour de rôle sur un même appareil est plus délicate qu'il n'y paraît. Quand on s'assoit face à face avec l'appareil au milieu, le texte est à l'envers pour l'un des deux, et les mains se croisent parfois. C'est pourquoi, en concevant le mode à deux joueurs, nous avons pensé d'abord aux places, avant même les règles. Dans Patchland, les parties à deux sur un seul appareil existent pour Placement (plateau hexagonal) et Expansion. Hockey de territoire n’a pas de partie à deux. Les parties à deux ne sont pas enregistrées dans les records personnels ni dans les tampons.
+Une partie où deux personnes jouent à tour de rôle sur un même appareil est plus délicate qu'il n'y paraît. Quand un joueur joue, un écran de cache masque le plateau, et le plateau ne réapparaît qu'après que le joueur suivant a touché ce cache. C'est pourquoi, en concevant le mode à deux joueurs, nous avons pensé d'abord à la façon de passer la main, avant même les règles. Dans Patchland, les parties à deux sur un seul appareil existent pour Placement (plateau hexagonal) et Expansion. Hockey de territoire n’a pas de partie à deux. Les parties à deux ne sont pas enregistrées dans les records personnels ni dans les tampons.
 
 ## Le tour se montre par la forme, pas seulement par la couleur
 

@@ -6,7 +6,7 @@ copy_review: iris 2026-11-19
 ---
 ## Karşılıklı oturan iki kişinin ekranı
 
-Tek bir cihazda iki kişinin sırayla oynadığı bir oyun, sanıldığından daha zordur. Cihaz ortada, karşılıklı oturulduğunda yazılar taraflardan biri için ters görünür ve eller bazen birbirine karışır. Bu yüzden iki kişilik modu yaparken kurallardan önce oturma düzenini düşündük. Patchland'de tek cihazda iki kişilik maç Yerleştir (altıgen tahta) ve Yayıl oyunlarında var. Turf Hockey'de iki kişilik maç yok. İki kişilik maçlar kişisel kayıtlara ve damgalara işlenmez.
+Tek bir cihazda iki kişinin sırayla oynadığı bir oyun, sanıldığından daha zordur. Bir oyuncu hamle yapınca bir perde tahtayı kapatır ve tahta, sıradaki oyuncu perdeye dokunana kadar tekrar görünmez. Bu yüzden iki kişilik modu yaparken kurallardan önce sıranın nasıl devredileceğini düşündük. Patchland'de tek cihazda iki kişilik maç Yerleştir (altıgen tahta) ve Yayıl oyunlarında var. Turf Hockey'de iki kişilik maç yok. İki kişilik maçlar kişisel kayıtlara ve damgalara işlenmez.
 
 ## Sıra, yalnızca renkle değil şekille de gösterilir
 

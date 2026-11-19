@@ -6,7 +6,7 @@ copy_review: iris 2026-11-19
 ---
 ## Dos personas sentadas frente a frente
 
-Una partida en la que dos personas juegan por turnos en un mismo dispositivo es más complicada de lo que parece. Si se sientan una frente a otra con el dispositivo en el medio, el texto se ve al revés para uno de los dos y las manos a veces se cruzan. Por eso, al crear el modo de dos jugadores, pensamos primero en dónde se sientan y después en las reglas. En Patchland, las partidas de dos en un mismo dispositivo existen en Colocar (tablero hexagonal) y en Expandir. Hockey de césped no tiene partida para dos. Las partidas de dos no se guardan en los registros personales ni en los sellos.
+Una partida en la que dos personas juegan por turnos en un mismo dispositivo es más complicada de lo que parece. Cuando un jugador mueve, una pantalla de cobertura oculta el tablero, y el tablero solo vuelve a verse cuando el siguiente jugador toca la cobertura. Por eso, al crear el modo de dos jugadores, pensamos primero en cómo pasar el turno y después en las reglas. En Patchland, las partidas de dos en un mismo dispositivo existen en Colocar (tablero hexagonal) y en Expandir. Hockey de césped no tiene partida para dos. Las partidas de dos no se guardan en los registros personales ni en los sellos.
 
 ## El turno se indica con la forma, no solo con el color
 
