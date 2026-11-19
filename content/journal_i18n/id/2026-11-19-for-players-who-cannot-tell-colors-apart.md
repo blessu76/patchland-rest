@@ -1,7 +1,7 @@
 ---
 title: Tetap Bisa Dimainkan Meski Sulit Membedakan Warna
 summary: Di Patchland, warna menunjukkan siapa pemilik sebuah potongan, sehingga pemain yang sulit membedakan warna jadi dirugikan. Catatan ini membahas penambahan petunjuk selain warna, dan alasannya.
-date: TBD
+date: 2026-11-19
 copy_review: iris 2026-11-15
 ---
 ## Saat warna berarti pemilik

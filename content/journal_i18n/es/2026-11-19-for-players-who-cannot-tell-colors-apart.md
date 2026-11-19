@@ -1,7 +1,7 @@
 ---
 title: Jugable aunque cueste distinguir los colores
 summary: En Patchland, el color indica de quién es cada retazo, lo que perjudica a quienes distinguen mal los colores. Esta nota trata de añadir pistas más allá del color y de por qué.
-date: TBD
+date: 2026-11-19
 copy_review: iris 2026-11-15
 ---
 ## Cuando el color es el dueño

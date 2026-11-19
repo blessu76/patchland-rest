@@ -1,7 +1,7 @@
 ---
 title: Vẫn chơi được dù khó phân biệt màu
 summary: Trong Patchland, màu cho biết mảnh giấy thuộc về ai, nên người khó phân biệt màu bị thiệt thòi. Ghi chú này nói về việc thêm các gợi ý ngoài màu sắc và lý do.
-date: TBD
+date: 2026-11-19
 copy_review: iris 2026-11-15
 ---
 ## Khi màu là chủ sở hữu

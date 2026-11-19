@@ -1,7 +1,7 @@
 ---
 title: Spielbar, auch wenn Farben schwer zu unterscheiden sind
 summary: In Patchland zeigt die Farbe, wem ein Schnipsel gehört, und das benachteiligt Spielende, die Farben schwer unterscheiden können. Diese Notiz handelt von Hinweisen jenseits der Farbe und davon, warum.
-date: TBD
+date: 2026-11-19
 copy_review: iris 2026-11-15
 ---
 ## Wenn Farbe Besitz bedeutet
