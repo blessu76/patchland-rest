@@ -4,17 +4,17 @@ summary: Dans le mode à deux joueurs de Patchland, deux personnes partagent un 
 date: TBD
 copy_review: iris 2026-11-19
 ---
-## Deux personnes face à face
+## Un appareil qu'on se passe à tour de rôle
 
 Une partie où deux personnes jouent à tour de rôle sur un même appareil est plus délicate qu'il n'y paraît. Quand un joueur joue, un écran de cache masque le plateau, et le plateau ne réapparaît qu'après que le joueur suivant a touché ce cache. C'est pourquoi, en concevant le mode à deux joueurs, nous avons pensé d'abord à la façon de passer la main, avant même les règles. Dans Patchland, les parties à deux sur un seul appareil existent pour Placement (plateau hexagonal) et Expansion. Hockey de territoire n’a pas de partie à deux. Les parties à deux ne sont pas enregistrées dans les records personnels ni dans les tampons.
 
-## Le tour se montre par la forme, pas seulement par la couleur
+## Le tour s'affiche par la couleur et une étiquette
 
-Nous avons décidé de ne pas indiquer à qui c'est le tour uniquement par une couleur. Pour une personne qui distingue difficilement les couleurs, cette information risque de ne pas passer. L'indicateur de tour associe une pastille de couleur et l'étiquette « Joueur 1 » ou « Joueur 2 », et un écran de masquage s’affiche quand le tour passe.
+Nous avons décidé de ne pas indiquer à qui c'est le tour uniquement par une couleur. Pour une personne qui distingue difficilement les couleurs, cette information risque de ne pas passer. L'indicateur de tour associe une pastille de couleur et l'étiquette « Joueur 1 » ou « Joueur 2 ».
 
-## Les erreurs dues à la proximité
+## Erreurs pendant le passage de l'appareil
 
-Deux personnes assises tout près l'une de l'autre risquent de toucher l'appareil par mégarde pendant le tour de l'autre. Tant que l'écran de masquage est affiché, le plateau n'accepte donc aucune saisie ; il ne réapparaît que lorsque la personne suivante touche l'écran.
+Pendant que l'appareil passe de main en main, il est facile de voir le plateau de l'autre joueur ou de le toucher par erreur. Ainsi, tant que l'écran de masquage est affiché, le plateau n'accepte aucune saisie.
 
 ## Ce qui n'est pas encore décidé
 

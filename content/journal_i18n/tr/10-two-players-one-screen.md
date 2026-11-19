@@ -4,17 +4,17 @@ summary: Patchland'in iki kişilik modunda iki kişi tek bir cihazı paylaşır.
 date: TBD
 copy_review: iris 2026-11-19
 ---
-## Karşılıklı oturan iki kişinin ekranı
+## Cihazın sırayla el değiştirdiği oyun
 
 Tek bir cihazda iki kişinin sırayla oynadığı bir oyun, sanıldığından daha zordur. Bir oyuncu hamle yapınca bir perde tahtayı kapatır ve tahta, sıradaki oyuncu perdeye dokunana kadar tekrar görünmez. Bu yüzden iki kişilik modu yaparken kurallardan önce sıranın nasıl devredileceğini düşündük. Patchland'de tek cihazda iki kişilik maç Yerleştir (altıgen tahta) ve Yayıl oyunlarında var. Turf Hockey'de iki kişilik maç yok. İki kişilik maçlar kişisel kayıtlara ve damgalara işlenmez.
 
-## Sıra, yalnızca renkle değil şekille de gösterilir
+## Sıra, renk ve yazıyla birlikte gösterilir
 
-Sıranın kimde olduğunu yalnızca tek bir renkle göstermemeye karar verdik. Renkleri ayırt etmekte zorlanan biri için bu bilgi ulaşmayabilir. Sıra göstergesi bir renk çipini “Oyuncu 1” ya da “Oyuncu 2” yazısıyla birlikte kullanır ve sıra geçerken ekranı örten bir perde belirir.
+Sıranın kimde olduğunu yalnızca tek bir renkle göstermemeye karar verdik. Renkleri ayırt etmekte zorlanan biri için bu bilgi ulaşmayabilir. Sıra göstergesi bir renk çipini “Oyuncu 1” ya da “Oyuncu 2” yazısıyla birlikte kullanır.
 
-## Yakın oturmaktan doğan hatalar
+## Cihazı devrederken yapılan hatalar
 
-Birbirine yakın oturan iki kişi, karşısındakinin sırasında cihaza yanlışlıkla dokunabilir. Bu yüzden perde ekrandayken tahta girdi kabul etmez; sıradaki kişi perdeye dokunana kadar tahta yeniden görünmez.
+Cihaz el değiştirirken karşıdakinin tahtası kolayca görülebilir ya da yanlışlıkla dokunulabilir. Bu yüzden perde ekrandayken tahta girdi kabul etmez.
 
 ## Henüz karar vermediğimiz şeyler
 

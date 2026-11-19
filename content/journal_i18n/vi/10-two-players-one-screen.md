@@ -4,17 +4,17 @@ summary: Chế độ hai người chơi của Patchland để hai người dùng
 date: TBD
 copy_review: iris 2026-11-19
 ---
-## Màn hình của hai người ngồi đối diện
+## Ván chơi đưa thiết bị qua lại
 
 Ván chơi mà hai người thay phiên nhau trên cùng một thiết bị khó hơn ta tưởng. Khi một người đi nước, một màn chắn sẽ che bàn cờ, và bàn cờ chỉ hiện lại sau khi người kế tiếp chạm vào màn chắn. Vì vậy, khi làm chế độ hai người chơi, chúng tôi nghĩ đến cách chuyển lượt trước cả luật chơi. Trong Patchland, chế độ hai người trên một thiết bị có ở Đặt quân (bàn lục giác) và Lan rộng. Khúc côn cầu giành đất không có ván hai người. Ván hai người không được ghi vào kỷ lục cá nhân hay con dấu.
 
-## Báo lượt bằng hình dạng, không chỉ bằng màu
+## Báo lượt bằng màu kèm nhãn
 
-Chúng tôi quyết định không báo đến lượt ai chỉ bằng một màu. Với người khó phân biệt màu, thông tin đó có thể không đến được. Dấu hiệu lượt chơi dùng ô màu kèm nhãn “Người chơi 1” hoặc “Người chơi 2”, và khi lượt chuyển sang người kia sẽ hiện một màn che.
+Chúng tôi quyết định không báo đến lượt ai chỉ bằng một màu. Với người khó phân biệt màu, thông tin đó có thể không đến được. Dấu hiệu lượt chơi dùng ô màu kèm nhãn “Người chơi 1” hoặc “Người chơi 2”.
 
-## Những lỗi sinh ra vì ngồi gần
+## Lỗi khi đưa thiết bị cho nhau
 
-Hai người ngồi gần nhau rất dễ vô tình chạm vào thiết bị trong lượt của đối phương. Vì vậy, khi màn che đang hiện, bàn chơi không nhận thao tác nào; chỉ khi người kế tiếp chạm vào màn che thì bàn chơi mới hiện lại.
+Khi thiết bị đang được đưa qua tay, rất dễ nhìn thấy bàn chơi của người kia hoặc chạm nhầm vào. Vì vậy, khi màn che đang hiện, bàn chơi không nhận thao tác nào.
 
 ## Những điều chưa quyết định
 

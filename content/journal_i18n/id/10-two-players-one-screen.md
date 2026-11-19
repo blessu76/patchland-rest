@@ -4,17 +4,17 @@ summary: Dalam mode dua pemain Patchland, dua orang berbagi satu perangkat. Tuli
 date: TBD
 copy_review: iris 2026-11-19
 ---
-## Dua orang yang duduk berhadapan
+## Satu perangkat yang dioper bergantian
 
 Permainan yang dimainkan bergantian oleh dua orang di satu perangkat ternyata lebih rumit daripada kelihatannya. Setelah satu pemain melangkah, layar tirai menutupi papan, dan papan baru terlihat lagi setelah pemain berikutnya mengetuk tirai itu. Karena itu, saat membuat mode dua pemain, kami memikirkan cara memberi giliran lebih dulu daripada aturan. Di Patchland, permainan dua orang di satu perangkat tersedia untuk Tempatkan (papan heksagon) dan Sebar. Hoki Wilayah tidak punya permainan dua orang. Permainan dua orang tidak tercatat di rekor pribadi maupun stempel.
 
-## Giliran ditunjukkan dengan bentuk, bukan hanya warna
+## Giliran ditunjukkan dengan warna dan label
 
-Kami memutuskan untuk tidak menunjukkan giliran siapa hanya dengan satu warna. Bagi orang yang sulit membedakan warna, informasi itu mungkin tidak sampai. Penanda giliran memakai chip warna dan label “Pemain 1” atau “Pemain 2”, dan layar penutup muncul saat giliran berpindah.
+Kami memutuskan untuk tidak menunjukkan giliran siapa hanya dengan satu warna. Bagi orang yang sulit membedakan warna, informasi itu mungkin tidak sampai. Penanda giliran memakai chip warna dan label “Pemain 1” atau “Pemain 2”.
 
-## Kesalahan yang muncul karena duduk berdekatan
+## Kesalahan saat perangkat dioper
 
-Dua orang yang duduk berdekatan mudah tanpa sengaja menyentuh perangkat saat giliran lawan. Karena itu, selama layar penutup tampil, papan tidak menerima masukan, dan papan baru terlihat lagi setelah orang berikutnya mengetuk layar penutup.
+Saat perangkat berpindah tangan, mudah sekali melihat papan lawan atau menyentuhnya tanpa sengaja. Karena itu, selama layar penutup tampil, papan tidak menerima masukan.
 
 ## Hal yang belum diputuskan
 
