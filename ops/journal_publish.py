@@ -116,7 +116,9 @@ def main():
 
     def rollback():
         git("reset", "--hard", "--quiet", "HEAD")
-        git("clean", "-fdq", "content", "en", "ko", "ja", "zh", "es", "pt", "id", "ru", "vi", "fr", "de", "journal", "sitemap.xml", "llms.txt", check=False)
+        # The tree was clean before this run (checked above), so every untracked path is ours: clean all of it.
+        # The old hardcoded path list missed build output (ar, hi, th, tr, pt-BR, zh-Hant) and left the clone dirty forever.
+        git("clean", "-fdq", check=False)
 
     dest.write_text(set_date(src.read_text(), today))
     try:

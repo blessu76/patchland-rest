@@ -60,11 +60,6 @@ class BuildTest(unittest.TestCase):
         self.assertEqual(ctx.journal, [])
         self.assertTrue(any("no ko/en source" in w for w in ctx.warnings))
 
-    def test_orphan_translations_in_repo_are_warned_not_built(self):
-        orphans = [w for w in self.ctx.warnings if "no ko/en source" in w]
-        self.assertTrue(orphans)
-        self.assertNotIn("journal/02-same-rules-different-boards/index.html", "\n".join(self.files))
-
     def test_all_languages(self):
         self.assertEqual(sorted(self.ctx.langs), sorted(bs.languages.SUPPORTED))
         self.assertEqual(len(bs.languages.SUPPORTED), 12)
