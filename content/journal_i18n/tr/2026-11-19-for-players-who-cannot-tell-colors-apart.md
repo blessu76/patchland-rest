@@ -2,6 +2,7 @@
 title: Renkleri Ayırt Etmek Zor Olsa da Oynanabilir
 summary: Patchland'de renk, bir parçanın kime ait olduğunu gösterir; bu da renkleri ayırt etmekte zorlanan oyuncuları dezavantajlı kılar. Bu not, renk dışında ipuçları eklemeyi ve nedenini anlatıyor.
 date: 2026-11-19
+published_at: 2026-11-19T19:24:57+09:00
 copy_review: iris 2026-11-15
 ---
 ## Renk sahip demek olduğunda

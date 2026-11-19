@@ -65,17 +65,26 @@ def slugify(name):
     return re.sub(r"[^a-z0-9]+", "-", s.lower()).strip("-") or "post"
 
 
-def set_date(text, date):
-    """Set/insert `date:` in the YAML front matter (adds a front matter block if none)."""
+def set_key(text, key, value):
+    """Set/insert `key:` in the YAML front matter (adds a front matter block if none)."""
     m = re.match(r"---\n(.*?)\n---\n", text, re.S)
     if not m:
-        return "---\ndate: %s\n---\n%s" % (date, text)
+        return "---\n%s: %s\n---\n%s" % (key, value, text)
     fm = m.group(1)
-    if re.search(r"^date:.*$", fm, re.M):
-        fm = re.sub(r"^date:.*$", "date: %s" % date, fm, flags=re.M)
+    if re.search(r"^%s:.*$" % re.escape(key), fm, re.M):
+        fm = re.sub(r"^%s:.*$" % re.escape(key), lambda _: "%s: %s" % (key, value), fm, flags=re.M)
     else:
-        fm += "\ndate: %s" % date
+        fm += "\n%s: %s" % (key, value)
     return "---\n%s\n---\n%s" % (fm, text[m.end():])
+
+
+def set_date(text, date):
+    return set_key(text, "date", date)
+
+
+def published_stamp():
+    """Publish time as ISO 8601 with KST offset, e.g. 2026-11-19T19:24:57+09:00 (the source of JSON-LD datePublished)."""
+    return datetime.now(KST).isoformat(timespec="seconds")
 
 
 def git(*a, check=True):
@@ -120,12 +129,13 @@ def main():
         # The old hardcoded path list missed build output (ar, hi, th, tr, pt-BR, zh-Hant) and left the clone dirty forever.
         git("clean", "-fdq", check=False)
 
-    dest.write_text(set_date(src.read_text(), today))
+    stamp = published_stamp()
+    dest.write_text(set_key(set_date(src.read_text(), today), "published_at", stamp))
     try:
         for t in translations(src.name):
             target = t.parent / dest.name
             git("mv", str(t.relative_to(CLONE)), str(target.relative_to(CLONE)))
-            target.write_text(set_date(target.read_text(), today))
+            target.write_text(set_key(set_date(target.read_text(), today), "published_at", stamp))
             log("translation %s -> %s" % (t.parent.name, target.name))
     except subprocess.CalledProcessError as e:
         log("FAIL translation move: %s" % (e.stderr or e))

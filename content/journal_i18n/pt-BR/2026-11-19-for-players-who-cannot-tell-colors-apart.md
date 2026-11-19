@@ -2,6 +2,7 @@
 title: Jogável mesmo quando é difícil distinguir as cores
 summary: Em Patchland, a cor mostra de quem é cada retalho, o que prejudica quem tem dificuldade para distinguir cores. Esta nota fala sobre acrescentar pistas além da cor e por quê.
 date: 2026-11-19
+published_at: 2026-11-19T19:24:57+09:00
 copy_review: iris 2026-11-15
 ---
 ## Quando a cor é o dono

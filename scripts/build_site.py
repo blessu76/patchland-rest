@@ -53,7 +53,26 @@ PRICE = re.compile(r"\$\s?\d|\d\s?(?:USD|달러|원\b)|★", re.I)
 PAPER = ["#C8553D", "#3E63A8", "#D19A1E", "#3D8A62", "#7A5BB5", "#2A7F86", "#A8664A", "#8FA66A", "#E9DCC0", "#C8553D", "#3E63A8", "#D19A1E",
          "#3D8A62", "#F0D9D2", "#D5DEEB", "#CFE3E1"]
 COPY_REVIEW = re.compile(r"^iris \d{4}-\d{2}-\d{2}$")
+# published_at / modified_at: optional ISO 8601 date-time with offset (KST, e.g. 2026-11-19T19:24:57+09:00). Absent -> the date only.
+ISO_DATETIME = re.compile(r"^(\d{4}-\d{2}-\d{2})T\d{2}:\d{2}:\d{2}[+-]\d{2}:\d{2}$")
 GAME_COLORS = {"trace": "#C8553D", "spread": "#D19A1E", "place": "#3D8A62", "hockey": "#4A4642", "daily": "#A8664A"}
+
+
+def stamp_ok(value, date):
+    """True when value is an ISO 8601 date-time with offset whose date part is `date`."""
+    m = ISO_DATETIME.match(str(value))
+    if not m or m.group(1) != date:
+        return False
+    try:
+        dt.datetime.fromisoformat(str(value))
+    except ValueError:
+        return False
+    return True
+
+
+def datetime_of(post, key):
+    """The machine-readable time for JSON-LD: the front matter stamp when present, else the plain date (old posts)."""
+    return post.get(key) or post["date"]
 
 
 def esc(s):
@@ -209,6 +228,9 @@ class Ctx:
                 self.errs.append("%s: front matter copy_review: iris YYYY-MM-DD (Iris copy review required)" % where)
             if meta.get("date") != m.group(1):
                 self.errs.append("%s: date must equal the file name date" % where)
+            for k in ("published_at", "modified_at"):
+                if k in meta and not stamp_ok(meta[k], m.group(1)):
+                    self.errs.append("%s: %s must be ISO 8601 with offset (e.g. 2026-11-19T19:24:57+09:00) and start with the file name date" % (where, k))
             if m.group(2) in seen:
                 self.errs.append("%s: slug already used" % where)
             seen.add(m.group(2))
@@ -218,6 +240,7 @@ class Ctx:
                 continue
             self.errs += problems(where, text)
             post = {"slug": m.group(2), "date": meta.get("date", ""), "name": f.name,
+                    "published_at": meta.get("published_at", ""), "modified_at": meta.get("modified_at", ""),
                     "title": {"ko": meta.get("title", ""), "en": meta.get("title_en", "")},
                     "summary": {"ko": meta.get("summary", ""), "en": meta.get("summary_en", "")},
                     "body": {"ko": parts[0].strip("\n"), "en": parts[1].strip("\n")}}
@@ -360,7 +383,9 @@ def build_article(ctx, lang, a):
     langs = article_langs(a)
     alt = {l: path_article(l, a["slug"]) for l in langs}
     editions = {l: {"url": url(alt[l]), "title": a["title"][l]} for l in langs}
-    posting = journal.blogposting(editions, lang, date_published=a["date"], description=a["summary"][lang], publisher=ORG)
+    posting = journal.blogposting(editions, lang, date_published=datetime_of(a, "published_at"),
+                                  date_modified=a.get("modified_at") or None,
+                                  description=a["summary"][lang], publisher=ORG)
     posting.pop("@context", None)
     return render(ctx, lang, path=path_article(lang, a["slug"]), title="%s — Patchland" % title, desc=a["summary"][lang], body=body, alt=alt,
                   updated="", nav=JOURNAL, extra_ld=posting)

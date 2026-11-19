@@ -69,6 +69,16 @@ class Publish(unittest.TestCase):
         self.assertEqual(j.set_date("---\ntitle: a\ndate: x\n---\nbody", "2026-11-13"), "---\ntitle: a\ndate: 2026-11-13\n---\nbody")
         self.assertEqual(j.set_date("---\ntitle: a\n---\nb", "D"), "---\ntitle: a\ndate: D\n---\nb")
         self.assertTrue(j.set_date("plain", "D").startswith("---\ndate: D\n---\n"))
+
+    def test_publish_stamps_published_at_with_kst_offset(self):
+        import journal_publish as j
+        stamp = j.published_stamp()
+        self.assertRegex(stamp, r"^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\+09:00$")
+        out = j.set_key("---\ntitle: a\ndate: 2026-11-19\n---\nb", "published_at", "2026-11-19T19:24:57+09:00")
+        self.assertEqual(out, "---\ntitle: a\ndate: 2026-11-19\npublished_at: 2026-11-19T19:24:57+09:00\n---\nb")
+        again = j.set_key(out, "published_at", "2026-11-20T08:00:00+09:00")
+        self.assertEqual(again.count("published_at:"), 1)
+        self.assertIn("published_at: 2026-11-20T08:00:00+09:00", again)
         self.assertEqual(j.slugify("03-Why_Mint & Sky.md"), "why-mint-sky")
         self.assertEqual(j.set_date("---\ncopy_review: iris 2026-11-14\ndate: x\n---\nb", "D"), "---\ncopy_review: iris 2026-11-14\ndate: D\n---\nb")
 

@@ -2,6 +2,7 @@
 title: Jouable même quand on distingue mal les couleurs
 summary: Dans Patchland, la couleur indique à qui appartient une pièce, ce qui désavantage les joueurs qui distinguent mal les couleurs. Cette note parle d'ajouter des repères autres que la couleur, et de pourquoi.
 date: 2026-11-19
+published_at: 2026-11-19T19:24:57+09:00
 copy_review: iris 2026-11-15
 ---
 ## Quand la couleur désigne le propriétaire

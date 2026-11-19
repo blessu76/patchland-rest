@@ -178,5 +178,60 @@ class BuildTest(unittest.TestCase):
             self.assertIn(lang + "/index.html", self.files)
 
 
+class PublishedAtTest(unittest.TestCase):
+    """JSON-LD datePublished/dateModified: the front matter time when stamped (published_at / modified_at), else the plain date."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.ctx = bs.Ctx(str(ROOT))
+        cls.base = cls.ctx.journal[0]  # real post, whose layout is already known to build
+
+    def ld(self, post, lang="ko"):
+        html = bs.build_article(self.ctx, lang, post)
+        return dict(re.findall(r'"(datePublished|dateModified)":"([^"]+)"', html))
+
+    def post(self, **kw):
+        a = dict(self.base)
+        a.update(kw)
+        return a
+
+    def test_stamp_gives_datetime_with_offset(self):
+        got = self.ld(self.post(published_at="2026-11-19T19:24:57+09:00"))
+        self.assertEqual(got, {"datePublished": "2026-11-19T19:24:57+09:00"})
+
+    def test_no_stamp_falls_back_to_date_only(self):
+        self.assertEqual(self.ld(self.post(published_at="")), {"datePublished": "2026-11-19"})
+        a = self.post()
+        del a["published_at"]
+        self.assertEqual(self.ld(a), {"datePublished": "2026-11-19"})
+
+    def test_date_modified_follows_the_same_rule(self):
+        got = self.ld(self.post(published_at="2026-11-19T19:24:57+09:00", modified_at="2026-11-20T08:00:00+09:00"))
+        self.assertEqual(got["dateModified"], "2026-11-20T08:00:00+09:00")
+        self.assertNotIn("dateModified", self.ld(self.post(published_at="", modified_at="")))
+
+    def test_visible_date_is_unchanged(self):
+        html = bs.build_article(self.ctx, "ko", self.post(published_at="2026-11-19T19:24:57+09:00"))
+        self.assertIn('<time datetime="2026-11-19">2026-11-19</time>', html)
+
+    def test_stamp_must_match_file_date_and_format(self):
+        root = Path(tempfile.mkdtemp())
+        head = "copy_review: iris 2026-11-14\npublished_at: %s\n"
+        for ok in ("2026-11-14T10:00:00+09:00", "2026-11-14T10:00:00-05:00"):
+            write(root, "content/journal/2026-11-14-x.md", POST_BASE % (head % ok))
+            self.assertEqual(bs.Ctx(str(root)).errs, [], ok)
+        for bad in ("2026-11-15T10:00:00+09:00", "2026-11-14 10:00:00", "2026-11-14T10:00:00", "2026-11-14T25:00:00+09:00", "2026-11-14"):
+            write(root, "content/journal/2026-11-14-x.md", POST_BASE % (head % bad))
+            self.assertTrue(any("published_at" in e for e in bs.Ctx(str(root)).errs), bad)
+
+    def test_translation_inherits_source_stamp(self):
+        root = Path(tempfile.mkdtemp())
+        write(root, "content/journal/2026-11-14-x.md", POST_BASE % "copy_review: iris 2026-11-14\npublished_at: 2026-11-14T10:00:00+09:00\n")
+        write(root, "content/journal_i18n/ja/2026-11-14-x.md", TRANS_BASE % "copy_review: iris 2026-11-14\npublished_at: 2026-11-14T10:00:00+09:00\n")
+        ctx = bs.Ctx(str(root))
+        self.assertEqual(ctx.errs, [])
+        self.assertEqual(ctx.journal[0]["published_at"], "2026-11-14T10:00:00+09:00")
+
+
 if __name__ == "__main__":
     unittest.main()

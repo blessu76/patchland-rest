@@ -4,6 +4,7 @@ title_en: Playable Even When Colors Are Hard to Tell Apart
 summary: 패치랜드는 색이 땅의 주인을 알려 주는 게임이라 색을 구분하기 어려운 사람에게는 불리해집니다. 색 말고도 구분할 수 있는 단서를 더하는 방향과 그 이유를 정리했습니다.
 summary_en: In Patchland, color tells you who owns a patch, which puts players who find colors hard to tell apart at a disadvantage. This note is about adding cues beyond color, and why.
 date: 2026-11-19
+published_at: 2026-11-19T19:24:57+09:00
 copy_review: iris 2026-11-15
 ---
 ## 색이 곧 주인인 게임
