@@ -342,16 +342,29 @@ def build_home(ctx, lang):
         esc(t("more_games")), esc(t("feat_h")), feats, esc(t("cta_h")), esc(t("cta_p")))
     alt = {l: path_home(l) for l in ctx.langs}
     end_script = langswitch.script({"js": JS_URL}, redirect=True) if lang == "en" else ""
+    game = {"@type": "VideoGame", "@id": SITE + "/#game", "name": "Patchland: Claim It All", "url": SITE + "/", "description": t("home_desc"),
+            "inLanguage": languages.hreflang(lang), "gamePlatform": ["iOS", "Android"], "publisher": {"@id": ORG["@id"]}}
     return render(ctx, lang, path=path_home(lang), title=t("home_title"), desc=t("home_desc"), body=body, alt=alt, updated=SITE_UPDATED,
-                  nav="home", ai=lang not in ORIGINALS, end_script=end_script)
+                  nav="home", ai=lang not in ORIGINALS, extra_ld=game, end_script=end_script)
+
+
+def faq_ld(body, lang):
+    """FAQPage JSON-LD built from the visible "### question" / answer pairs of a support page (no answer text is invented)."""
+    items = []
+    for q, a in re.findall(r"^### ([^\n]+)\n((?:(?!#)[^\n]*(?:\n|\Z))*)", body, flags=re.M):
+        answer = " ".join(re.sub(r"\[([^\]]+)\]\([^)]+\)", r"\1", a).replace("**", "").replace("*", "").split())
+        if q.strip() and answer:
+            items.append({"@type": "Question", "name": q.strip(), "acceptedAnswer": {"@type": "Answer", "text": answer}})
+    return {"@type": "FAQPage", "inLanguage": languages.hreflang(lang), "mainEntity": items} if items else None
 
 
 def build_page(ctx, lang, slug):
     meta, body = ctx.pages[(lang, slug)]
     alt = {l: path_page(l, slug) for l in ctx.langs}
     html_body = "<h1>%s</h1>\n%s" % (esc(meta["title"]), markdown(ctx.sub(body)))
+    faq = faq_ld(ctx.sub(body), lang) if slug == "support" else None
     return render(ctx, lang, path=path_page(lang, slug), title="%s — Patchland" % meta["title"], desc=meta["description"], body=html_body, alt=alt,
-                  updated=meta["updated"], nav=slug, ai=lang not in ORIGINALS)
+                  updated=meta["updated"], nav=slug, ai=lang not in ORIGINALS, extra_ld=faq)
 
 
 def lastmod_journal(ctx):

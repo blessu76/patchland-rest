@@ -173,6 +173,22 @@ class BuildTest(unittest.TestCase):
         posts = len(list((ROOT / "content" / "journal").glob("*.md")))
         self.assertEqual(self.files["sitemap.xml"].count("<url>"), 12 * (5 + posts))
 
+    def test_home_has_videogame_jsonld_without_price_or_release_claims(self):
+        for lang in self.ctx.langs:
+            ld = self.page(lang, "index.html") if lang != "en" else self.files["index.html"]
+            self.assertIn('"@type":"VideoGame"', ld, lang)
+            self.assertIn('"gamePlatform":["iOS","Android"]', ld, lang)
+            self.assertNotRegex(ld, r'"(price|offers|datePublished|aggregateRating)"', lang)
+
+    def test_support_faqpage_mirrors_visible_questions(self):
+        for lang in self.ctx.langs:
+            _, body = self.ctx.pages[(lang, "support")]
+            faq = bs.faq_ld(self.ctx.sub(body), lang)
+            questions = re.findall(r"^### ([^\n]+)$", self.ctx.sub(body), flags=re.M)
+            self.assertIsNotNone(faq, lang)
+            self.assertEqual([q["name"] for q in faq["mainEntity"]], [q.strip() for q in questions], lang)
+        self.assertIsNone(bs.faq_ld("## No questions here\n\nText.\n", "en"))
+
     def test_redirect_pages_are_generated_for_retired_langs(self):
         for lang in redirects.LEGACY_REDIRECTS:
             self.assertIn(lang + "/index.html", self.files)
