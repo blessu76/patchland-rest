@@ -6,7 +6,7 @@ copy_review: iris 2026-11-19
 ---
 ## Um aparelho passado de mão em mão
 
-Uma partida em que duas pessoas jogam por turnos no mesmo aparelho é mais complicada do que parece. Depois que um jogador faz sua jogada, uma cortina de cobertura esconde o tabuleiro, e ele só volta a aparecer quando o próximo jogador toca na cortina. Por isso, ao criar o modo para dois jogadores, pensamos primeiro em como passar a vez e só depois nas regras. No Patchland, as partidas de dois no mesmo aparelho existem em Posicionar (tabuleiro hexagonal) e em Espalhar. Hóquei de Território não tem partida para dois. As partidas de dois não ficam nos recordes pessoais nem nos selos.
+Uma partida em que duas pessoas jogam por turnos no mesmo aparelho é mais complicada do que parece. Depois que um jogador faz sua jogada, uma tela de proteção esconde o tabuleiro, e ele só volta a aparecer quando o próximo jogador toca na tela. Por isso, ao criar o modo para dois jogadores, pensamos primeiro em como passar a vez e só depois nas regras. No Patchland, as partidas de dois no mesmo aparelho existem em Posicionar (tabuleiro hexagonal) e em Espalhar. Hóquei de Território não tem partida para dois. As partidas de dois não ficam nos recordes pessoais nem nos selos.
 
 ## A vez se mostra com cor e rótulo
 
@@ -18,4 +18,4 @@ Enquanto o aparelho passa de mão em mão, é fácil ver o tabuleiro do outro ou
 
 ## O que ainda não decidimos
 
-Só dá para saber se uma partida em um único aparelho é confortável quando duas pessoas realmente se sentam e jogam. O resultado vai variar conforme o tamanho do aparelho e o tamanho das mãos. Esta nota é um registro intermediário do projeto. Com base nas opiniões dos testes de jogo, pretendemos ajustar novamente a disposição.
+Só dá para saber se uma partida em um único aparelho é confortável quando duas pessoas realmente se sentam e jogam. O resultado vai variar conforme o tamanho do aparelho e o tamanho das mãos. Esta nota é um registro intermediário do projeto. Com base nas opiniões dos testes de jogo, pretendemos ajustar novamente a disposição da tela.

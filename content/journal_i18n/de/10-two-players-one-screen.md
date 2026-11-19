@@ -14,8 +14,8 @@ Wir wollten nicht allein mit einer Farbe anzeigen, wer am Zug ist. Wer Farben sc
 
 ## Fehler beim Weiterreichen
 
-Beim Weiterreichen des Geräts kann man leicht das Brett des anderen sehen oder versehentlich antippen. Deshalb nimmt das Spielfeld keine Eingaben an, solange der Sichtschutz sichtbar ist.
+Beim Weiterreichen des Geräts kann man leicht das Spielfeld des anderen sehen oder versehentlich antippen. Deshalb nimmt das Spielfeld keine Eingaben an, solange der Sichtschutz sichtbar ist.
 
 ## Was wir noch nicht entschieden haben
 
-Ob eine Partie an einem gemeinsamen Gerät angenehm ist, lässt sich nur herausfinden, wenn zwei Personen sich wirklich hinsetzen und spielen. Das Ergebnis wird von der Gerätegröße und der Handgröße abhängen. Dieser Beitrag ist ein Zwischenstand des Entwurfs. Anhand der Rückmeldungen aus den Playtests wollen wir Sitzanordnung erneut anpassen.
+Ob eine Partie an einem gemeinsamen Gerät angenehm ist, lässt sich nur herausfinden, wenn zwei Personen sich wirklich hinsetzen und spielen. Das Ergebnis wird von der Gerätegröße und der Handgröße abhängen. Dieser Beitrag ist ein Zwischenstand des Entwurfs. Anhand der Rückmeldungen aus den Playtests wollen wir Bildschirmaufbau erneut anpassen.

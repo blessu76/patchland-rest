@@ -6,7 +6,7 @@ copy_review: iris 2026-11-19
 ---
 ## Ván chơi đưa thiết bị qua lại
 
-Ván chơi mà hai người thay phiên nhau trên cùng một thiết bị khó hơn ta tưởng. Khi một người đi nước, một màn chắn sẽ che bàn cờ, và bàn cờ chỉ hiện lại sau khi người kế tiếp chạm vào màn chắn. Vì vậy, khi làm chế độ hai người chơi, chúng tôi nghĩ đến cách chuyển lượt trước cả luật chơi. Trong Patchland, chế độ hai người trên một thiết bị có ở Đặt quân (bàn lục giác) và Lan rộng. Khúc côn cầu giành đất không có ván hai người. Ván hai người không được ghi vào kỷ lục cá nhân hay con dấu.
+Ván chơi mà hai người thay phiên nhau trên cùng một thiết bị khó hơn ta tưởng. Khi một người đi nước, một màn che sẽ che bàn chơi, và bàn chơi chỉ hiện lại sau khi người kế tiếp chạm vào màn che. Vì vậy, khi làm chế độ hai người chơi, chúng tôi nghĩ đến cách chuyển lượt trước cả luật chơi. Trong Patchland, chế độ hai người trên một thiết bị có ở Đặt quân (bàn lục giác) và Lan rộng. Khúc côn cầu giành đất không có ván hai người. Ván hai người không được ghi vào kỷ lục cá nhân hay con dấu.
 
 ## Báo lượt bằng màu kèm nhãn
 
@@ -18,4 +18,4 @@ Khi thiết bị đang được đưa qua tay, rất dễ nhìn thấy bàn chơ
 
 ## Những điều chưa quyết định
 
-Chơi đối kháng trên một thiết bị có thoải mái hay không chỉ biết được khi hai người thật sự ngồi xuống chơi. Kết quả sẽ khác nhau tùy kích thước thiết bị và kích thước bàn tay. Bài viết này là ghi chép giữa chừng của quá trình thiết kế. Dựa trên ý kiến từ các buổi chơi thử, chúng tôi dự định điều chỉnh lại chỗ ngồi.
+Chơi đối kháng trên một thiết bị có thoải mái hay không chỉ biết được khi hai người thật sự ngồi xuống chơi. Kết quả sẽ khác nhau tùy kích thước thiết bị và kích thước bàn tay. Bài viết này là ghi chép giữa chừng của quá trình thiết kế. Dựa trên ý kiến từ các buổi chơi thử, chúng tôi dự định điều chỉnh lại bố cục màn hình.

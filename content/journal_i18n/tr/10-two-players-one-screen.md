@@ -18,4 +18,4 @@ Cihaz el değiştirirken karşıdakinin tahtası kolayca görülebilir ya da yan
 
 ## Henüz karar vermediğimiz şeyler
 
-Tek cihazda oynanan bir maçın rahat olup olmadığı ancak iki kişi gerçekten oturup oynayınca anlaşılabilir. Sonuç, cihazın ve elin boyutuna göre değişecektir. Bu yazı tasarımın ara kaydıdır. Oyun testlerinden gelen görüşlere göre oturma düzenini yeniden ayarlamayı planlıyoruz.
+Tek cihazda oynanan bir maçın rahat olup olmadığı ancak iki kişi gerçekten oturup oynayınca anlaşılabilir. Sonuç, cihazın ve elin boyutuna göre değişecektir. Bu yazı tasarımın ara kaydıdır. Oyun testlerinden gelen görüşlere göre ekran düzenini yeniden ayarlamayı planlıyoruz.
