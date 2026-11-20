@@ -1,3 +1,5 @@
+import html as html_module
+import json
 import re
 import sys
 import tempfile
@@ -19,6 +21,14 @@ def write(root, rel, text):
     p = Path(root) / rel
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(text, encoding="utf-8")
+
+
+def jsonld_nodes(page_html):
+    """All @graph nodes from every application/ld+json block of a rendered page."""
+    nodes = []
+    for raw in re.findall(r'<script type="application/ld\+json">(.*?)</script>', page_html, flags=re.S):
+        nodes += json.loads(raw)["@graph"]
+    return nodes
 
 
 class BuildTest(unittest.TestCase):
@@ -175,18 +185,28 @@ class BuildTest(unittest.TestCase):
 
     def test_home_has_videogame_jsonld_without_price_or_release_claims(self):
         for lang in self.ctx.langs:
-            ld = self.page(lang, "index.html") if lang != "en" else self.files["index.html"]
-            self.assertIn('"@type":"VideoGame"', ld, lang)
-            self.assertIn('"gamePlatform":["iOS","Android"]', ld, lang)
-            self.assertNotRegex(ld, r'"(price|offers|datePublished|aggregateRating)"', lang)
+            page = self.page(lang, "index.html")
+            self.assertIn('"@type":"VideoGame"', page, lang)
+            self.assertIn('"gamePlatform":["iOS","Android"]', page, lang)
+            self.assertNotRegex(page, r'"(price|offers|datePublished|aggregateRating)"', lang)
+            games = [n for n in jsonld_nodes(page) if n.get("@type") == "VideoGame"]
+            self.assertEqual(len(games), 1, lang)
+            self.assertNotIn("inLanguage", games[0], lang)
 
-    def test_support_faqpage_mirrors_visible_questions(self):
+    def test_support_faqpage_is_in_rendered_html(self):
+        # Reads the built support HTML (what crawlers see), not bs.faq_ld, so a missing extra_ld link fails here.
         for lang in self.ctx.langs:
-            _, body = self.ctx.pages[(lang, "support")]
-            faq = bs.faq_ld(self.ctx.sub(body), lang)
-            questions = re.findall(r"^### ([^\n]+)$", self.ctx.sub(body), flags=re.M)
-            self.assertIsNotNone(faq, lang)
-            self.assertEqual([q["name"] for q in faq["mainEntity"]], [q.strip() for q in questions], lang)
+            page = self.page(lang, "support/index.html")
+            faqs = [n for n in jsonld_nodes(page) if n.get("@type") == "FAQPage"]
+            self.assertEqual(len(faqs), 1, lang)
+            items = faqs[0]["mainEntity"]
+            self.assertGreaterEqual(len(items), 4, lang)
+            for q in items:
+                self.assertEqual(q["@type"], "Question", lang)
+                self.assertTrue(q["acceptedAnswer"]["text"].strip(), lang)
+            headings = [html_module.unescape(re.sub(r"<[^>]+>", "", h)).strip()
+                        for h in re.findall(r"<h3[^>]*>(.*?)</h3>", page, flags=re.S)]
+            self.assertEqual([q["name"] for q in items], headings, lang)
         self.assertIsNone(bs.faq_ld("## No questions here\n\nText.\n", "en"))
 
     def test_redirect_pages_are_generated_for_retired_langs(self):

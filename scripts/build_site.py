@@ -342,8 +342,9 @@ def build_home(ctx, lang):
         esc(t("more_games")), esc(t("feat_h")), feats, esc(t("cta_h")), esc(t("cta_p")))
     alt = {l: path_home(l) for l in ctx.langs}
     end_script = langswitch.script({"js": JS_URL}, redirect=True) if lang == "en" else ""
-    game = {"@type": "VideoGame", "@id": SITE + "/#game", "name": "Patchland: Claim It All", "url": SITE + "/", "description": t("home_desc"),
-            "inLanguage": languages.hreflang(lang), "gamePlatform": ["iOS", "Android"], "publisher": {"@id": ORG["@id"]}}
+    # No inLanguage (one page language must not claim the game ships in it) and no @id (every language page would reuse one).
+    game = {"@type": "VideoGame", "name": "Patchland: Claim It All", "url": SITE + "/", "description": t("home_desc"),
+            "gamePlatform": ["iOS", "Android"], "publisher": {"@id": ORG["@id"]}}
     return render(ctx, lang, path=path_home(lang), title=t("home_title"), desc=t("home_desc"), body=body, alt=alt, updated=SITE_UPDATED,
                   nav="home", ai=lang not in ORIGINALS, extra_ld=game, end_script=end_script)
 
