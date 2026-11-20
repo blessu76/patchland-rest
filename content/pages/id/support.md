@@ -31,4 +31,4 @@ Tidak. Aplikasi dan situs web ini tidak mengumpulkan informasi pribadi dan tidak
 
 ### Bahasa apa saja yang didukung aplikasi?
 
-Korea dan Inggris.
+12 bahasa: Inggris, Korea, Jepang, Tionghoa tradisional, Spanyol, Portugis (Brasil), Prancis, Jerman, Indonesia, Thailand, Vietnam, dan Turki.

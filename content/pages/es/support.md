@@ -31,4 +31,4 @@ No. La App y este sitio web no recopilan información personal y no usan analít
 
 ### ¿Qué idiomas admite la app?
 
-Coreano e inglés. (Korean and English.)
+Admite 12 idiomas: inglés, coreano, japonés, chino tradicional, español, portugués (Brasil), francés, alemán, indonesio, tailandés, vietnamita y turco.

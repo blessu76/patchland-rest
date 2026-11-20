@@ -31,4 +31,4 @@ Không. Ứng dụng và trang web này không thu thập thông tin cá nhân v
 
 ### Ứng dụng hỗ trợ những ngôn ngữ nào?
 
-Tiếng Hàn và tiếng Anh.
+Hỗ trợ 12 ngôn ngữ: tiếng Anh, tiếng Hàn, tiếng Nhật, tiếng Hoa phồn thể, tiếng Tây Ban Nha, tiếng Bồ Đào Nha (Brasil), tiếng Pháp, tiếng Đức, tiếng Indonesia, tiếng Thái, tiếng Việt và tiếng Thổ Nhĩ Kỳ.

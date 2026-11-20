@@ -31,4 +31,4 @@ Nein. Die App und diese Website erheben keine personenbezogenen Daten und verwen
 
 ### Welche Sprachen unterstützt die App?
 
-Koreanisch und Englisch.
+12 Sprachen: Englisch, Koreanisch, Japanisch, Traditionelles Chinesisch, Spanisch, Portugiesisch (Brasilien), Französisch, Deutsch, Indonesisch, Thai, Vietnamesisch und Türkisch.

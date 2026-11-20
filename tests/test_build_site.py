@@ -209,6 +209,40 @@ class BuildTest(unittest.TestCase):
             self.assertEqual([q["name"] for q in items], headings, lang)
         self.assertIsNone(bs.faq_ld("## No questions here\n\nText.\n", "en"))
 
+    # 「지원 언어」 FAQ 답에 들어가야 하는 12개 언어 이름(각 페이지 언어로 적힌 이름). 답이 2개 언어로 되돌아가면 실패한다.
+    NATIVE12 = ["English", "한국어", "日本語", "繁體中文", "Español", "Português (Brasil)", "Français", "Deutsch",
+                "Bahasa Indonesia", "ไทย", "Tiếng Việt", "Türkçe"]
+    LANG12 = {
+        "en": ["English", "Korean", "Japanese", "Traditional Chinese", "Spanish", "Portuguese (Brazil)", "French", "German",
+               "Indonesian", "Thai", "Vietnamese", "Turkish"],
+        "ko": ["영어", "한국어", "일본어", "중국어 번체", "스페인어", "포르투갈어", "프랑스어", "독일어", "인도네시아어", "태국어", "베트남어", "터키어"],
+        "ja": ["英語", "韓国語", "日本語", "繁体字中国語", "スペイン語", "ポルトガル語", "フランス語", "ドイツ語", "インドネシア語", "タイ語", "ベトナム語", "トルコ語"],
+        "zh-Hant": NATIVE12,
+        "es": ["inglés", "coreano", "japonés", "chino tradicional", "español", "portugués", "francés", "alemán", "indonesio", "tailandés", "vietnamita", "turco"],
+        "pt-BR": ["inglês", "coreano", "japonês", "chinês tradicional", "espanhol", "português", "francês", "alemão", "indonésio", "tailandês", "vietnamita", "turco"],
+        "fr": ["anglais", "coréen", "japonais", "chinois traditionnel", "espagnol", "portugais", "français", "allemand", "indonésien", "thaï", "vietnamien", "turc"],
+        "de": ["Englisch", "Koreanisch", "Japanisch", "Traditionelles Chinesisch", "Spanisch", "Portugiesisch", "Französisch", "Deutsch", "Indonesisch", "Thai", "Vietnamesisch", "Türkisch"],
+        "id": ["Inggris", "Korea", "Jepang", "Tionghoa tradisional", "Spanyol", "Portugis", "Prancis", "Jerman", "Indonesia", "Thailand", "Vietnam", "Turki"],
+        "th": NATIVE12,
+        "vi": ["tiếng Anh", "tiếng Hàn", "tiếng Nhật", "tiếng Hoa phồn thể", "tiếng Tây Ban Nha", "tiếng Bồ Đào Nha", "tiếng Pháp",
+               "tiếng Đức", "tiếng Indonesia", "tiếng Thái", "tiếng Việt", "tiếng Thổ Nhĩ Kỳ"],
+        "tr": NATIVE12,
+    }
+
+    def test_support_language_faq_lists_all_12_languages(self):
+        self.assertEqual(sorted(self.LANG12), sorted(bs.languages.SUPPORTED))
+        for lang in bs.languages.SUPPORTED:
+            names = self.LANG12[lang]
+            self.assertEqual(len(names), 12, lang)
+            page = self.files[(lang + "/" if lang != "en" else "") + "support/index.html"]
+            # FAQPage JSON-LD 는 화면 문구와 같은 원천에서 나온다 — 답은 JSON-LD 와 화면 모두에 12개 언어를 담아야 한다.
+            nodes = [n for m in re.findall(r'<script type="application/ld\+json">(.*?)</script>', page, re.S)
+                     for n in json.loads(m).get("@graph", [])]
+            answers = [e["acceptedAnswer"]["text"] for n in nodes if n.get("@type") == "FAQPage" for e in n["mainEntity"]]
+            lang_answers = [a for a in answers if all(n in a for n in names)]
+            self.assertEqual(len(lang_answers), 1, lang)
+            self.assertIn(html_module.escape(lang_answers[0]), page, lang)
+
     def test_redirect_pages_are_generated_for_retired_langs(self):
         for lang in redirects.LEGACY_REDIRECTS:
             self.assertIn(lang + "/index.html", self.files)

@@ -31,4 +31,4 @@ Non. L'Application et ce site web ne collectent aucune information personnelle e
 
 ### Quelles langues l'application prend-elle en charge ?
 
-Le coréen et l'anglais.
+12 langues : anglais, coréen, japonais, chinois traditionnel, espagnol, portugais (Brésil), français, allemand, indonésien, thaï, vietnamien et turc.

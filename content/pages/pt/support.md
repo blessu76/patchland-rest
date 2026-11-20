@@ -31,4 +31,4 @@ Não. O App e este site não coletam informações pessoais e não usam análise
 
 ### Quais idiomas o app oferece?
 
-Coreano e inglês.
+12 idiomas: inglês, coreano, japonês, chinês tradicional, espanhol, português (Brasil), francês, alemão, indonésio, tailandês, vietnamita e turco.
