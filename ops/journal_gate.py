@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """patchland journal gate — one post a day at a random afternoon time (KST).
 
-launchd calls this every 15 minutes (12:00-18:45 KST). State: ~/.ipe/queue/patchland/slot.json
+launchd calls this every 15 minutes (12:00-17:45 KST, see ops/com.ipe.patchland.journal.plist). State: ~/.ipe/queue/patchland/slot.json
   {"date","time","prev_date","prev_time","published"}
-- new day -> draw today's time in 12:00-17:59, never the same hour as yesterday's; yesterday moves to prev_*
+- new day -> draw today's time in 12:00-17:45 (the last tick), never the same hour as yesterday's; yesterday moves to prev_*
 - now >= time and not published -> run the publisher; published=true only if it succeeds
+- now >= 18:00 KST and not published -> "closed": the publisher is not called, published stays false, the slot ends with the day
+  (the next day's first tick at 12:00 opens a new slot)
 Clock, RNG, publisher are injectable (see ops/test_journal_gate.py).
 Tests: python3 -m unittest discover -s ops -p 'test_*.py' -q   (wired into scripts/check.sh)
 """
@@ -14,7 +16,9 @@ from pathlib import Path
 
 KST = timezone(timedelta(hours=9))
 QUEUE_DIR = Path(os.environ.get("PATCHLAND_QUEUE", Path.home() / ".ipe/queue/patchland"))
-HOURS = range(12, 18)  # 12:00-17:59
+HOURS = range(12, 18)  # 12:00-17:45
+LAST_SLOT = "17:45"  # the plist's last tick: a later slot could never fire
+CLOSE = "18:00"  # deadline: from here on the day's post is not published
 
 
 def now_kst():
@@ -24,7 +28,10 @@ def now_kst():
 def draw_time(rng, prev_time=None):
     prev_hour = int(prev_time.split(":")[0]) if prev_time else None
     hours = [h for h in HOURS if h != prev_hour]
-    return "%02d:%02d" % (rng.choice(hours), rng.randrange(60))
+    while True:  # minutes beyond LAST_SLOT (17:46-17:59) are redrawn so every slot gets a tick
+        t = "%02d:%02d" % (rng.choice(hours), rng.randrange(60))
+        if t <= LAST_SLOT:
+            return t
 
 
 def load(path):
@@ -60,7 +67,11 @@ def tick(state_path=None, clock=now_kst, rng=None, publisher=run_publisher, log=
         log("new slot %s %s (prev %s %s)" % (today, st["time"], st["prev_date"], st["prev_time"]))
     if st.get("published"):
         return "already-published"
-    if now.strftime("%H:%M") < st["time"]:
+    hm = now.strftime("%H:%M")
+    if hm >= CLOSE:
+        log("closed: %s not published (past %s, slot %s)" % (today, CLOSE, st["time"]))
+        return "closed"
+    if hm < st["time"]:
         return "not-yet"
     ok = False
     try:

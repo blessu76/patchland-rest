@@ -253,8 +253,12 @@ class PublishedAtTest(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
-        cls.ctx = bs.Ctx(str(ROOT))
-        cls.base = cls.ctx.journal[0]  # real post, whose layout is already known to build
+        # Hermetic: a fixture post, not ctx.journal[0] of the real repo. The newest real post changes on every
+        # publish (the journal gate adds one a day), so tying these date assertions to it made them fail on the next run.
+        cls.ctx = bs.Ctx(str(ROOT))  # renders with the real i18n strings
+        root = Path(tempfile.mkdtemp())
+        write(root, "content/journal/2026-11-14-x.md", POST_BASE % "copy_review: iris 2026-11-14\n")
+        cls.base = bs.Ctx(str(root)).journal[0]
 
     def ld(self, post, lang="ko"):
         html = bs.build_article(self.ctx, lang, post)
@@ -266,23 +270,23 @@ class PublishedAtTest(unittest.TestCase):
         return a
 
     def test_stamp_gives_datetime_with_offset(self):
-        got = self.ld(self.post(published_at="2026-11-19T19:24:57+09:00"))
-        self.assertEqual(got, {"datePublished": "2026-11-19T19:24:57+09:00"})
+        got = self.ld(self.post(published_at="2026-11-14T19:24:57+09:00"))
+        self.assertEqual(got, {"datePublished": "2026-11-14T19:24:57+09:00"})
 
     def test_no_stamp_falls_back_to_date_only(self):
-        self.assertEqual(self.ld(self.post(published_at="")), {"datePublished": "2026-11-19"})
+        self.assertEqual(self.ld(self.post(published_at="")), {"datePublished": "2026-11-14"})
         a = self.post()
         del a["published_at"]
-        self.assertEqual(self.ld(a), {"datePublished": "2026-11-19"})
+        self.assertEqual(self.ld(a), {"datePublished": "2026-11-14"})
 
     def test_date_modified_follows_the_same_rule(self):
-        got = self.ld(self.post(published_at="2026-11-19T19:24:57+09:00", modified_at="2026-11-20T08:00:00+09:00"))
+        got = self.ld(self.post(published_at="2026-11-14T19:24:57+09:00", modified_at="2026-11-20T08:00:00+09:00"))
         self.assertEqual(got["dateModified"], "2026-11-20T08:00:00+09:00")
         self.assertNotIn("dateModified", self.ld(self.post(published_at="", modified_at="")))
 
     def test_visible_date_is_unchanged(self):
-        html = bs.build_article(self.ctx, "ko", self.post(published_at="2026-11-19T19:24:57+09:00"))
-        self.assertIn('<time datetime="2026-11-19">2026-11-19</time>', html)
+        html = bs.build_article(self.ctx, "ko", self.post(published_at="2026-11-14T19:24:57+09:00"))
+        self.assertIn('<time datetime="2026-11-14">2026-11-14</time>', html)
 
     def test_stamp_must_match_file_date_and_format(self):
         root = Path(tempfile.mkdtemp())

@@ -31,7 +31,7 @@ class Gate(unittest.TestCase):
             g.tick(self.p, lambda: at("2026-11-13", "00:01"), random.Random(seed), self.pub(), lambda m: None)
             s = self.st()
             self.assertNotEqual(s["time"][:2], prev[:2])
-            self.assertTrue("12:00" <= s["time"] <= "17:59")
+            self.assertTrue("12:00" <= s["time"] <= "17:45")
             self.assertEqual((s["prev_date"], s["prev_time"], s["published"]), ("2026-11-12", prev, False))
 
     def test_first_run_creates_slot(self):
@@ -61,6 +61,43 @@ class Gate(unittest.TestCase):
             raise RuntimeError("x")
         r = g.tick(self.p, lambda: at("2026-11-13", "14:15"), None, boom, lambda m: None)
         self.assertEqual((r, self.st()["published"]), ("failed", False))
+
+    def test_failure_at_1745_retried_at_1759_publishes(self):
+        self.p.write_text(json.dumps({"date": "2026-11-13", "time": "17:30", "published": False}))
+        r = g.tick(self.p, lambda: at("2026-11-13", "17:45"), None, self.pub(False), lambda m: None)
+        self.assertEqual((r, self.calls, self.st()["published"]), ("failed", 1, False))
+        r = g.tick(self.p, lambda: at("2026-11-13", "17:59"), None, self.pub(True), lambda m: None)
+        self.assertEqual((r, self.calls, self.st()["published"]), ("published", 2, True))
+
+    def test_closed_at_1800_and_1845_without_calling_publisher(self):
+        for hm in ("18:00", "18:45"):
+            self.p.write_text(json.dumps({"date": "2026-11-13", "time": "17:30", "published": False}))
+            r = g.tick(self.p, lambda: at("2026-11-13", hm), None, self.pub(True), lambda m: None)
+            self.assertEqual((r, self.calls, self.st()["published"]), ("closed", 0, False), hm)
+
+    def test_failure_then_1800_is_closed_not_retried(self):
+        self.p.write_text(json.dumps({"date": "2026-11-13", "time": "17:30", "published": False}))
+        g.tick(self.p, lambda: at("2026-11-13", "17:59"), None, self.pub(False), lambda m: None)
+        r = g.tick(self.p, lambda: at("2026-11-13", "18:00"), None, self.pub(True), lambda m: None)
+        self.assertEqual((r, self.calls, self.st()["published"]), ("closed", 1, False))
+
+    def test_next_day_opens_a_new_slot_after_closed(self):
+        self.p.write_text(json.dumps({"date": "2026-11-13", "time": "17:30", "published": False}))
+        g.tick(self.p, lambda: at("2026-11-13", "18:45"), None, self.pub(True), lambda m: None)
+        r = g.tick(self.p, lambda: at("2026-11-14", "12:00"), random.Random(3), self.pub(True), lambda m: None)
+        s = self.st()
+        self.assertEqual((s["date"], s["prev_date"], s["published"]), ("2026-11-14", "2026-11-13", False))
+        self.assertTrue("12:00" <= s["time"] <= "17:45")
+        self.assertEqual(r, "not-yet" if s["time"] > "12:00" else "published")
+        self.assertEqual(self.calls, 1 if r == "published" else 0)
+
+    def test_plist_ticks_end_at_1745_and_none_after_close(self):
+        import plistlib
+        with open(Path(__file__).parent / "com.ipe.patchland.journal.plist", "rb") as f:
+            ticks = ["%02d:%02d" % (d["Hour"], d["Minute"]) for d in plistlib.load(f)["StartCalendarInterval"]]
+        self.assertEqual(max(ticks), "17:45")
+        self.assertTrue(all(t < g.CLOSE for t in ticks))
+        self.assertEqual(sorted(ticks), ticks)
 
 
 class Publish(unittest.TestCase):
@@ -185,6 +222,31 @@ class PublishFlow(unittest.TestCase):
         moved = self.sh(origin, "git", "show", "main:content/journal_i18n/de/%s-hello-world.md" % today)
         self.assertIn("date: %s" % today, moved)
         self.assertIn("copy_review: iris 2026-11-14", moved)
+
+
+class DryRun(unittest.TestCase):
+    """--dry-run: the whole publish runs in a throwaway clone; origin, queue, real clone and ALERT stay untouched."""
+    sh = PublishFlow.sh
+
+    def test_dry_run_changes_nothing_real(self):
+        import journal_publish as j
+        t = Path(tempfile.mkdtemp())
+        origin = PublishFlow.origin(self, t)
+        real = t / "clone"
+        self.sh(t, "git", "clone", "-q", str(origin), str(real))
+        q = t / "queue"
+        q.mkdir()
+        (q / "01-hello-world.md").write_text("---\ntitle: Hi\ncopy_review: iris 2026-11-14\n---\nbody\n")
+        j.QUEUE, j.CLONE, j.REMOTE = q, real, str(origin)
+        before = self.sh(origin, "git", "rev-parse", "main").strip()
+        self.assertEqual(j.main(dry_run=True), 0)
+        self.assertEqual(self.sh(origin, "git", "rev-parse", "main").strip(), before)
+        self.assertTrue((q / "01-hello-world.md").exists())
+        self.assertFalse((q / "ALERT").exists())
+        self.assertEqual(self.sh(real, "git", "status", "--porcelain").strip(), "")
+        self.assertEqual(list((real / "content/journal").glob("*.md")), [])
+        self.assertEqual(j.CLONE, real)  # restored after the dry run
+        self.assertFalse(j.DRY_RUN)
 
 
 if __name__ == "__main__":

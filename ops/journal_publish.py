@@ -9,7 +9,7 @@ Clone: ~/ipe/patchland-publish (cloned from origin if missing; dirty tree -> SKI
 Kit: vendor/ipe_web_kit is synced into the clone from $IPE_WEB_KIT (default ~/Developer/ipe_web_kit) when missing/stale.
 No copy-reviewed post -> log + ALERT file, exit 1. <= 2 reviewed posts after publishing -> ALERT file too.
 """
-import os, re, subprocess, sys
+import os, re, shutil, subprocess, sys, tempfile
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
@@ -20,6 +20,7 @@ REMOTE = os.environ.get("PATCHLAND_REMOTE", "https://github.com/blessu76/patchla
 KIT = os.environ.get("IPE_WEB_KIT", str(Path.home() / "Developer/ipe_web_kit"))  # private kit clone (vendor/ipe_web_kit is gitignored)
 LOW_WATER = 2
 COPY_REVIEW = re.compile(r"^iris \d{4}-\d{2}-\d{2}$")
+DRY_RUN = False  # set by main(dry_run=True): no ALERT file, no commit, no push, no queue change
 
 
 def log(msg):
@@ -54,6 +55,9 @@ def translations(name):
 
 
 def alert(msg):
+    if DRY_RUN:
+        log("DRY-RUN ALERT (not written): " + msg)
+        return
     QUEUE.mkdir(parents=True, exist_ok=True)
     (QUEUE / "ALERT").write_text("%s %s\n" % (datetime.now(KST).strftime("%F %T KST"), msg))
     log("ALERT: " + msg)
@@ -103,7 +107,27 @@ def ensure_kit():
     return r.returncode == 0
 
 
-def main():
+def main(dry_run=False):
+    """dry_run: runs the whole publish (move, build, check.sh) in a throwaway clone under a temp dir,
+    then stops before commit/push. The queue, the real publish clone and the ALERT file are never touched."""
+    global CLONE, DRY_RUN
+    if not dry_run:
+        return publish()
+    real_clone, DRY_RUN = CLONE, True
+    work = Path(tempfile.mkdtemp(prefix="journal-dry-run-"))
+    try:
+        # clone from the real publish clone when present (local, no network), else from REMOTE; both are read-only sources
+        src = real_clone if (real_clone / ".git").is_dir() else REMOTE
+        subprocess.run(["git", "clone", "--quiet", "--no-hardlinks", str(src), str(work / "clone")], check=True)
+        CLONE = work / "clone"
+        log("DRY-RUN: work clone %s (queue %s is read only)" % (CLONE, QUEUE))
+        return publish()
+    finally:
+        CLONE, DRY_RUN = real_clone, False
+        shutil.rmtree(work, ignore_errors=True)
+
+
+def publish():
     posts = queued()
     if not posts:
         alert("no copy-reviewed post in queue")
@@ -114,7 +138,8 @@ def main():
     if git("status", "--porcelain").stdout.strip():
         log("SKIP: publish clone has uncommitted changes")
         return 1
-    git("pull", "--rebase", "--quiet")
+    if not DRY_RUN:
+        git("pull", "--rebase", "--quiet")
     if not ensure_kit():
         return 1
     src = posts[0]
@@ -148,6 +173,12 @@ def main():
             log("FAIL %s:\n%s" % (" ".join(cmd), (r.stdout + r.stderr)[-1500:]))
             rollback()
             return 1
+    if DRY_RUN:
+        log("DRY-RUN OK: would commit 'journal: %s' and push to %s (not done); changed files:" % (slug, REMOTE))
+        git("add", "-A")
+        print(git("diff", "--cached", "--stat").stdout, end="")
+        log("DRY-RUN: queue %s left as is, no ALERT written" % src.name)
+        return 0
     try:
         git("add", "-A")
         git("commit", "-q", "-m", "journal: %s" % slug)
@@ -165,4 +196,4 @@ def main():
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(main(dry_run="--dry-run" in sys.argv[1:]))
