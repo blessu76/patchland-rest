@@ -1,8 +1,9 @@
 ---
 title: Vì sao mỗi lãnh chúa AI mang lại cảm giác khác nhau qua từng ván
 summary: Các lãnh chúa AI của Patchland hành động trong cùng một bộ luật, nhưng chúng tôi đang làm để mỗi lãnh chúa mang lại cảm giác như một đối thủ khác nhau. Bài viết này tóm tắt những lựa chọn thiết kế tạo nên cảm giác đó.
-date: TBD
+date: 2026-11-21
 copy_review: iris 2026-11-19
+published_at: 2026-11-21T17:00:06+09:00
 ---
 ## Luật giống nhau, thói quen khác nhau
 

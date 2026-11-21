@@ -1,8 +1,9 @@
 ---
 title: Por qué cada señor de IA se siente distinto de una partida a otra
 summary: Los señores de IA de Patchland se mueven bajo las mismas reglas, pero estamos trabajando para que cada uno dé la sensación de ser un rival distinto. Este texto recoge las decisiones de diseño que crean esa sensación.
-date: TBD
+date: 2026-11-21
 copy_review: iris 2026-11-19
+published_at: 2026-11-21T17:00:06+09:00
 ---
 ## Las mismas reglas, distintas manías
 

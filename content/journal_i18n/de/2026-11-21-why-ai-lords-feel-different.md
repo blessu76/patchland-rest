@@ -1,8 +1,9 @@
 ---
 title: Warum sich die KI-Lords in jeder Runde anders anfühlen
 summary: Die KI-Lords in Patchland spielen nach denselben Regeln, doch wir gestalten sie so, dass jeder sich wie ein anderer Gegner anfühlt. Dieser Beitrag beschreibt die Designentscheidungen hinter diesem Eindruck.
-date: TBD
+date: 2026-11-21
 copy_review: iris 2026-11-19
+published_at: 2026-11-21T17:00:06+09:00
 ---
 ## Gleiche Regeln, andere Gewohnheiten
 

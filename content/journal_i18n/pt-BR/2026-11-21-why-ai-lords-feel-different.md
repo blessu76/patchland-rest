@@ -1,8 +1,9 @@
 ---
 title: Por que cada senhor de IA parece diferente de uma partida para outra
 summary: Os senhores de IA do Patchland jogam sob as mesmas regras, mas estamos trabalhando para que cada um pareça um adversário diferente. Este texto reúne as escolhas de design por trás dessa sensação.
-date: TBD
+date: 2026-11-21
 copy_review: iris 2026-11-19
+published_at: 2026-11-21T17:00:06+09:00
 ---
 ## Mesmas regras, manias diferentes
 

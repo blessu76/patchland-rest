@@ -1,8 +1,9 @@
 ---
 title: Mengapa Setiap Penguasa AI Terasa Berbeda dari Ronde ke Ronde
 summary: Para penguasa AI di Patchland bergerak dengan aturan yang sama, tetapi kami berusaha membuat tiap penguasa terasa seperti lawan yang berbeda. Catatan ini merangkum pilihan desain di balik kesan tersebut.
-date: TBD
+date: 2026-11-21
 copy_review: iris 2026-11-19
+published_at: 2026-11-21T17:00:06+09:00
 ---
 ## Aturannya sama, kebiasaannya berbeda
 
