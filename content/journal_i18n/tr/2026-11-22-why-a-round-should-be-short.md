@@ -1,8 +1,9 @@
 ---
 title: Bir tur neden kısa olmalı
 summary: Patchland'de her turu kısa tutuyoruz. Bu yazıda, tur uzunluğunun oyuncunun dikkatini ve hafızasını nasıl etkilediğini düşündüğümüzü topladık.
-date: TBD
+date: 2026-11-22
 copy_review: iris 2026-11-19
+published_at: 2026-11-22T13:30:01+09:00
 ---
 ## Turun bittiği yer
 

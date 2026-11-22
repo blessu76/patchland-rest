@@ -1,8 +1,9 @@
 ---
 title: Por que uma partida deve ser curta
 summary: Estamos mantendo curtas as partidas de Patchland. Esta nota resume como achamos que a duração de uma partida influencia a atenção e a memória do jogador.
-date: TBD
+date: 2026-11-22
 copy_review: iris 2026-11-19
+published_at: 2026-11-22T13:30:01+09:00
 ---
 ## Onde uma partida termina
 

@@ -1,8 +1,9 @@
 ---
 title: Warum eine Runde kurz sein sollte
 summary: Wir halten jede Runde in Patchland kurz. Hier halten wir fest, wie wir glauben, dass die Länge einer Runde Aufmerksamkeit und Erinnerung der Spielenden beeinflusst.
-date: TBD
+date: 2026-11-22
 copy_review: iris 2026-11-19
+published_at: 2026-11-22T13:30:01+09:00
 ---
 ## Wo eine Runde endet
 

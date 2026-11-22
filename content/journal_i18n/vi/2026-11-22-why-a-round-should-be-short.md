@@ -1,8 +1,9 @@
 ---
 title: Vì sao một ván nên ngắn
 summary: Chúng tôi đang giữ mỗi ván Patchland không quá dài. Ghi chép này tóm tắt cách chúng tôi nghĩ độ dài của ván ảnh hưởng đến sự chú ý và trí nhớ của người chơi.
-date: TBD
+date: 2026-11-22
 copy_review: iris 2026-11-19
+published_at: 2026-11-22T13:30:01+09:00
 ---
 ## Nơi một ván kết thúc
 

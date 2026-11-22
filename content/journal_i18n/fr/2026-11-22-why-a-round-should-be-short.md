@@ -1,8 +1,9 @@
 ---
 title: Pourquoi une manche doit être courte
 summary: Nous gardons les manches de Patchland courtes. Cette note expose comment nous pensons que la durée d'une manche influence l'attention et la mémoire du joueur.
-date: TBD
+date: 2026-11-22
 copy_review: iris 2026-11-19
+published_at: 2026-11-22T13:30:01+09:00
 ---
 ## Là où s'arrête une manche
 

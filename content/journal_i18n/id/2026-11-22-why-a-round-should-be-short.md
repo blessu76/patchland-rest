@@ -1,8 +1,9 @@
 ---
 title: Mengapa satu ronde sebaiknya singkat
 summary: Kami menjaga setiap ronde Patchland tetap singkat. Catatan ini merangkum bagaimana kami memandang pengaruh panjang ronde terhadap perhatian dan ingatan pemain.
-date: TBD
+date: 2026-11-22
 copy_review: iris 2026-11-19
+published_at: 2026-11-22T13:30:01+09:00
 ---
 ## Tempat sebuah ronde berakhir
 
