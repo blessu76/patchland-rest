@@ -1,8 +1,9 @@
 ---
 title: Zwei Spieler, ein Gerät
 summary: Im Zwei-Spieler-Modus von Patchland teilen sich zwei Personen ein Gerät. Hier beschreiben wir, wie wir über die Aufteilung des Bildschirms und die Anzeige des Zugwechsels nachgedacht haben.
-date: TBD
+date: 2026-11-23
 copy_review: iris 2026-11-19
+published_at: 2026-11-23T16:30:04+09:00
 ---
 ## Ein Gerät, das man einander weiterreicht
 

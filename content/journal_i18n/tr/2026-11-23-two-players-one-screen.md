@@ -1,8 +1,9 @@
 ---
 title: İki oyuncu, tek cihaz
 summary: Patchland'in iki kişilik modunda iki kişi tek bir cihazı paylaşır. Ekranı nasıl böleceğimizi ve sıranın kimde olduğunu nasıl göstereceğimizi düşünme sürecimizi özetledik.
-date: TBD
+date: 2026-11-23
 copy_review: iris 2026-11-19
+published_at: 2026-11-23T16:30:04+09:00
 ---
 ## Cihazın sırayla el değiştirdiği oyun
 

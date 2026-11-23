@@ -1,8 +1,9 @@
 ---
 title: Dois jogadores, um só aparelho
 summary: No modo para dois jogadores do Patchland, duas pessoas dividem um mesmo aparelho. Aqui contamos como pensamos a divisão da tela e a forma de mostrar de quem é a vez.
-date: TBD
+date: 2026-11-23
 copy_review: iris 2026-11-19
+published_at: 2026-11-23T16:30:04+09:00
 ---
 ## Um aparelho passado de mão em mão
 

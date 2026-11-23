@@ -1,8 +1,9 @@
 ---
 title: Dua pemain, satu perangkat
 summary: Dalam mode dua pemain Patchland, dua orang berbagi satu perangkat. Tulisan ini merangkum proses kami memikirkan cara membagi layar dan cara menunjukkan giliran siapa.
-date: TBD
+date: 2026-11-23
 copy_review: iris 2026-11-19
+published_at: 2026-11-23T16:30:04+09:00
 ---
 ## Satu perangkat yang dioper bergantian
 

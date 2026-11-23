@@ -1,8 +1,9 @@
 ---
 title: Deux joueurs, un seul appareil
 summary: Dans le mode à deux joueurs de Patchland, deux personnes partagent un même appareil. Nous racontons ici comment nous avons réfléchi au partage de l'écran et à la façon d'indiquer à qui c'est le tour.
-date: TBD
+date: 2026-11-23
 copy_review: iris 2026-11-19
+published_at: 2026-11-23T16:30:04+09:00
 ---
 ## Un appareil qu'on se passe à tour de rôle
 

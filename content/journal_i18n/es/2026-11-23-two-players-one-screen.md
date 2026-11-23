@@ -1,8 +1,9 @@
 ---
 title: Dos jugadores, un solo dispositivo
 summary: En el modo de dos jugadores de Patchland, dos personas comparten un mismo dispositivo. Aquí contamos cómo pensamos la división de la pantalla y la forma de indicar de quién es el turno.
-date: TBD
+date: 2026-11-23
 copy_review: iris 2026-11-19
+published_at: 2026-11-23T16:30:04+09:00
 ---
 ## Un solo dispositivo que se pasa de mano en mano
 

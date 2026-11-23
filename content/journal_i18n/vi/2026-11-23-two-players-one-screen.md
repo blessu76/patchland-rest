@@ -1,8 +1,9 @@
 ---
 title: Hai người chơi, một thiết bị
 summary: Chế độ hai người chơi của Patchland để hai người dùng chung một thiết bị. Bài viết này tóm tắt cách chúng tôi cân nhắc việc chia màn hình và cách báo đến lượt ai.
-date: TBD
+date: 2026-11-23
 copy_review: iris 2026-11-19
+published_at: 2026-11-23T16:30:04+09:00
 ---
 ## Ván chơi đưa thiết bị qua lại
 
