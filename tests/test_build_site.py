@@ -1,6 +1,7 @@
 import html as html_module
 import json
 import re
+import shutil
 import sys
 import tempfile
 import unittest
@@ -21,6 +22,31 @@ def write(root, rel, text):
     p = Path(root) / rel
     p.parent.mkdir(parents=True, exist_ok=True)
     p.write_text(text, encoding="utf-8")
+
+
+def sitemap_locs(xml):
+    """Every <loc> in the sitemap, sorted, duplicates kept."""
+    return sorted(html_module.unescape(u) for u in re.findall(r"<loc>(.*?)</loc>", xml))
+
+
+def expected_locs(root):
+    """Sitemap URLs computed from the files on disk: fixed pages for every language, and for each source post
+    its ko/en editions plus each translation with the same file name whose copy_review is `iris YYYY-MM-DD`."""
+    root = Path(root)
+    paths = []
+    for lang in bs.languages.SUPPORTED:
+        paths += [bs.path_home(lang), bs.path_journal(lang)] + [bs.path_page(lang, s) for s in bs.PAGE_SLUGS]
+    for src in (root / "content" / "journal").glob("*.md"):
+        slug = re.match(r"^\d{4}-\d{2}-\d{2}-([a-z0-9-]+)\.md$", src.name).group(1)
+        langs = list(bs.ORIGINALS)
+        for lang in bs.TRANSLATIONS:
+            t = root / "content" / "journal_i18n" / lang / src.name
+            if t.is_file():
+                m = re.search(r"^copy_review:[ \t]*(.*?)[ \t]*$", t.read_text(encoding="utf-8").split("\n---", 1)[0], re.M)
+                if m and re.fullmatch(r"iris \d{4}-\d{2}-\d{2}", m.group(1)):
+                    langs.append(lang)
+        paths += [bs.path_article(lang, slug) for lang in langs]
+    return sorted(bs.url(p) for p in paths)
 
 
 def jsonld_nodes(page_html):
@@ -179,9 +205,31 @@ class BuildTest(unittest.TestCase):
         self.assertEqual(redirects.sitemap_leaks(self.files["sitemap.xml"]), [])
 
     def test_sitemap_urls(self):
-        # per language: home, privacy, support, terms, journal index + one page per post (auto-publish adds posts)
-        posts = len(list((ROOT / "content" / "journal").glob("*.md")))
-        self.assertEqual(self.files["sitemap.xml"].count("<url>"), 12 * (5 + posts))
+        # Exactly the expected URLs, each once: per language home, privacy, support, terms, journal index,
+        # plus one URL per published edition of each post (ko/en + only the copy-reviewed translations on disk).
+        self.assertEqual(sitemap_locs(self.files["sitemap.xml"]), expected_locs(ROOT))
+        self.assertEqual(self.files["sitemap.xml"].count("<url>"), len(expected_locs(ROOT)))
+
+    def test_sitemap_counts_only_published_editions(self):
+        # A new post with only ko/en (no reviewed translation yet) adds 2 URLs, not 12; once all
+        # translations are reviewed it adds 12. Unreviewed translations never reach the sitemap.
+        root = Path(tempfile.mkdtemp())
+        shutil.copytree(ROOT / "content", root / "content")
+        base = len(expected_locs(root))
+        name = "2026-11-30-sitemap-probe.md"
+        write(root, "content/journal/" + name, POST_BASE.replace("2026-11-14", "2026-11-30") % "copy_review: iris 2026-11-30\n")
+        trans = TRANS_BASE.replace("2026-11-14", "2026-11-30")
+        write(root, "content/journal_i18n/ja/" + name, trans % "")  # unreviewed: left out
+        for added, reviewed in ((2, ()), (12, bs.TRANSLATIONS)):
+            for lang in reviewed:
+                write(root, "content/journal_i18n/%s/%s" % (lang, name), trans % "copy_review: iris 2026-11-30\n")
+            ctx = bs.Ctx(str(root))
+            self.assertEqual(ctx.errs, [])
+            xml = bs.build_all(ctx)["sitemap.xml"]
+            self.assertEqual(len(expected_locs(root)), base + added)
+            self.assertEqual(sitemap_locs(xml), expected_locs(root))
+            probe = [u for u in sitemap_locs(xml) if u.rstrip("/").endswith("/sitemap-probe")]
+            self.assertEqual(len(probe), added)
 
     def test_home_has_videogame_jsonld_without_price_or_release_claims(self):
         for lang in self.ctx.langs:
